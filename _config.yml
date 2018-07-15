@@ -1,7 +1,7 @@
 # Site configuration
-# domain: "http://songroger.win"
-baseurl:
-url: 
+domain: "http://shellteo.top"
+baseurl: ""
+url: "http://shellteo.github.io/"
 permalink: /:title/
 avatar: http://7xof48.com1.z0.glb.clouddn.com/avatar.jpg
 about: http://7xof48.com1.z0.glb.clouddn.com/about.jpg
