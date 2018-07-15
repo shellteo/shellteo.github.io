@@ -1,7 +1,7 @@
 # Site configuration
 # domain: "http://songroger.win"
-baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://shellteo.github.io/" # the base hostname & protocol for your site
+baseurl:
+url: 
 permalink: /:title/
 avatar: http://7xof48.com1.z0.glb.clouddn.com/avatar.jpg
 about: http://7xof48.com1.z0.glb.clouddn.com/about.jpg
