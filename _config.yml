@@ -3,9 +3,9 @@ domain: "http://shellteo.top"
 baseurl: ""
 url: "http://shellteo.github.io/"
 permalink: /:title/
-avatar: http://7xof48.com1.z0.glb.clouddn.com/avatar.jpg
+avatar: http://pbwv866yd.bkt.clouddn.com/avatar.jpg
 about: http://7xof48.com1.z0.glb.clouddn.com/about.jpg
-favicon: http://7xof48.com1.z0.glb.clouddn.com/favicon.png
+favicon: http://pbwv866yd.bkt.clouddn.com/favicon.ico
 basecss: 
 # Theme specific configuration
 title: songroger
@@ -15,11 +15,8 @@ description: >
   I'm really fond of beautiful design, drawing etc.
 
 # Contact and social media links
-twitter_username: songrogero
-github_username: songroger
-facebook_username: song.roger.1
-instagram_username: songroger198
-linkedin_username: songroger
+github_username: shellteo
+weibo_username: ZxPlus
 
 exclude: ['node_modules', 'gulpfile.js', 'package.json']
 
