@@ -10,7 +10,7 @@ layout: default
       </h2>
       <time class="article__date" datetime="{{ post.date | date: "%Y-%m-%d" }}">{{ post.date | date: "%Y-%m-%d" }}</time>
       <p class="article__excerpt">{{ post.description}}</p>
-      <a href="{{ post.url | prepend: site.baseurl }}" class="article__more">Read more »</a>
+      <a href="{{ post.url | prepend: site.baseurl }}" class="article__more">阅读全文 »</a>
     </article>
     <!-- / article -->
   {% endfor %}
