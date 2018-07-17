@@ -9,7 +9,7 @@ location: ShangHai, China
 description: 前端工程化的今天，操作DOM在所难免，但是如何像jQuery一样优雅的操作DOM，这是我们需要去考虑的.
 ---
 ---
-##前言
+## 前言
 
 &emsp;&emsp;在MV*框架兴起，前端告别刀耕火种进入工程化的今天，还没来得及学习Angular，Facebook就带着react框架降临，不久vue.js又在这些框架打得火热的时候脱颖而出，各种框架充斥着我们的视觉神经，好像操作DOM来写前端的思想已经退出了历史舞台。而jQuery作为那个年代前端er主要的库，对于DOM的增删改查的便利让我们对jQuery顶礼膜拜，jQuery为了简化js而生，却又因简化js而死，jQuery发布第一版距今已经11年之久，而后jQuery时代，我们需要怎么做？
 
@@ -18,7 +18,9 @@ description: 前端工程化的今天，操作DOM在所难免，但是如何像j
 &emsp;&emsp;他的创始人John Resig给这些代码添加了注释，如下有第一版jQuery的地址，你可以第一版的源码。https://genius.it/johnresig.com/files/jquery-original.html
 
 &emsp;&emsp;jQuery是伟大的，但是在当下技术发展的今天，我们不需要再兼容IE6和IE7的情况下，很多兼容性问题浏览器已经自行解决了，所以说，将jQuery从你的网站中删除是正确的做法。而且js现在已经更加简洁，对于很多DOM操作，用原生js来写也会非常简洁。
-##jQuery速览
+
+## jQuery速览
+
 **1.文档载入后执行：**
 ```javascript
 $(document).ready(function(){})
@@ -118,7 +120,8 @@ e)`:eq`选择索引匹配的元素
 `next()`查找该节点的下一个兄弟节点
 `nextAll()`查找该节点之后所有的节点
 
-##去除DOM依赖
+## 去除DOM依赖
+
 如何在项目中去除jQuery依赖，以及如何使用原生js替代jQuery中方法？
 **1.查找DOM**
 `getElementById()`：通过id查找元素，访问DOM最快的方法，而且大部分浏览器都支持
