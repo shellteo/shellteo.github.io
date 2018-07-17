@@ -4,7 +4,6 @@ title:  "后jQuery时代"
 date:   2017-08-04
 categories: jquery
 author: 张翔
-cover: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Meisje_met_de_parel.jpg/600px-Meisje_met_de_parel.jpg"
 location: ShangHai, China
 description: 前端工程化的今天，操作DOM在所难免，但是如何像jQuery一样优雅的操作DOM，这是我们需要去考虑的.
 ---
