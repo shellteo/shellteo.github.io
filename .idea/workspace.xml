@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75caa73f-d9d9-475c-bb28-d19dbc44b457" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/_posts/2017-08-11-MockJS-think-do.markdown" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2017-08-11-MockJS-think-do.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2017-08-11-MockJS-think-do.markdown" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -38,8 +38,8 @@
         <entry file="file://$PROJECT_DIR$/_posts/2017-08-11-MockJS-think-do.markdown">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="133">
-                <caret line="7" column="60" selection-start-line="7" selection-start-column="60" selection-end-line="7" selection-end-column="60" />
+              <first_editor relative-caret-position="114">
+                <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
                 <folding>
                   <element signature="e#0#26#0" expanded="true" />
                 </folding>
@@ -210,12 +210,12 @@
       <workItem from="1531142657633" duration="487000" />
       <workItem from="1531659966221" duration="5428000" />
       <workItem from="1531751907600" duration="2668000" />
-      <workItem from="1531838874424" duration="2131000" />
+      <workItem from="1531838874424" duration="2203000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13233000" />
+    <option name="totallyTimeSpent" value="13305000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -498,8 +498,8 @@
     <entry file="file://$PROJECT_DIR$/_posts/2017-08-11-MockJS-think-do.markdown">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="133">
-            <caret line="7" column="60" selection-start-line="7" selection-start-column="60" selection-end-line="7" selection-end-column="60" />
+          <first_editor relative-caret-position="114">
+            <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
             <folding>
               <element signature="e#0#26#0" expanded="true" />
             </folding>
