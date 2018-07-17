@@ -8,7 +8,6 @@ cover: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Meisje_met_de_
 location: ShangHai, China
 description: 前端工程化的今天，操作DOM在所难免，但是如何像jQuery一样优雅的操作DOM，这是我们需要去考虑的.
 ---
----
 ## 前言
 
 &emsp;&emsp;在MV*框架兴起，前端告别刀耕火种进入工程化的今天，还没来得及学习Angular，Facebook就带着react框架降临，不久vue.js又在这些框架打得火热的时候脱颖而出，各种框架充斥着我们的视觉神经，好像操作DOM来写前端的思想已经退出了历史舞台。而jQuery作为那个年代前端er主要的库，对于DOM的增删改查的便利让我们对jQuery顶礼膜拜，jQuery为了简化js而生，却又因简化js而死，jQuery发布第一版距今已经11年之久，而后jQuery时代，我们需要怎么做？
