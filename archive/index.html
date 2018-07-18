@@ -4,7 +4,7 @@ title: Archive
 ---
 
 <ul>
-  {%for post in paginator.posts %}
+  {%for post in site.posts %}
     <div class="arch-item">
       <li>
         <a href="{{ post.url | prepend: site.baseurl }}" class="arch-title">{{ post.title }}</a>
@@ -15,7 +15,7 @@ title: Archive
   {% endfor %}
 </ul>
 
-    <nav class="blocks blocks--space">
+    <!--<nav class="blocks blocks&#45;&#45;space">
       <div class="blocks__item">
         {% if paginator.previous_page %}<a href="{{ paginator.previous_page_path }}">Previous</a>{% endif %}
       </div>
@@ -25,4 +25,4 @@ title: Archive
       <div class="blocks__item">
         {% if paginator.next_page %}<a href="{{ paginator.next_page_path }}">Next</a>{% endif %}
       </div>
-    </nav>
+    </nav>-->
