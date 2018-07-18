@@ -54,17 +54,17 @@
       <file leaf-file-name="main.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/_includes/css/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="253" column="1" lean-forward="false" selection-start-line="253" selection-start-column="1" selection-end-line="253" selection-end-column="1" />
+            <state relative-caret-position="380">
+              <caret line="35" column="40" lean-forward="false" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
               <folding>
-                <element signature="e#3888#4012#0" expanded="false" />
-                <element signature="e#4026#4099#0" expanded="false" />
-                <element signature="e#4112#4185#0" expanded="false" />
-                <element signature="e#4205#4233#0" expanded="false" />
-                <element signature="e#4277#4358#0" expanded="false" />
-                <element signature="e#4380#4933#0" expanded="false" />
-                <element signature="e#4947#5013#0" expanded="false" />
-                <element signature="e#5030#5064#0" expanded="false" />
+                <element signature="e#3875#3999#0" expanded="false" />
+                <element signature="e#4013#4086#0" expanded="false" />
+                <element signature="e#4099#4172#0" expanded="false" />
+                <element signature="e#4192#4220#0" expanded="false" />
+                <element signature="e#4264#4345#0" expanded="false" />
+                <element signature="e#4367#4920#0" expanded="false" />
+                <element signature="e#4934#5000#0" expanded="false" />
+                <element signature="e#5017#5051#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -275,12 +275,12 @@
       <workItem from="1531875657140" duration="277000" />
       <workItem from="1531877138936" duration="121000" />
       <workItem from="1531881037104" duration="220000" />
-      <workItem from="1531881286771" duration="7791000" />
+      <workItem from="1531881286771" duration="8107000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21461000" />
+    <option name="totallyTimeSpent" value="21777000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -685,17 +685,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/_includes/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="253" column="1" lean-forward="false" selection-start-line="253" selection-start-column="1" selection-end-line="253" selection-end-column="1" />
+        <state relative-caret-position="380">
+          <caret line="35" column="40" lean-forward="false" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
           <folding>
-            <element signature="e#3888#4012#0" expanded="false" />
-            <element signature="e#4026#4099#0" expanded="false" />
-            <element signature="e#4112#4185#0" expanded="false" />
-            <element signature="e#4205#4233#0" expanded="false" />
-            <element signature="e#4277#4358#0" expanded="false" />
-            <element signature="e#4380#4933#0" expanded="false" />
-            <element signature="e#4947#5013#0" expanded="false" />
-            <element signature="e#5030#5064#0" expanded="false" />
+            <element signature="e#3875#3999#0" expanded="false" />
+            <element signature="e#4013#4086#0" expanded="false" />
+            <element signature="e#4099#4172#0" expanded="false" />
+            <element signature="e#4192#4220#0" expanded="false" />
+            <element signature="e#4264#4345#0" expanded="false" />
+            <element signature="e#4367#4920#0" expanded="false" />
+            <element signature="e#4934#5000#0" expanded="false" />
+            <element signature="e#5017#5051#0" expanded="false" />
           </folding>
         </state>
       </provider>
