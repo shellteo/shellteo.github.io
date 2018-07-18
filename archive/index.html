@@ -8,7 +8,7 @@ title: Archive
     <div class="arch-item">
       <li>
         <a href="{{ post.url | prepend: site.baseurl }}" class="arch-title">{{ post.title }}</a>
-        <time>{{ post.date | date:"%b.%d, %Y" }}</time>
+        <time>{{ post.date | date:"%Y-%m-%d" }}</time>
       </li>
       {% if post.description %}<div class="arch-desc">{{ post.description }}</div>{% endif %}
     </div>
