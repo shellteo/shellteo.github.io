@@ -5,7 +5,7 @@ date:   2017-08-11
 categories: Mock.js
 author: 张翔
 location: ShangHai, China
-description: 基于Mock.js的Mock server怎么搭建，怎么选择好用的API接口文档编写API文档
+description: 基于Mock.js的Mock server怎么搭建，怎么选择好用的API接口文档编辑以及测工具，你都能在这篇文章里找到解答！
 ---
 ---
 &emsp;&emsp;最近在写小程序，前后端分离，后端接口给得很慢，就算给出来了，各种接口调不通，到时候前端给后端接口还需要各种调试，各种修改，总之费心费力，事情好像就这么恶性循环下去。我们需要在后端还没写好接口的时候，前端需要构造假数据以防止自己的开发被后端阻塞。Mock.js就有这样的作用，根据官网Mock.js的特点有：前后端分离、增加单元测试的真实性、开发无侵入、数据类型丰富、方便扩展。总而言之，基于Mock.js前端工程师就能独立于后端开发了。

@@ -41,12 +41,12 @@ yarn config set workspaces-experimental true
 Jest的项目结构是开源JavaScript monorepo的典型代表。
 
 >| jest/
-| ---- package.json
-| ---- packages/
-| -------- jest-matcher-utils/
-| ------------ package.json
-| -------- jest-diff/
-| ------------ package.json
+>| ---- package.json
+>| ---- packages/
+>| -------- jest-matcher-utils/
+>| ------------ package.json
+>| -------- jest-diff/
+>| ------------ package.json
 ...
 
 最外层的的`package.json`定义整个的项目的根依赖，其他目录的package.json文件就是Workspaces，Workspaces经常注册发布到npm上。虽然根package.json不应该作为一个包使用，它通常会包含与其他项目共享的代码或特定的业务代码，这就是我们将其标记为“私有”的原因。
