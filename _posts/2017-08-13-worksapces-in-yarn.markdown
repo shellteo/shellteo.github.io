@@ -40,13 +40,13 @@ yarn config set workspaces-experimental true
 我们将以Jest为例来设置Yarn Workspaces的结构。事实上，它已经在一次PR（pull request）中被实现，Jest已经使用Yarn来引导它的依赖。
 Jest的项目结构是开源JavaScript monorepo的典型代表。
 
->| jest/
->| ---- package.json
->| ---- packages/
->| -------- jest-matcher-utils/
->| ------------ package.json
->| -------- jest-diff/
->| ------------ package.json
+>| jest/  
+| ---- package.json  
+| ---- packages/  
+| -------- jest-matcher-utils/  
+| ------------ package.json  
+| -------- jest-diff/  
+| ------------ package.json  
 ...
 
 最外层的的`package.json`定义整个的项目的根依赖，其他目录的package.json文件就是Workspaces，Workspaces经常注册发布到npm上。虽然根package.json不应该作为一个包使用，它通常会包含与其他项目共享的代码或特定的业务代码，这就是我们将其标记为“私有”的原因。
@@ -101,46 +101,46 @@ jest-diff Workspace依赖于jest-matcher-utils：
 像Lerna这样的一层包装会首先为每个`package.json`运行`yarn install`，然后为相互依赖的包运行`yarn link`。
 如果我们使用这种方法，我们会得到如下文件结构：
 
->| jest/
-| ---- node_modules/
-| -------- chalk/
-| ---- package.json
-| ---- packages/
-| -------- jest-matcher-utils/
-| ------------ node_modules/
-| ---------------- chalk/
-| ---------------- pretty-format/
-| ------------ package.json
-| -------- jest-diff/
-| ------------ node_modules/
-| ---------------- chalk/
-| ---------------- diff/
-| ---------------- jest-matcher-utils/  (symlink) -> ../jest-matcher-utils
-| ---------------- pretty-format/
-| ------------ package.json
+>| jest/  
+| ---- node_modules/  
+| -------- chalk/  
+| ---- package.json  
+| ---- packages/  
+| -------- jest-matcher-utils/  
+| ------------ node_modules/  
+| ---------------- chalk/  
+| ---------------- pretty-format/  
+| ------------ package.json  
+| -------- jest-diff/  
+| ------------ node_modules/  
+| ---------------- chalk/  
+| ---------------- diff/  
+| ---------------- jest-matcher-utils/  (symlink) -> ../jest-matcher-utils  
+| ---------------- pretty-format/  
+| ------------ package.json  
 ...
 
 我们能看到，第三方依赖会存在冗余重复。
 启用Workspaces后，Yarn能生成更优化的依赖关系结构，当你在项目任何地方运行`yarn install`，你会得到如下的node_modules。
 
 
->| jest/
-| ---- node_modules/
-| -------- chalk/
-| -------- diff/
-| -------- pretty-format/
-| -------- jest-matcher-utils/  (symlink) -> ../packages/jest-matcher-utils
-| ---- package.json
-| ---- packages/
-| -------- jest-matcher-utils/
-| ------------ node_modules/
-| ---------------- chalk/`
-| ------------ package.json
-| -------- jest-diff/
-| ------------ node_modules/
-| ---------------- chalk/
-| ------------ package.json
-...
+>| jest/  
+| ---- node_modules/  
+| -------- chalk/  
+| -------- diff/  
+| -------- pretty-format/  
+| -------- jest-matcher-utils/  (symlink) -> ../packages/jest-matcher-utils  
+| ---- package.json  
+| ---- packages/  
+| -------- jest-matcher-utils/  
+| ------------ node_modules/  
+| ---------------- chalk/`  
+| ------------ package.json  
+| -------- jest-diff/  
+| ------------ node_modules/  
+| ---------------- chalk/  
+| ------------ package.json  
+...  
 
 像`diff`和`pretty-format`这样的依赖包还有`jest-matcher-utils`的软链接被提升到根node_modules目录，使安装越来越快，安装包越来越小。然而`chalk`依赖包不能被移动到根部，因为根部已经依赖了不同版本且不兼容的`chalk`了。
 上述的两种结构是兼容的，但是后一种结构优化了Node.js模块分辨率逻辑，而且引用的依赖仍然是正确的。
