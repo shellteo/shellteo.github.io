@@ -14,8 +14,39 @@ layout: default
     </article>
     <!-- / article -->
   {% endfor %}
-
-     <nav class="blocks blocks--space">
+    <div class="pagerBox">
+        <div></div>
+            {% if paginator.previous_page %}
+            <a href="{{ paginator.previous_page_path }}">
+                <button type="button" class="btn-prev">
+                    <i class="arrow left-arrow"></i>
+                </button>
+            </a>
+            {% elseif %}
+            <a>
+                <button type="button" class="btn-prev" disabled="disabled">
+                    <i class="arrow left-arrow"></i>
+                </button>
+            </a>
+            {% endif %}
+        <div class="pageContent">
+            第 {{ paginator.page }} 页 / 共 {{ paginator.total_pages }} 页
+        </div>
+        {% if paginator.next_page %}
+        <a href="{{ paginator.next_page_path }}">
+            <button type="button" class="btn-next">
+                <i class="arrow right-arrow"></i>
+            </button>
+        </a>
+        {% elseif %}
+        <a>
+            <button type="button" class="btn-next" disabled="disabled">
+                <i class="arrow right-arrow"></i>
+            </button>
+        </a>
+        {% endif %}
+    </div>
+     <!--<nav class="blocks blocks&#45;&#45;space">
       <div class="blocks__item">
         {% if paginator.previous_page %}<a href="{{ paginator.previous_page_path }}">Previous</a>{% endif %}
       </div>
@@ -25,4 +56,4 @@ layout: default
       <div class="blocks__item">
         {% if paginator.next_page %}<a href="{{ paginator.next_page_path }}">Next</a>{% endif %}
       </div>
-    </nav>
+    </nav>-->
