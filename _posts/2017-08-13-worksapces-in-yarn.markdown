@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "基于Mock.js的前后端分离思考与实践"
-date:   2017-08-11
-categories: Mock.js
+title:  "yarn的WorkSpaces功能介绍"
+date:   2017-08-13
+categories: yarn
 author: 张翔
 location: ShangHai, China
 cover: "https://mmbiz.qlogo.cn/mmbiz_png/C5rBNNe9HlW3icVU6BccOxBRHxHkPyy5M12Hd1vqoOftQe8yZU3eHgtAmpsdtQQgwrlpNhs6Qia1Yr2S8hQMgctg/640?wx_fmt=png"
