@@ -4,7 +4,7 @@ baseurl: ""
 url: "http://shellteo.github.io/"
 permalink: /:title/
 avatar: http://pbwv866yd.bkt.clouddn.com/avatar.jpg
-about: http://7xof48.com1.z0.glb.clouddn.com/about.jpg
+about: http://pbwv866yd.bkt.clouddn.com/avatar.jpg
 favicon: http://pbwv866yd.bkt.clouddn.com/favicon.ico
 basecss: 
 # Theme specific configuration
