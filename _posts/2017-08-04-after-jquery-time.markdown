@@ -5,6 +5,7 @@ date:   2017-08-04
 categories: jquery
 author: 张翔
 location: ShangHai, China
+cover: "https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article1/b1c9fee0c17ab8a80b7df47ec548a074.jpg?Expires=1532234846&OSSAccessKeyId=TMP.AQEz0I30vhhHDJiuB3S1tGTeblimsDIlxIVsYYJgwh2vPI1LJvlVayoKCP1xADAtAhUAp-Gv8EX4_10m9HMj43EzwibxWfICFHSwr8wjnJ5PFHQ9WHMh_KC0xm9D&Signature=Vc%2Fk0kYaiAu%2F5rnIeeorpyCL760%3D"
 description: 前端工程化的今天，操作DOM在所难免，但是如何像jQuery一样优雅的操作DOM，这是我们需要去考虑的.
 ---
 ---

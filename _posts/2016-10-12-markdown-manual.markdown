@@ -4,6 +4,7 @@ title:  "Markdown"
 date:   2016-10-12 17:13:17 +0800
 categories: diary
 location: Florence, Italy
+cover: "https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article1/programming-1832991_640.png?Expires=1532234286&OSSAccessKeyId=TMP.AQEz0I30vhhHDJiuB3S1tGTeblimsDIlxIVsYYJgwh2vPI1LJvlVayoKCP1xADAtAhUAp-Gv8EX4_10m9HMj43EzwibxWfICFHSwr8wjnJ5PFHQ9WHMh_KC0xm9D&Signature=EvSo1AgM0y1nDqK7yUm1iRKfyfA%3D"
 description: love markdown, love plain texts. Enjoy its manual
 ---
 ---

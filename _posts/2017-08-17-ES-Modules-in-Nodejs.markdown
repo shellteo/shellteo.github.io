@@ -5,12 +5,15 @@ date:   2017-08-17
 categories: node.js
 author: 张翔
 location: ShangHai, China
+cover: ""
 description: 我的翻译计划第二篇，这篇主要介绍的Node中ES Modules的发展以及使用！
 ---
 ---
 *编者注：这篇文章来自`John-David Dalton`，微软Edge团队的项目经理以及Lodash库的创始人，分享一个将ECMAScript模块带到Node新社区项目的消息。*
 
 我很高兴宣布`@std esm`（standard / esm）的发布，这是一个可选且符合规范的ECMAScript（ES）模块加载器，能以接近内置模块的速度实现Node和ES Modules格式转换。这个快速、小型、零依赖的包可以在Node4+中启动ES Modules！
+
+![img1](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article5/e48a9647f9ddea05b28712249a7b7f13.gif?Expires=1532235403&OSSAccessKeyId=TMP.AQEz0I30vhhHDJiuB3S1tGTeblimsDIlxIVsYYJgwh2vPI1LJvlVayoKCP1xADAtAhUAp-Gv8EX4_10m9HMj43EzwibxWfICFHSwr8wjnJ5PFHQ9WHMh_KC0xm9D&Signature=aNWY8qm4KF3pim0nBWzKDb%2ByY74%3D)
 
 在Node中运行@std/esm
 
