@@ -1,0 +1,188 @@
+---
+layout: post
+title:  "前端CORS请求梳理"
+date:   2018-04-14
+categories: JS
+author: 张翔
+location: ShangHai, China
+description: 前后端分离来说，跨域请求是我们第一个需要解决的问题。下面是我在开发中总结出来的一些经验。
+---
+---
+前后端分离来说，**跨域请求**是我们第一个需要解决的问题。下面是我在开发中总结出来的一些经验。
+
+开发中，很多时候会出现**Options请求**（**CORS预检请求**），但是有的时候又不会出现。某些请求不会触发 CORS 预检请求，这样的请求被称为**简单请求**，其他的请求被称为**非简单请求**。首先我们来区分简单请求和非简单请求。
+
+## 一、简单请求和非简单请求
+
+浏览器将**CORS**请求分成两类：**简单请求**（simple request）和**非简单请求**（not-so-simple request）。
+只要同时满足以下两大条件，就属于简单请求。
+#### 1、请求方法是以下三种方法之一：
+**HEAD**、**GET**、**POST**
+#### 2、HTTP的头信息不超出以下几种字段：
+**Accept**
+**Accept-Language**
+**Content-Language**
+**Last-Event-ID**
+**Content-Type**：只限于三个**值application/x-www-form-urlencoded**、**multipart/form-data**、**text/plain**
+`凡是不同时满足上面两个条件，就属于非简单请求`。浏览器对这两种请求的处理，是不一样的。
+
+## 二、和跨域有关的头部梳理
+
+现在我们知道我们哪些请求是简单请求哪些是非简单请求，上面有提到HTTP头部和CORS跨域请求，CORS全称**Cross-origin resource sharing**，也就是**跨域资源共享**，浏览器出于安全角度考虑限制跨域HTTP请求，这就是**同源策略**，所以后端需要设置请求头部才能允许跨域。
+
+#### 1、Access-Control-Allow-Methods：
+是逗号分隔的一个字符串，**表明服务器允许的跨域请求的方法**。
+
+#### 2、Access-Control-Allow-Headers：
+是一个逗号分隔的字符串，**表明服务器支持的所有头信息字段**，不限于浏览器在"预检"中请求的字段。
+
+#### 3、Access-Control-Allow-Credentials：
+该字段表示是否可以将对请求的响应暴露给页面，一般来说是**cookie**。**Credentials必须在前后端都被配置才能使带credentials的CORS请求成功**。**jQuery**可以通过设置`xhrFields: {withCredentials:true}`，**promise**可以通过设置`credentials: 'include'`。
+
+#### 4、Access-Control-Max-Age：
+用来指定本次预检请求的**有效期**，单位为秒。
+
+#### 5、Access-Control-Allow-Origin：
+表示**资源是否被允许与给定的origin共享**。
+
+### 6、Access-Control-Expose-Headers：
+响应首部 Access-Control-Expose-Headers 列出了哪些首部可以作为响应的一部分**暴露给外部**。默认情况下，只有六种 simple response headers （简单响应首部）可以暴露给外部：**Cache-Control、Content-Language、Content-Type、Expires、Last-Modified、Pragma**。如果想要让客户端可以访问到其他的首部信息，可以将它们在 Access-Control-Expose-Headers 里面列出来。
+
+#### 7、Access-Control-Request-Headers：
+请求首部  Access-Control-Request-Headers 出现于 **preflight request （预检请求）**中，**用于通知服务器在真正的请求中会采用哪些请求首部**。
+
+#### 8、Access-Control-Request-Method：
+请求首部  **Access-Control-Request-Method** 出现于 preflight request （预检请求）中，用于通知服务器在真正的请求中会采用哪种  HTTP 方法。因为预检请求所使用的方法总是 **OPTIONS** ，与实际请求所使用的方法不一样，所以这个首部是必要的。
+
+## 三、发送cookie
+
+如果需要发送cookie，前后端都被配置，前端需要设置jQuery可以通过设置`xhrFields: {withCredentials:true}`，promise可以通过设置`credentials: 'include'`。
+服务器端需要设置`res.setHeader('Access-Control-Allow-Credentials', 'true');`否则浏览器就会报错：*Response to preflight request doesn't pass access control check: The value of the 'Access-Control-Allow-Credentials' header in the response is '' which must be 'true' when the request's credentials mode is 'include'.*
+
+> 需要注意的是，如果要发送Cookie，Access-Control-Allow-Origin就不能设为星号，必须指定明确的、与请求网页一致的域名。
+
+同时，**Cookie依然遵循同源政策**，只有用服务器域名设置的Cookie才会上传，其他域名的Cookie并不会上传，且（跨源）原网页代码中的document.cookie也无法读取服务器域名下的Cookie。
+这时候浏览器会报错*The value of the 'Access-Control-Allow-Origin' header in the response must not be the wildcard '*' when the request's credentials mode is 'include'.*
+**我们来看看node如何不使用如何插件和框架来解析cookie**，下面是代码：
+```javascript
+//解析cookie的函数
+function parseCookies (request) {
+    let list = {},
+    rc = request.headers.cookie;
+
+    rc && rc.split(';').forEach(function( cookie ) {
+        let parts = cookie.split('=');
+        list[parts.shift().trim()] = decodeURI(parts.join('='));
+    });
+    return list;
+}
+
+http.createServer(function (request, response) {
+    //读取cookie
+    var cookies = parseCookies(request);
+
+    //写入cookie
+    response.writeHead(200, {
+        'Set-Cookie': 'mycookie=test',
+        'Content-Type': 'text/plain'
+    });
+    response.end('Hello World\n');}).listen(8124);
+})
+```
+
+## 四、Content-Type的值及其作用
+
+对接后端的接口的时候，**Content-Type的值是决定后端那边怎么去解析我们的传参的**。Content-type常用几个值:
+
+> 1.text/html
+> 2.text/plain
+> 3.text/css
+> 4.text/javascript
+> 5.application/x-www-form-urlencoded
+> 6.multipart/form-data
+> 7.application/json
+> 8.application/xml
+
+前面几个都很好理解，都是html，css，javascript的文件类型，**后面四个是POST的发包方式**。
+
+#### 1、application/x-www-form-urlencoded
+html中表单提交的默认格式，jquery ajax请求默认的content-type默认也是这种格式，并且jquery会把data:{foo1:"bar1",foo2:"bar2"}数据转换成key1=value1&key2=value2，可以通过processData来关闭是否提前处理数据，数据格式是key1=value1&key2=value2形式。
+
+下面是jquery做data预处理的代码，默认processData为true，所以如果data有值就会进入判断就会把json格式转化为key1=value1&key2=value2的格式
+```javascript
+if ( s.data && ( s.processData || typeof s.data === "string" ) ) {
+    cacheURL += ( rquery.test( cacheURL ) ? "&" : "?" ) + s.data;
+
+    // #9682: remove data so that it's not used in an eventual retry
+    delete s.data;
+}
+```
+
+#### 2、multipart/form-data
+multipart/form-data用在发送文件的POST包。
+这里Content-Type告诉我们，发包是以multipart/form-data格式来传输，另外，还有boundary用于分割数据。
+当文件太长，HTTP无法在一个包之内发送完毕，就需要分割数据，分割成一个一个chunk发送给服务端，
+那么--用于区分数据快，而后面的数据sqe6Nhq4gtMfHLOY 就是标示区分包作用。
+```javascript
+------WebKitFormBoundarysqe6Nhq4gtMfHLOY
+Content-Disposition: form-data; name:"UserWxCode"
+
+123
+------WebKitFormBoundarysqe6Nhq4gtMfHLOY
+Content-Disposition: form-data; name="CodeType"
+
+Public
+------WebKitFormBoundarysqe6Nhq4gtMfHLOY--
+```
+
+#### 3、application/json
+发送请求的时候需要JSON.stringify一下，**HTTP通信中并不存在所谓的json**，而是将string转成json罢了，也就是，**application/json可以将它理解为text/plain，普通字符串**。
+
+#### 4、text/xml和application/xml
+text/xml忽略xml文件头中的关于编码的设定（`<?xml version=”1.0” encoding=”UTF-8”?>`），**默认采用us-ascii编码**。 application/xml会**依照xml文件头中编码的设定**。推荐使用application/xml
+
+## 五、fetch和jquery Ajax设置Headers，cookies
+
+```javascript
+//fetch设置Headers，cookies
+//方式1.
+let myHeaders = new Headers({
+    'Content-Type': 'application/json; charset=UTF-8',
+    'token': 123
+});
+
+//方式2.
+headers: {
+    'Content-Type': 'application/json; charset=UTF-8',
+    'token': 123
+},
+
+//发送cookies：
+credentials: 'include',
+
+//jquery ajax设置Headers，cookies
+//设置header方式一
+headers: {
+    UserName: 'zxplus',
+    EncryptKey: '1111'
+},
+//方式二
+beforeSend: function(request) {
+    request.setRequestHeader("UserName", "zxplus");
+},
+
+//发送cookie
+xhrFields: {
+    withCredentials:true //支持附带详细信息
+},
+
+```
+
+## 参考
+
+https://stackoverflow.com/questions/3393854/get-and-set-a-single-cookie-with-node-js-http-server
+http://www.ruanyifeng.com/blog/2016/04/cors.html
+https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS
+https://segmentfault.com/a/1190000006039533
+http://www.cnblogs.com/caoshiqing/p/6825608.html
+http://homeway.me/2015/07/19/understand-http-about-content-type/

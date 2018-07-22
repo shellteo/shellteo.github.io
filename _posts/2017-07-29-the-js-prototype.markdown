@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "关于原型链那些你所不知道的"
-date:   2017-09-10
+date:   2017-07-29
 categories: js
 author: 张翔
 location: ShangHai, China
