@@ -5,6 +5,7 @@ date:   2017-09-13
 categories: CSS
 author: 张翔
 location: ShangHai, China
+cover: ""
 description: 现在很多人不喜欢写css，这是有很多原因导致的，但是归根结底：css是不可预测的。如果你以前从未有过调整过样式规则而意外的打破了完全无关的布局，那么你可能是个新手或者是一个比我们更好的程序员。
 ---
 ---

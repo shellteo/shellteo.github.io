@@ -5,6 +5,7 @@ date:   2017-11-28
 categories: BlockChain
 author: 张翔
 location: ShangHai, China
+cover: ""
 description: 探讨区块链技术在行业中的实际应用
 ---
 ---

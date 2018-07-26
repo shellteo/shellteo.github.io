@@ -5,6 +5,7 @@ date:   2018-01-09
 categories: BlockChain
 author: 张翔
 location: ShangHai, China
+cover: ""
 description: 比特币和以太币不管上涨还是下跌，但是里面的技术是无价的。
 ---
 ---

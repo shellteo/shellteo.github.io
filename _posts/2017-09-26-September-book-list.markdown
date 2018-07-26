@@ -5,6 +5,7 @@ date:   2017-09-26
 categories: reading
 author: 张翔
 location: ShangHai, China
+cover: ""
 description: 对自身认识的不足，所以我们需要不断去读书。
 ---
 ---

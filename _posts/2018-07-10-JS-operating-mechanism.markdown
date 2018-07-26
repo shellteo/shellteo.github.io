@@ -5,6 +5,7 @@ date:   2018-07-10
 categories: JS
 author: 张翔
 location: ShangHai, China
+cover: ""
 description: javascript是单线程的，js任务分为同步任务和异步任务，同步和异步是javascript中的核心内容！这篇主要解析javascript的运行机制！
 ---
 ---

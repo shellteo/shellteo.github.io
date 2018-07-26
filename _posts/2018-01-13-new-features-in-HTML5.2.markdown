@@ -5,6 +5,7 @@ date:   2018-01-13
 categories: BlockChain
 author: 张翔
 location: ShangHai, China
+cover: ""
 description: 介绍HTML5.2中的新元素、新写法以及一些无效的写法和删除的元素。
 ---
 ---

@@ -5,6 +5,7 @@ date:   2017-09-07
 categories: Web
 author: 张翔
 location: ShangHai, China
+cover: ""
 description: 我的翻译计划第四篇，本篇文章介绍了10种可以提高网站可访问性的方法，可以让你网站对任何人都可访问。
 ---
 ---

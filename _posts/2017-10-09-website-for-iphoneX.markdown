@@ -5,6 +5,7 @@ date:   2017-10-09
 categories: Web
 author: 张翔
 location: ShangHai, China
+cover: ""
 description: 开箱即用，Safari能在iPhone X的边缘完整显示你的网站。内容自动插入显示屏的安全区域，以免被圆角或设备的传感器外壳遮挡住。
 ---
 ---

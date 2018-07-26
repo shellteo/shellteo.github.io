@@ -5,6 +5,7 @@ date:   2017-10-15
 categories: Web
 author: 张翔
 location: ShangHai, China
+cover: ""
 description: 有幸，因为比赛在上海举行(下届在杭州)，有机会能去现场看一看各个项目和团队，近距离接触包括国内的全世界的创业者的热情也实属难得。
 ---
 ---

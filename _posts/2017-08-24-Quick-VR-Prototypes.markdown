@@ -5,6 +5,7 @@ date:   2017-08-24
 categories: VR
 author: 张翔
 location: ShangHai, China
+cover: ""
 description: 我的翻译计划第三篇，这篇主要介绍通过three.js和2D软件快速构建VR原型。
 ---
 ---

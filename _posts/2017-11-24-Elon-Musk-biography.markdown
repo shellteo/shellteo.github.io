@@ -5,6 +5,7 @@ date:   2017-11-24
 categories: js
 author: 张翔
 location: ShangHai, China
+cover: ""
 description: 《硅谷钢铁侠：埃隆·马斯克的冒险人生》读后有感......
 ---
 ---

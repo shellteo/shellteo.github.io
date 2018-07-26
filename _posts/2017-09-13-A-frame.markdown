@@ -5,6 +5,7 @@ date:   2017-09-13
 categories: VR
 author: 张翔
 location: ShangHai, China
+cover: ""
 description: WebVR的正确使用方式！A-Frame降低了VR的门槛，让很多普通人也能很容易方便的创造自己VR作品，VR的玩法还有待挖掘，作者将PPT和VR结合，让与会者参与感爆棚！
 ---
 ---

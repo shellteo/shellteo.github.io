@@ -5,6 +5,7 @@ date:   2018-04-14
 categories: JS
 author: 张翔
 location: ShangHai, China
+cover: ""
 description: 前后端分离来说，跨域请求是我们第一个需要解决的问题。下面是我在开发中总结出来的一些经验。
 ---
 ---

@@ -5,6 +5,7 @@ date:   2017-07-29
 categories: js
 author: 张翔
 location: ShangHai, China
+cover: "https://i.loli.net/2018/07/24/5b573ea2d9ac6.png"
 description: 介绍javascript原型链和一些原型链方法，想要真正掌握javascript，那么掌握原型链是必不可少的。
 ---
 ---
@@ -32,8 +33,8 @@ description: 介绍javascript原型链和一些原型链方法，想要真正掌
  bmw.__proto__ = car.prototype;
  car.call(bmw);
  ```
- ![protoType](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article1/protoType.png?Expires=1532234077&OSSAccessKeyId=TMP.AQEz0I30vhhHDJiuB3S1tGTeblimsDIlxIVsYYJgwh2vPI1LJvlVayoKCP1xADAtAhUAp-Gv8EX4_10m9HMj43EzwibxWfICFHSwr8wjnJ5PFHQ9WHMh_KC0xm9D&Signature=9Q5489Pl4w2YPX27jWTXoFN%2FnaI%3D)
- 
+![protoType.png](https://i.loli.net/2018/07/24/5b573e3e4082a.png)
+
  ## 2.对象常用方法
  #### 1.Object.prototype.hasOwnProperty()
  `hasOwnProperty()`函数用于指示一个对象自身(不包括原型链)是否具有指定名称的属性。如果有，返回true，否则返回false。

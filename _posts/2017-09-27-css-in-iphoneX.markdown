@@ -5,6 +5,7 @@ date:   2017-09-27
 categories: CSS
 author: 张翔
 location: ShangHai, China
+cover: ""
 description: 自从iPhone X发布，它的头帘儿就是开发者一直头疼的问题，本文给出了一种解决办法，如果想提前适配iPhone X，一定要看这篇文章！
 ---
 ---

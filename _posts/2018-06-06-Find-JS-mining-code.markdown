@@ -5,6 +5,7 @@ date:   2018-06-16
 categories: JS
 author: 张翔
 location: ShangHai, China
+cover: ""
 description: 通过使用一个开源框架，发现了bug，在找bug的过程中发现了js挖矿代码！
 ---
 ---
