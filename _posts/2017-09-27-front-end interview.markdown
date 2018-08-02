@@ -5,7 +5,7 @@ date:   2017-09-27
 categories: js
 author: 张翔
 location: ShangHai, China
-cover: ""
+cover: "https://i.loli.net/2018/08/01/5b61bced7d52a.jpg"
 description: 关于我第一次面试别的人感想和体会
 ---
 ---

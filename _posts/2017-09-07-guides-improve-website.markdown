@@ -5,7 +5,7 @@ date:   2017-09-07
 categories: Web
 author: 张翔
 location: ShangHai, China
-cover: ""
+cover: "https://i.loli.net/2018/07/28/5b5be00508ba7.png"
 description: 我的翻译计划第四篇，本篇文章介绍了10种可以提高网站可访问性的方法，可以让你网站对任何人都可访问。
 ---
 ---
@@ -34,13 +34,19 @@ description: 我的翻译计划第四篇，本篇文章介绍了10种可以提�
 
 举个例子，众所周知，绿色代表“正确”，红色代表“错误”，但是当我们使用它作为唯一传递信息的工具时会发什么呢？
 
+![web-accessibility-color-blindness-1.png](https://i.loli.net/2018/07/28/5b5be02677736.png)
+
 <font color='#cccccc'>色盲是最常见的视力缺陷之一。它影响了全球4.5％的人口（超过IE11用户，您知道...）。</font>
 
 如果我们在界面上只使用颜色来展示重要的信息消息，那么我们就会失去这4.5%的用户。
 
 颜色应该作为补充错误或确认的消息，但它不能作为我们唯一使用的工具。为了确保覆盖所有用户，我们应该添加标签或图标，用以显示表单中填写的信息是正确还是错误的。
 
-ccaniuse.com采用了一个非常有趣的解决方案，该解决方案提供了一种替代调色板来显示兼容性表的内容
+![web-accessibility-color-blindness-2.png](https://i.loli.net/2018/07/28/5b5be09bc561b.png)
+
+ccaniuse.com采用了一个非常有趣的解决方案，该解决方案提供了一种替代调色板来显示兼容性表的内容。
+
+![web-accessibility-caniuse-1.gif](https://i.loli.net/2018/07/28/5b5be0b0a0fb0.gif)
 
 非常适合在设计时检查色盲和对比度。为了确保你或者你的设计团队使用正确的工具，们强烈推荐用于Sketch的Stark插件，可以帮助你设计可访问性！
 
@@ -89,6 +95,8 @@ ccaniuse.com采用了一个非常有趣的解决方案，该解决方案提供�
 
 2. 如果我们正在寻找100％准确的字幕，这很难通过YouTube来获取，所以我们必须自己制作字幕或雇用第三方来做到这一点。YouTube采用最常见的字幕格式（.srt、.sub和.sbv），并让我们在平台上制作字幕，如果我们没有字幕软件，或者我们希望社区帮助我们翻译内容，而不需要管理员访问我们的帐户，这就会很方便。
 
+![web-accessibility-translating-subtitles-youtube-tool-1.png](https://i.loli.net/2018/07/28/5b5be0cc03f9c.png)
+
 3. 也许你不想使用YouTube作为托管平台。也许你希望使用服务器上托管的HTML5视频。这点我们已经解决了！ HTML5包含`<track>`标签，可以轻松地使用WebVTT格式（翻译FTW！）轻松地附加尽可能多的字幕以及文件。
 
 ```html
@@ -102,6 +110,8 @@ ccaniuse.com采用了一个非常有趣的解决方案，该解决方案提供�
 ## 5.语义化=可访问（大约45分钟）
 记得字体标签吗？我希望你不要记住，那些是黑暗的年代。
 普遍认为语义化不是随着HTML5而出现的。自从第一个HTML页面以来，语义化就一直存在，随后被大大的改善。使用HTML5标准，为日常使用引入了新的语义标签。
+
+![web-accessibility-first-website.png](https://i.loli.net/2018/07/28/5b5be0ddeda8e.png)
 
 好的，但是语义化仅仅是为了SEO（搜索引擎优化）吗？
 
@@ -250,6 +260,8 @@ web可访问性很难，标准和指南在这里会很有帮助。
 我们为Xapo做的登录页是我们如何应用网站可访问性标准的例子：
 
 （Xapo网络和商店登录遵守指南的1,3,5,6,7和9条.它不适用2和7 100％，但是它在网页可访问性标准处于领先。）
+
+![web-accessibility-xapo-network-landing-page.png](https://i.loli.net/2018/07/28/5b5be0fbed986.png)
 
 ## 最后的话
 网站可访问性并不是那么易于实现，但如果您将其作为日常工作流程的一部分（而不是最后一分钟的清单），那么实施和测试将随着时间的推移变得更加容易。

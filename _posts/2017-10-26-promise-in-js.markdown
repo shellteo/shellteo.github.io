@@ -5,7 +5,7 @@ date:   2017-10-26
 categories: js
 author: 张翔
 location: ShangHai, China
-cover: ""
+cover: "https://i.loli.net/2018/08/02/5b63263f4d5a8.jpg"
 description: 关于promise的方法在微信小程序中的使用，以及promise如何顺序执行处理请求
 ---
 ---

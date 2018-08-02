@@ -5,7 +5,7 @@ date:   2017-09-07
 categories: Web
 author: 张翔
 location: ShangHai, China
-cover: ""
+cover: "https://i.loli.net/2018/07/28/5b5bdec2723d3.png"
 description: 区块链和Token代表着分散化的互联网，起源于bitcoin的区块链技术正在逐渐成长为一个引导互联网方向的技术，也许会是未来互联网的雏形。
 ---
 ---
