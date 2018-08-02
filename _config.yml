@@ -3,8 +3,8 @@ domain: "http://shellteo.top"
 baseurl: ""
 url: "http://shellteo.github.io/"
 permalink: /:title/
-avatar: http://pbwv866yd.bkt.clouddn.com/avatar.jpg
-about: http://pbwv866yd.bkt.clouddn.com/avatar.jpg
+avatar: https://i.loli.net/2018/08/03/5b632b480377a.jpg
+about: https://i.loli.net/2018/08/03/5b632b480377a.jpg
 favicon: http://pbwv866yd.bkt.clouddn.com/favicon.ico
 basecss: 
 # Theme specific configuration
@@ -30,5 +30,5 @@ enable_comment: false
 
 gems: ['jekyll-paginate']
 # Pagination
-paginate: 3
+paginate: 5
 paginate_path: /page:num
