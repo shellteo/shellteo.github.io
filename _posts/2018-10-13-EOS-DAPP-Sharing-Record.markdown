@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "EOS 生态 DAPP 开发者分享会记录"
-date:   2018-08-01
+date:   2018-10-13
 categories: BlockChain
 author: 张翔
 location: ShangHai, China
