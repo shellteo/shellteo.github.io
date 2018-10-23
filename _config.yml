@@ -14,7 +14,7 @@ description: >
 
 # Contact and social media links
 github_username: shellteo
-weibo_username: ZxPlus
+weibo_username: 3946457205
 
 exclude: ['node_modules', 'gulpfile.js', 'package.json']
 
