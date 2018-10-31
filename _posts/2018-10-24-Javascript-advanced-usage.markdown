@@ -12,7 +12,7 @@ description: 最近开发使用到很多不同的javascript的特性和用法，
 ## 一、Map的使用
 最近开发和用js刷leetcode的时候，map和set都很有用，下面面总结一下map和set的用法。   
 
-####Objects 和 maps 的比较
+#### Objects 和 maps 的比较
  - 一个Object的键只能是字符串或者 Symbols，但一个 Map 的键可以是任意值，包括函数、对象、基本类型。
  - Map 中的键值是有序的，而添加到对象中的键则不是。因此，当对它进行遍历时，Map对象是按插入的顺序返回键值。
  - 你可以通过 size 属性直接获取一个 Map 的键值对个数，而 Object 的键值对个数只能手动计算。
