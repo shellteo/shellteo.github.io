@@ -27,7 +27,7 @@ DAPP 发展有四个阶段：
 
 目前我们正处在第三、第四阶段之间。
 
-####分享了几个例子
+#### 分享了几个例子
 1.powh3D https://powh.io/
 
 2.像素大师https://pixelmaster.io/
