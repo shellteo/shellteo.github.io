@@ -16,18 +16,29 @@ description: 以前接触过EOS，但是对于dapp开发没什么接触，只是
 第一部分来自唐飞虎，人称小岛、岛神。分享了什么是DAPP和DAPP发展的四个阶段，DAPP广义上来说是任何使用了去中心化基础设施的应用，狭义上来说是运用数字资产的应用。
 
 DAPP 发展有四个阶段：
+
 1. 支付手段（比特币）；
+
 2. 加密数字资产（ERC 20、ERC 721、ICO）；
+
 3. 社区（Steemit，Mithril，etc）；
+
 4. 改变生产关系。
+
 目前我们正处在第三、第四阶段之间。
 
 ####分享了几个例子
 1.powh3D https://powh.io/
+
 2.像素大师https://pixelmaster.io/
-3.daily pixel art competition https://cryptopix.app/像素大师升级版本，每天会评选出最优秀的作品颁发奖池，解决了像素大师不能奖励给画布带来精彩作品的问题
+
+3.daily pixel art competition https://cryptopix.app/
+像素大师升级版本，每天会评选出最优秀的作品颁发奖池，解决了像素大师不能奖励给画布带来精彩作品的问题
+
 4.ITE-IIIhttps://ite3.ite.zone/
+
 5.简影EOS的游戏平台https://www.eosbao.io/
+
 
 最后还介绍了他们团队的做的产品星云水浒以及玩法https://nas.cryptohero.pro/#/
 
