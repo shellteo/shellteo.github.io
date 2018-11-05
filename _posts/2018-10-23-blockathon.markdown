@@ -71,3 +71,5 @@ description: 参加blockathon的比赛的记录和感悟，记下来。
 &emsp;&emsp;这个活动的意义还在于，很多思考和想法，48小时依然能给出一个相对完整的作品和解决方案。在新技术中，我们都是在黑暗中摸索前行。根据*Blockchain Gartner Cycle*的统计图中，可以看出，区块链过了一个大热正下滑的阶段，其实这是一个好事，淘汰掉浑水摸鱼的搅局者，技术正变得慢慢成熟起来，**从这个角度来说这是一个上升的阶段，方兴未艾，这是好事**。
 
 ![shellteo.jpg](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/2018-10-23-blockathon/10.png)
+
+最后，很开心，HiBlock社区转载了这篇文章：[链接](https://mp.weixin.qq.com/s/dv6DHh--IxGZ0gL33ivVgg)

@@ -71,3 +71,7 @@ if (!_("head").data('x')) {
 最后推荐一下chrome阻止挖矿的插件**minerBlock**
 
 ![Image5.png](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article23/Image5.png)
+
+
+
+最后，这篇文章投稿了**前端早读课**：[链接](https://mp.weixin.qq.com/s/fLGaVR-F8hFtZmHMFaNB4A)
