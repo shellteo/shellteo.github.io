@@ -5,7 +5,7 @@ date:   2018-02-12
 categories: reading
 author: 张翔
 location: ShangHai, China
-cover: "https://i.loli.net/2018/08/02/5b63277d0c197.jpg"
+cover: "https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article20/570625e1N2102288a.jpg"
 description: 彼得·蒂尔这本书看了很久，这里对全书做一个总结
 ---
 ---

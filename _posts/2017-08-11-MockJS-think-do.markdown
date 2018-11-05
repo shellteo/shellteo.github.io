@@ -5,7 +5,7 @@ date:   2017-08-11
 categories: Mock.js
 author: 张翔
 location: ShangHai, China
-cover: "https://i.loli.net/2018/07/24/5b5740203f006.jpg"
+cover: "https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article2/negative-space-sea-front-old-young-man-serkan-goktay-thumb-1-768x512.jpg"
 description: 基于Mock.js的Mock server怎么搭建，怎么选择好用的API接口文档编辑以及测工具，你都能在这篇文章里找到解答！
 ---
 ---
@@ -160,8 +160,8 @@ nodemon --require babel-register server.js
 这是我这边的一个例子，可以看到这边可视化的填写请求参数和响应参数，RAP能够根据填写的响应参数自动生成Mock数据，生成规则根据Mock.js
 规则，mock数据可以看到规则和数据，下面这个url ，post可以获取到数据。
 
-![rap.jpg](https://i.loli.net/2018/07/24/5b57404452ced.jpg)
+![rap.jpg](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article2/rap.jpg)
 
-![rap2.png](https://i.loli.net/2018/07/24/5b574067d7add.png)
+![rap2.png](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article2/rap2.png)
 
-![rap3.png](https://i.loli.net/2018/07/24/5b5740699afe1.png)
+![rap3.png](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article2/rap3.png)

@@ -5,7 +5,7 @@ date:   2017-08-17
 categories: node.js
 author: 张翔
 location: ShangHai, China
-cover: "https://i.loli.net/2018/07/24/5b57414660673.jpeg"
+cover: "https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article5/1-Yztsg_CmxOxUl6Acpvr8tw.jpeg"
 description: 我的翻译计划第二篇，这篇主要介绍的Node中ES Modules的发展以及使用！
 ---
 ---
@@ -13,7 +13,7 @@ description: 我的翻译计划第二篇，这篇主要介绍的Node中ES Module
 
 我很高兴宣布`@std esm`（standard / esm）的发布，这是一个可选且符合规范的ECMAScript（ES）模块加载器，能以接近内置模块的速度实现Node和ES Modules格式转换。这个快速、小型、零依赖的包可以在Node4+中启动ES Modules！
 
-![img1](https://i.loli.net/2018/07/24/5b5741464f585.gif)
+![img1](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article5/e48a9647f9ddea05b28712249a7b7f13.gif)
 
 在Node中运行@std/esm
 
@@ -44,7 +44,7 @@ export default { a, b: 2 }
 
 以上的选择好像都没有那么完美，生态系统的建立需要跨越一些CJS和ESM的不同。
 
-![img2](https://i.loli.net/2018/07/24/5b5741461f6d7.png)
+![img2](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article5/Image.png)
 
 ## 集成桥接
 `@std/esm`是填补模块间差异的包。由于Node现在已经支持了大多数ES2015的功能，`@std/esm`可以自由选择是否启用ESM。

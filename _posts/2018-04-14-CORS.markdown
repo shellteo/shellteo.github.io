@@ -5,7 +5,7 @@ date:   2018-04-14
 categories: JS
 author: 张翔
 location: ShangHai, China
-cover: "https://i.loli.net/2018/08/02/5b63280873c7e.jpg"
+cover: "https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article22/bXdkvC7tqvnaP7ynP5VfH1MD1BGHDt_2f4Ftavc22rQ.jpg"
 description: 前后端分离来说，跨域请求是我们第一个需要解决的问题。下面是我在开发中总结出来的一些经验。
 ---
 ---

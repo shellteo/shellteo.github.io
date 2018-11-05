@@ -5,14 +5,14 @@ date:   2017-09-13
 categories: VR
 author: 张翔
 location: ShangHai, China
-cover: "https://i.loli.net/2018/07/28/5b5be330aa047.jpg"
+cover: "https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article10/cropped-virtual-reality-1898441_1920.jpg"
 description: WebVR的正确使用方式！A-Frame降低了VR的门槛，让很多普通人也能很容易方便的创造自己VR作品，VR的玩法还有待挖掘，作者将PPT和VR结合，让与会者参与感爆棚！
 ---
 ---
 
 几个月前，我有机会第一次尝试WebVR，我被这些可能性吸引了。仅仅使用我的头戴设备和火狐浏览器，我就能玩游戏、探索世界、画画、创造音乐等等。全部通过网页。我被吸引了。
 
-![Sep-05-2017-13-10-42.gif](https://i.loli.net/2018/07/28/5b5be381d615a.gif)
+![Sep-05-2017-13-10-42.gif](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article10/Sep-05-2017-13-10-42.gif)
 
 不久之后，我了解到了构建虚拟现实体验的Web框架A-Frame。"Hello World"演示例子只有15行代码。这在我脑海中爆炸开来，构建虚拟现实似乎是为超级开发人员所保留的任务，或者是机器人做的。在浏览A-Frame文档后，我意识到任何拥有一些前端体验的人都可以为虚拟现实创造出一些东西，甚至是一个喜欢在业余时间建立网站的营销人员。
 
@@ -22,7 +22,7 @@ description: WebVR的正确使用方式！A-Frame降低了VR的门槛，让很�
 
 结果是一个有趣和独特的演讲。人们在虚拟现实中的参与感远远超过了我们在屏幕上翻幻灯片。
 
-![image1-500x333.jpg](https://i.loli.net/2018/07/28/5b5be364339c9.jpg)
+![image1-500x333.jpg](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article10/image1-500x333.jpg)
 
 这不是一篇“如何开始入门A-Frame”的文章（有很多很好的资源）。但是，我确实找到了一些解决方案，我将在下面分享几个“陷阱”。
 

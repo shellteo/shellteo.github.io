@@ -5,7 +5,7 @@ date:   2018-01-13
 categories: BlockChain
 author: 张翔
 location: ShangHai, China
-cover: "https://i.loli.net/2018/08/02/5b632738bf231.jpg"
+cover: "https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article19/html5.2x-course_card_image-378x225.jpg"
 description: 介绍HTML5.2中的新元素、新写法以及一些无效的写法和删除的元素。
 ---
 ---
@@ -60,7 +60,7 @@ document.getElementById("close").addEventListener("click", () => {
 
 `<dialog>`元素已经在chrome中有支持，并且在firefox中也可以启用**dom.dialog_element.enabled**支持。
 
-![640.png](https://i.loli.net/2018/08/02/5b632720f08b9.png)
+![640.png](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article19/640.png)
 
 ### 1.2 使用来自iframe的支付请求api
 

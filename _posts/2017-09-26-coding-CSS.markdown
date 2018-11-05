@@ -5,7 +5,7 @@ date:   2017-09-13
 categories: CSS
 author: 张翔
 location: ShangHai, China
-cover: "https://i.loli.net/2018/08/01/5b61bace7bd22.png"
+cover: "https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article12/programming-1832991_640.png"
 description: 现在很多人不喜欢写css，这是有很多原因导致的，但是归根结底：css是不可预测的。如果你以前从未有过调整过样式规则而意外的打破了完全无关的布局，那么你可能是个新手或者是一个比我们更好的程序员。
 ---
 ---
@@ -39,17 +39,18 @@ SFC系统背后的想法很简单： 将组件写入HTML文件（可选地），
 
 让我们在实践中看看：
 
-![Image1.png](https://i.loli.net/2018/08/01/5b61baf240137.png)
+![Image1.png](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article12/Image%20%282%29.png)
 
-![Image2.png](https://i.loli.net/2018/08/01/5b61bafbf3082.png)
+![Image2.png](
+https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article12/Image2.png)
 
-![Image3.png](https://i.loli.net/2018/08/01/5b61bb021fbec.png)
+![Image3.png](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article12/Image3.png)
 
-![Image4.png](https://i.loli.net/2018/08/01/5b61bb058ffcf.png)
+![Image4.png](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article12/Image4.png)
 
 运行之后查看网页localhost:5000
 
-![Image5.png](https://i.loli.net/2018/08/01/5b61bb3417f42.png)
+![Image5.png](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article12/Image5.png)
 
 修改App.html的style里面的样式文件如下：
 
@@ -66,7 +67,7 @@ h1 {
 
 可以在浏览器看到css的h1后面加了一个[svelte-1424936598]，框架默认防止css冲突，编写的unused类没有被使用，也不会被编译进来。
 
-![Image6.png](https://i.loli.net/2018/08/01/5b61bb457178d.png)
+![Image6.png](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article12/Image6.png)
 
 编辑器一般都能检测CSS，所以代码能自动补全、linting(css代码检查以及语法高亮显示等等，也不需要安装其他检测工具。
 

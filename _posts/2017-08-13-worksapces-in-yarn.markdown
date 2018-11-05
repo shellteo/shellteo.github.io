@@ -5,7 +5,7 @@ date:   2017-08-13
 categories: yarn
 author: 张翔
 location: ShangHai, China
-cover: "https://i.loli.net/2018/07/24/5b5740a4104c1.png"
+cover: "https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article3/images.png"
 description: 我的翻译计划第一篇，主要介绍多包管理的优化，以及Yarn在多包管理上的运用。
 ---
 ---

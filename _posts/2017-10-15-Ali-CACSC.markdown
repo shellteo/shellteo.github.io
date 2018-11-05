@@ -5,7 +5,7 @@ date:   2017-10-15
 categories: Web
 author: 张翔
 location: ShangHai, China
-cover: ""
+cover: "https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/b.jpg"
 description: 有幸，因为比赛在上海举行(下届在杭州)，有机会能去现场看一看各个项目和团队，近距离接触包括国内的全世界的创业者的热情也实属难得。
 ---
 ---
@@ -14,50 +14,151 @@ description: 有幸，因为比赛在上海举行(下届在杭州)，有机会�
 
 1.VR创业团队
 
+![1](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/1.jpg)
+
 2.全球运输解决方案
 
 3.NovaHub 在线云3d模型管理平台，3d成为元数据
 
+![2-1](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/3.jpg)
+
+![2-2](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/3-1.jpg)
+
+![2-3](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/3-2.jpg)
+
+![2-4](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/3-3.jpg)
+
+
 4.英国创业团队Modo，集成云的资源碎片化解决方案
+
+![4-1](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/4.jpg)
+
+![4-2](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/4-1.jpg)
 
 中间休息：分享创新创业和知识产权-从IP到IPO
 
+![shellteo](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/a.jpg)
+
 5.易弹科技，find智能钢琴，业务模式是音乐教育机构
+
+![5](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/5.jpg)
+
+![5-1](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/5-1.jpg)
 
 6.硅谷SIDA思达科技，智能医疗诊断系统
 
+![6](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/6.jpg)
+
+![6-1](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/6-1.jpg)
+
+
 7.哈尔滨博林生物科技，水溶性植物源纳米技术应用
+
+
+![7](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/7.jpg)
+
+![7-1](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/7-1.jpg)
+
+![shellteo](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/7-2.jpg)
+
+![shellteo](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/7-3.jpg)
+
+![shellteo](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/7-4.jpg)
+
+![shellteo](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/7-5.jpg)
+
+![shellteo](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/7-6.jpg)
 
 8.成都易耕云作，大数据农业工具
 
+![shellteo](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/8.jpg)
+
+![shellteo](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/8-1.jpg)
+
+
 9.苏州同程安亲教育，10-14岁青少年的托教机构
+
+![shellteo](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/9.jpg)
+
+![shellteo](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/9-1.jpg)
+
+![shellteo](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/9-2.jpg)
 
 10.韩国Lunit AI图像分析，主要是分析肺癌等癌症
 
+![shellteo](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/11jpg.jpg)
+
+
 11.马来西亚cxs，找工作解决方案
+
+![shellteo](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/12.jpg)
+
+![shellteo](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/12-1.jpg)
+
+![shellteo](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/12-2.jpg)
 
 12.长沙海鸟科技，全球市场手机游戏公司
 
+
+![shellteo](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/13.jpg)
+
+![shellteo](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/13-1.jpg)
+
+![shellteo](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/13-2.jpg)
+
+![shellteo](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/13-3.jpg)
+
 13.德国KREATIZE团队，3D打印
+
+![shellteo](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/14.jpg)
+
+![shellteo](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/14-1.jpg)
 
 14.潜行创新，水下智能设备研发
 
+![shellteo](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/15.jpg)
+
+![shellteo](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/15-1.jpg)
+
+![shellteo](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/15-2.jpg)
+
+![shellteo](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/15-3.jpg)
+
+
 15.台北think cloud云想，合约签名
+
+![shellteo](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/16.jpg)
+
+![shellteo](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/16-1.jpg)
+
+![shellteo](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/16-2.jpg)
 
 16.上海极清慧视
 
+![shellteo](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article14/17.jpg)
+
 
 最具潜力奖**杭州比智**
+
 最具创意奖**北京冰立方**
+
 来自纽约的**Histowiz**获得冠军
+
 因为时间原因没有去看13日的项目路演，这三个我比较感兴趣的奖项以及这三个团队通过网上介绍一下。
+
 杭州比智科技他们最有名的产品叫做奇点云，他们做的项目以及技术包括人脸识别，定向人群投放短信，实时监测、敏感内容分析和实时报警，所以看可以看出来这是一个大数据分析的公司！而且他们做得非常好。
+
 北京冰立方是一家专注于计算机视觉和计算机图形学技术，致力于视觉和图形学技术在3D VR视频领域的应用研发的公司。在VR大热的今天，自然这样的公司如雨后春笋，这家创业团队或许能够脱颖而出。
+
 冠军Histowiz是做生物科技的，主要针对的癌症的研究，是一个“科学家+程序员”的创业团队。人类对攻克癌症的决心和毅力催生了一大批公司和团队，有理由相信在不远的将来，人类将不会受到癌症的困扰！
 
 
 这么多项目中，关于智能医疗的项目有很多，智能医疗创业项目井喷的今天，对社会来说是一件很好的事情，而且此次冠军队伍都是做智能医疗的。带动各种专业领域技术的发展还是需要这种先行者领头羊，需要有市场化的解决方案以及专业技术的产业升级，很多研究所的项目正是因为这个原因，没有做好应用领域的探索才被搁浅。
+
 其次VR/AR AI（人工智能）这些话题是少不了的，阿里云栖大会上这种新技术也是最具有话题性的，但是可以看出很多项目在这方面的探索依然不够成熟，无一斩获奖项。
+
 还可以看到国内团队在业务模式，商业模式上的创新居多，国外团队主要是技术方面的创新，国外对技术的热衷程度以及包容程度是远超国内的。
 
+
 最后，其实我是蛮看好那个做**智能钢琴**的那个团队，可以看做是**艺术和技术**相结合的一次创新，但是国内团队对共性是想快速占领市场，跑马圈地，以及想做的事情太多，那个团队其实想做的不止智能钢琴，在他路演中可以看到，他们做的音乐教育机构，依托于智能钢琴对学生实行更加快速专业化的教育。
+

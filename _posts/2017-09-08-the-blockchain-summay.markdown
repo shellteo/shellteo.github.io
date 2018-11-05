@@ -5,7 +5,7 @@ date:   2017-09-08
 categories: Blockchain
 author: 张翔
 location: ShangHai, China
-cover: "https://i.loli.net/2018/07/28/5b5be2e288a36.jpg"
+cover: "https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article9/bitcoin-2008262_1920.jpg"
 description: 诞生于比特币的区块链技术正改变着互联网世界，如果你想抓住新的风口，请阅读这篇文章，这篇文章主要介绍什么是区块链、区块链的应用以及区块链延伸平台Hyperledger和Ethereum。
 ---
 ---

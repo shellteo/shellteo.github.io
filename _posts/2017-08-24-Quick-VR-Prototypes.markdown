@@ -5,7 +5,7 @@ date:   2017-08-24
 categories: VR
 author: 张翔
 location: ShangHai, China
-cover: "https://i.loli.net/2018/07/28/5b5bde550ab89.jpg"
+cover: "https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article6/vrlogo.jpg"
 description: 我的翻译计划第三篇，这篇主要介绍通过three.js和2D软件快速构建VR原型。
 ---
 ---
@@ -23,7 +23,7 @@ description: 我的翻译计划第三篇，这篇主要介绍通过three.js和2D
 
 我们用首选的2D设计应用开始，对我来说，就是Illustrator。先创建一个**360cm×90cm**的画布。然后当我们在Rift上面预览时，这个画布将围绕着我们，映射到以我们（准确来说是WebGL相机）为中心的圆柱体上。
 
-![mockup1.png](https://i.loli.net/2018/07/28/5b5bd6ecd2c66.png)
+![mockup1.png](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article6/mockup1.png)
 
 <font color="gray">这个360厘米×90厘米Illustrator布局将被映射到一个360厘米的周长和90厘米高的WebGL圆柱体上。</font>
 
@@ -31,21 +31,21 @@ description: 我的翻译计划第三篇，这篇主要介绍通过three.js和2D
 
 当我们创建布局时，同样重要的是知道圆柱体上的元素最终会出现在哪里。这就是为什么宽360厘米很方便：我们的图上的每厘米在3D圆柱的圆周上就正好相等于1°。我们的布局（180厘米/180度）的中心将直接显示在观看者的前面，左右边缘会展现在后面。
 
-![mockup2.png](https://i.loli.net/2018/07/28/5b5bd7798c59a.png)
+![mockup2.png](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article6/mockup2.png)
 
 但是我们需要知道布局对用户的可见性是多少？毕竟，人的视野是有限的（https://xkcd.com/1080/）。 我们不想让用户转90°才能阅读到重要的状态指示。以下来自Extron的图表给了我们一些灵感。
 
-![human-visual-field.jpg](https://i.loli.net/2018/07/28/5b5bd7de09a74.jpg)
+![human-visual-field.jpg](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article6/human-visual-field.jpg)
 
 <font color="gray">人类的视野水平约为180度，但是我们读取文本的能力仅限于中心10°，我们符号识别的能力扩展到中心60°。</font>
 
 为了帮助我们跟踪用户看到的内容，在布局模板中设置指示传达这些值会很有帮助。最重要的是，我们视野的中心位置60°，30°和10°分别可以看到颜色，形状和文字。
 
-![mockup3.png](https://i.loli.net/2018/07/28/5b5bd7f625468.png)
+![mockup3.png](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article6/mockup3.png)
 
 我们还需要记住，目前的VR设备的视野是相当有限的。例如，DK2具有大约90°的有效水平视野。下面是我们可以在设备中看到的东西：
 
-![visual-field-DK2.png](https://i.loli.net/2018/07/28/5b5bd80ed8250.png)
+![visual-field-DK2.png](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article6/visual-field-DK2.png)
 
 一旦我们准备好布局，我们可以将其作为bitmap位图导出。只要我们不改变相同布局的宽高比，我们可以根据需要延长导出时间。
 
@@ -159,7 +159,7 @@ scene.add(mesh);
 
 就是这样！当我们戴上VR设备并加载场景时，我们应该站在我们的模型布局中间，被很远的背景图像包裹在一起。使用不同的背景图来找到你想要的对比度。我倾向于使用近似3D场景的图像，以便我们能判断颜色，易读性。为了获得最佳效果，建议使用等角格式的全景图（见下文）。可以完美的映射到（不变形）WebGL球体上。
 
-![puydesancy.jpg](https://i.loli.net/2018/07/28/5b5bd827b5839.jpg)
+![puydesancy.jpg](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article6/puydesancy.jpg)
 
 <font color="gray">由Alexandre Duret-Lutz拍摄的一个等角图像的例子。在Flickr上查找更多Alexandre的全景相片。</font>
 

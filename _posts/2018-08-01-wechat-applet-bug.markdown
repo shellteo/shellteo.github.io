@@ -5,7 +5,7 @@ date:   2018-08-01
 categories: JS
 author: 张翔
 location: ShangHai, China
-cover: "https://i.loli.net/2018/08/02/5b63293e7f896.jpg"
+cover: ""
 description: 之前做过一年的小程序，期间碰到了很多问题，这里做一个总结，很多问题，不知道微信有没有去解决。这里只是做一个简单明了的记录。
 ---
 ---

@@ -5,7 +5,7 @@ date:   2017-07-29
 categories: js
 author: 张翔
 location: ShangHai, China
-cover: "https://i.loli.net/2018/07/24/5b573ea2d9ac6.png"
+cover: "https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article1/programming-1832991_640.png"
 description: 介绍javascript原型链和一些原型链方法，想要真正掌握javascript，那么掌握原型链是必不可少的。
 ---
 ---
@@ -33,7 +33,7 @@ description: 介绍javascript原型链和一些原型链方法，想要真正掌
  bmw.__proto__ = car.prototype;
  car.call(bmw);
  ```
-![protoType.png](https://i.loli.net/2018/07/24/5b573e3e4082a.png)
+![protoType.png](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article1/protoType.png)
 
 ## 2.对象常用方法
 

@@ -5,7 +5,8 @@ date:   2018-01-09
 categories: BlockChain
 author: 张翔
 location: ShangHai, China
-cover: "https://i.loli.net/2018/08/02/5b6326f3ab619.png"
+cover: "
+https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article18/whats-the-difference-optm.png"
 description: 比特币和以太币不管上涨还是下跌，但是里面的技术是无价的。
 ---
 ---
@@ -16,7 +17,7 @@ description: 比特币和以太币不管上涨还是下跌，但是里面的技�
 
 而**持有量证明算法**（POS）简单来说，就是一个根据你持有货币的量和时间，给你发利息的一个制度，在股权证明POS模式下，有一个名词叫币龄，每个币每天产生1币龄，比如你持有100个币，总共持有了30天，那么，此时你的币龄就为3000，这个时候，如果你发现了一个POS区块，你的币龄就会被清空为0。你每被清空365币龄，你将会从区块中获得0.05个币的利息(可理解为年利率5%)，那么在这个案例中，利息 = 3000 * 5% / 365 = 0.41个币，这下就很有意思了，持币有利息。不再需要为了安全产生区块而大量**消耗电能**，而比特币的POW算法会消耗大量电能。
 
-![ethereum-homestead-730x310.jpg](https://i.loli.net/2018/08/02/5b6326f4c76be.jpg)
+![ethereum-homestead-730x310.jpg](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article18/wallpaper-homestead.jpg)
 
 ## GAS
 而且Ethereum在**bitcoin script**上加上了更加健全符合图灵完备的语言，简单来说中本聪在设计比特币的时候，bitcoin script的时候，没有循环语句，正是没有循环语句，所以就不存在死循环，而一段代码中是否存在是循环在计算机中是不能被发现的，这个被称为**停机问题（Halting problem）**。但是Ethereum是怎么解决这个问题的呢？Ethereum引入**gas（瓦斯）**，执行每一行代码都需要消耗gas，gas是计算费用的方式，可以防止矿工执行到死循环脚本或者错误的代码。你设计的程序中犯的错误，只会影响付费使用它的人。其余的网络不能因为你的错误而遭受性能问题。 当性能问题消耗你的所有ether币时，他们将简单地得到一个 big payday！ 没有这个关键技术，通用块链的想法是完全不可能的。GASPRICE是每一计算步骤需要支付矿工的费用。

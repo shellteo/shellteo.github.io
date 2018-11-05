@@ -5,7 +5,7 @@ date:   2018-10-09
 categories: JS
 author: 张翔
 location: ShangHai, China
-cover: "https://i.loli.net/2018/10/10/5bbe1d94af7c4.jpg"
+cover: "https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/789.jpg"
 description: 在最热的日子里，总是会躁动不安，是常态，就像现在这样！
 ---
 ---

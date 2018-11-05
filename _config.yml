@@ -3,8 +3,8 @@ domain: "http://shellteo.top"
 baseurl: ""
 url: "http://shellteo.github.io/"
 permalink: /:title/
-avatar: https://i.loli.net/2018/08/03/5b632b480377a.jpg
-about: https://i.loli.net/2018/08/03/5b632b480377a.jpg
+avatar: https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/about.jpg
+about: https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/about.jpg
 favicon: https://myblog-images1.oss-cn-beijing.aliyuncs.com/favicon.ico
 basecss: 
 # Theme specific configuration

@@ -5,7 +5,7 @@ date:   2017-08-04
 categories: jquery
 author: 张翔
 location: ShangHai, China
-cover: "https://i.loli.net/2018/07/24/5b573efc4bf1a.jpg"
+cover: "https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article1/b1c9fee0c17ab8a80b7df47ec548a074.jpg"
 description: 前端工程化的今天，操作DOM在所难免，但是如何像jQuery一样优雅的操作DOM，这是我们需要去考虑的.
 ---
 ---

@@ -5,7 +5,7 @@ date:   2017-08-16
 categories: css
 author: 张翔
 location: ShangHai, China
-cover: "https://i.loli.net/2018/07/24/5b5740e141317.jpg"
+cover: "https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article4/15252540236_4ac6b67460_z.jpg"
 description: 使用css对不定宽高的元素进行垂直水平居中！
 ---
 ---
