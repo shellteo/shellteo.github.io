@@ -128,11 +128,16 @@ tableHorizontalScroll () {
 
 ## 9.final thought
 系统重构优化完了之后还有很多事情需要去做
-1.css代码规范性和css代码模块化
-2.页面自适应手机端
-3.交互修改，键盘操作等
-4.前端自动化构建部署（FIS3了解一下）
-5.优化vendor.js的大小，vue和vuex直接cdn引入，常用的UI框架也cdn引入，全局配置
+1. css代码规范性和css代码模块化
+
+2. 页面自适应手机端
+
+3. 交互修改，键盘操作等
+
+4. 前端自动化构建部署（FIS3了解一下）
+
+5. 优化vendor.js的大小，vue和vuex直接cdn引入，常用的UI框架也cdn引入，全局配置
+
 ```javascript
 // 在webpack.base.conf.js添加
 externals: {
