@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "失业青年的面试总结"
+title:  "面试总结"
 date:   2017-07-29
 categories: js
 author: 张翔
