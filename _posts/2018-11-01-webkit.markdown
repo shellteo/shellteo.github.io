@@ -1,0 +1,202 @@
+---
+layout: post
+title:  "《WebKit技术内幕》读书笔记"
+date:   2018-10-24
+categories: js
+author: 张翔
+location: ShangHai, China
+cover: ""
+description: 最近读了WebKit技术内幕这本书，下面是读书笔记
+---
+---
+# 1.1.3 HTML
+
+![00.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/00.png)
+
+# 1.2.2 内核特征
+
+![01.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/01.png)
+![02.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/02.png)
+![03.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/03.png)
+
+# 1.3.3 Chromeium 内核：Blink
+
+![04.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/04.png)
+
+# 2.2.2 层次结构
+
+![05.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/05.png)
+
+# 2.3.2 WebKit的渲染过程
+
+![06.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/06.png)
+
+# 3.1.1 Webkit机构
+
+![07.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/07.png)
+
+# 3.1.3 Webkit源代码结构
+
+**主要是: WebCore下面还有CSS解释器、DOM、HTML解释器、资源加载、Web Inspector等。**
+![08.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/08.png)
+![09.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/09.png)
+
+# 3.2.1.2 多进程模型
+
+![10.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/10.png)
+
+# 3.2.1.3 Browser进程和Renderer进程
+下面链接进一步了解线程安全对象：
+https://www.chromium.org/developers/lock-and-condition-variable
+![11.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/11.png)
+![12.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/12.png)
+
+# 3.2.2.1 Chromeium代码结构
+
+![13.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/13.png)
+![14.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/14.png)
+
+# 4.1 Webkit资源加载机制
+
+![15.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/15.png)
+
+# 4.1.4 过程
+
+![16.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/16.png)
+
+# 4.1.5 资源的生命周期
+
+![17.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/17.png)
+
+# 4.2 Chromium多进程资源加载
+
+![18.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/18.png)
+
+# 4.2.1 多进程
+
+![19.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/19.png)
+
+# 4.3.2.2 Chromium网络栈结构
+
+![20.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/20.png)
+
+# 4.3.5 安全机制
+
+![21.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/21.png)
+
+# 4.3.6.1 DNS预取和TCP预连接（Preconnect）
+
+![22.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/22.png)
+
+# 4.3.6.3 SPDY协议
+
+![23.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/23.png)
+
+# 4.4.1 DNS和TCP连接
+
+chrome优化
+
+![24.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/24.png)
+
+# 5.2.1 HTML解释器-解释过程
+
+![25.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/25.png)
+
+# 5.2.8 JavaScript的执行
+
+![26.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/26.png)
+
+# 5.4 影子（Shadow）DOM
+HTML5支持很多系特性，视频、音频的支持，这些元素都是由很复杂的控制界面组成，但是在DOM树中无法找到相应的节点，也其实也是使用了影子DOM的思想。
+
+# 6.1.5 包含块（Containing Block）模型
+下面就是定位的原理。
+![27.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/27.png)
+
+# 6.1.7 CSSOM (CSS Object Model)
+
+CSSOM接口和CSSOM View接口
+例子：
+```javascript
+document.styleSheets[0].disabled = true;
+document.styleSheets[1].cssRules[0].style.color = 'gray';
+```
+![28.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/28.png)
+
+![29.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/29.png)
+
+# 6.2.2 CSS解释器-解释过程
+
+![30.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/30.png)
+
+CSS解释过程，Chrome会为浏览器设置默认样式，如下：
+![31.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/31.png)
+![32.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/32.png)
+
+# 6.2.5 javascript设置样式
+javascript设置样式，这需要js引擎和渲染引擎协同完成，下面是过程，会触发重绘
+![33.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/33.png)
+
+# 6.3.1 Webkit布局
+
+![34.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/34.png)
+
+![35.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/35.png)
+
+# 6.3.2 Webkit布局计算
+
+![36.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/36.png)
+**布局计算的过程，是一个递归的过程**
+![37.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/37.png)
+**重新计算布局的情况 ,Chrome相对于重绘有一些优化和规则**
+![38.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/38.png)
+![39.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/39.png)
+
+# 7.1.1 渲染基础-RenderObject基础类
+renderObject和DOM树
+![40.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/40.png)
+**这里面能看到内联样式和盒模型**
+![41.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/41.png)
+**下面解释了为什么需要Document节点**
+![42.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/42.png)
+
+# 7.2 网页层次和RenderLayer树
+
+![43.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/43.png)
+![44.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/44.png)
+
+
+# 7.3.1 绘图上下文（GraphicsContext）
+
+![45.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/45.png)
+
+![46.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/46.png)
+
+# 7.3.1 渲染方式
+**硬件加速的方式来源的定义在这里
+三种方式：软件渲染、使用软件绘图的合成化渲染、硬件加速的合成化渲染**
+
+![47.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/47.png)
+**所以如果软件渲染，改了某一层之后，很多层都需要重新渲染，因为所有层都绘制在一个位图（Bitmap）**
+![48.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/48.png)
+**三种方式的优缺点**
+![49.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/49.png)
+![50.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/50.png)
+
+# 7.4.1 软件渲染过程
+
+![51.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/51.png)
+
+# 7.4.2 Chromium的多进程软件渲染技术
+![52.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/52.png)
+**webkit的软件渲染过程是在Renderer进程进行的，而网页的显示是在Browser进程中的。**
+
+# 8.1.2 Webkit硬件加速设施
+**合成层就是单独的一层，有单独的GPU存储**
+![53.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/53.png)
+![54.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/54.png)
+
+
+
+
+
