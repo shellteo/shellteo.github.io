@@ -196,7 +196,32 @@ renderObject和DOM树
 ![53.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/53.png)
 ![54.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/54.png)
 
+# 8.2.5 实践：减少重绘
+**三个阶段：计算布局、绘图、合成。其中计算布局和绘图比较浪费时间**
+![55.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/55.png)
+
+![56.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/56.png)
+
+# 8.3.1 2D图形的硬件加速机制
+
+分为两种：2D图形上下文、Canvas 2D
+
+### 8.3.1.1 2D图形上下文
+使用[Skia图形库](https://skia.org/)完成，光栅化（Rasterize）
 
 
+# 8.3.2 WebGL
+Chromium中WebGL的工作过程分为三个阶段
+第一阶段：对象初始化
+第二阶段：构建RenderLayer、WebLayer、CC::Layer等对象
+第三阶段：3D绘图部分
 
+# 8.3.3 CSS 3D变形
 
+![57.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/57.png)
+![58.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/58.png)
+![59.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/59.png)
+
+# 8.3.5 Chromium的支持
+
+![60.png](https://myblog-images1.oss-cn-beijing.aliyuncs.com/images/webkit/60.png)
