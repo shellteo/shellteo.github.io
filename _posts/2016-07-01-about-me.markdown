@@ -15,7 +15,7 @@ description: 个人介绍
 
 邮箱：shellteo@163.com
 
-博客：[https://shellteo.top](https://shellteo.top)
+博客：[https://shellteo.top](https://shellteo.top) 
 
 
 ---
@@ -46,7 +46,7 @@ description: 个人介绍
 
 职位：前端&Node.js开发
 
-和同学的创业项目：HTML5网站可视化开发和部署平台 
+和同学的创业项目：HTML5网站可视化开发和部署平台。
 负责前端在线IDE页面、小程序UI设计器页面的开发，参与了后台api的开发，比如应用管理、用户信息、以及应用的控制台
 
 #### 江西博世金电支付服务有限公司
@@ -83,10 +83,10 @@ description: 个人介绍
 - 通过证券从业资格证考试
 
 ## 技术文章分享
- - [由一个bug找到JS挖矿代码](https://mp.weixin.qq.com/s/fLGaVR-F8hFtZmHMFaNB4A)
- - [Blockathon参赛记录](https://mp.weixin.qq.com/s/dv6DHh--IxGZ0gL33ivVgg)
- - [《WebKit技术内幕》JavaScripty引擎-读书笔记](https://shellteo.top/webkit-js-engine/)
- - [前端CORS请求梳理](https://shellteo.top/webkit-js-engine/)
+ - [由一个bug找到JS挖矿代码](https://mp.weixin.qq.com/s/fLGaVR-F8hFtZmHMFaNB4A) 
+ - [Blockathon参赛记录](https://mp.weixin.qq.com/s/dv6DHh--IxGZ0gL33ivVgg) 
+ - [《WebKit技术内幕》JavaScripty引擎-读书笔记](https://shellteo.top/webkit-js-engine/) 
+ - [前端CORS请求梳理](https://shellteo.top/webkit-js-engine/) 
 
 
 ## 技能清单
