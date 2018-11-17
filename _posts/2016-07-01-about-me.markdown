@@ -94,11 +94,12 @@ description: 个人介绍
 
 
 ## 技能清单
-#### 熟练掌握
-- 前端基础：`JavaScript` `HTML` `CSS` `HTML5` `ajax` `ES6`
-- 前端框架和库：`Vue` `小程序开发和Wepy框架` `Bootstrap` `jquery`
+#### 熟练使用
+- 前端基础：`JavaScript`  `HTML`  `CSS`  `HTML5`  `ajax`  `ES6`
+- 前端框架和库：`Vue`  `小程序开发和Wepy框架`  `Bootstrap`  `jquery`
 
 #### 基本使用
-- 后端开发： `Node.js` `Java`
-- node.js框架：`Express`
+- 前端框架和库：`React`  `DvaJs`
+- 后端开发： `Node.js`  `Java`
+- node.js框架：`Express`  `koa`
 - 数据库：`MySQL`
