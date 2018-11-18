@@ -94,7 +94,7 @@ description: 个人介绍
  - [由一个bug找到JS挖矿代码](https://mp.weixin.qq.com/s/fLGaVR-F8hFtZmHMFaNB4A) 
  - [Blockathon参赛记录](https://mp.weixin.qq.com/s/dv6DHh--IxGZ0gL33ivVgg) 
  - [《WebKit技术内幕》JavaScripty引擎-读书笔记](https://shellteo.top/webkit-js-engine/) 
- - [前端CORS请求梳理](https://shellteo.top/webkit-js-engine/) 
+ - [前端CORS请求梳理](https://shellteo.top/CORS/) 
 
 
 ## 技能清单
