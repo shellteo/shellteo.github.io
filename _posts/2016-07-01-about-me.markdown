@@ -90,20 +90,23 @@ description: 个人介绍
 
 - 通过证券从业资格证考试
 
+---
+
 ## 技术文章分享
  - [由一个bug找到JS挖矿代码](https://mp.weixin.qq.com/s/fLGaVR-F8hFtZmHMFaNB4A) 
  - [Blockathon参赛记录](https://mp.weixin.qq.com/s/dv6DHh--IxGZ0gL33ivVgg) 
  - [《WebKit技术内幕》JavaScripty引擎-读书笔记](https://shellteo.top/webkit-js-engine/) 
  - [前端CORS请求梳理](https://shellteo.top/CORS/) 
 
+---
 
 ## 技能清单
 #### 熟练使用
-- 前端基础：`JavaScript`  `HTML`  `CSS`  `HTML5`  `ajax`  `ES6`
-- 前端框架和库：`Vue`  `小程序开发和Wepy框架`  `Bootstrap`  `jquery`
+- 前端基础：`JavaScript` 、 `HTML` 、 `CSS` 、 `HTML5` 、 `ajax` 、 `ES6`
+- 前端框架和库：`Vue` 、 `小程序开发和Wepy框架` 、 `Bootstrap` 、 `jquery`
 
 #### 基本使用
-- 前端框架和库：`React`  `DvaJs`
-- 后端开发： `Node.js`  `Java`
-- node.js框架：`Express`  `koa`
+- 前端框架和库：`React` 、 `DvaJs`
+- 后端开发： `Node.js` 、 `Java`
+- node.js框架：`Express` 、 `koa`
 - 数据库：`MySQL`
