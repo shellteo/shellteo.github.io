@@ -5,7 +5,7 @@ date:   2018-11-23
 categories: js
 author: 张翔
 location: ShangHai, China
-cover: ""
+cover: "https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article11/522798257.jpg"
 description: 关于离职
 ---
 ---
