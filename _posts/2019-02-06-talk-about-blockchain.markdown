@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "如何向爸妈科普区块链"
-date:   2019-01-19
+date:   2019-02-06
 categories: blockchain
 author: 张翔
 location: ShangHai, China
