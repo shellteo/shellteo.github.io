@@ -5,7 +5,7 @@ url: "http://shellteo.github.io/"
 permalink: /:title/
 avatar: https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/about.jpg
 about: https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/about.jpg
-favicon: https://myblog-images1.oss-cn-beijing.aliyuncs.com/favicon.ico
+favicon: https://myblog-images1.oss-cn-beijing.aliyuncs.com/blog/favicon.ico
 basecss: 
 # Theme specific configuration
 title: shellteo
