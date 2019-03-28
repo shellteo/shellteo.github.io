@@ -1,0 +1,325 @@
+---
+layout: post
+title:  "本体糖果盒项目小结"
+date:   2019-03-28
+categories: js
+author: 张翔
+location: ShangHai, China
+cover: 
+description: 这个月主要工作是做本体糖果盒子，有一些收获和感悟，记录一下
+---
+---
+## Introduction
+
+糖果盒子本质一种营销推广手段，把一些相对小众的数字货币分发给大家，用以提高相应区块链公众知名度。本体糖果盒子融入游戏玩法，如：体力系统，开红包。
+配合分发TOP，TOP也上火币Prime，3月27号TOP上了交易所。
+
+## My Jobs
+前端，部分后端，管理系统
+
+
+## Q&A
+
+#### 1.安装web3报错
+提示“Cannot find module './build/Release/scrypt'”，该问题由安装scrypt模块时，scrypt包中index.js中的var scryptNative = require("./build/Release/scrypt")语句错误，将其修改为var scryptNative = require("scrypt")即可解决。
+参考：[windows7下web3安装流程及错误处理](https://blog.csdn.net/nonesole/article/details/80897568)
+
+
+#### 2.压测遇到的问题
+接口压测，暴露出来的一些问题
+
+I. 压测时，数据库不响应，卡死，修改eggjs数据库连接池数，这个连接数需要权衡对于机器性能和数据库性能
+
+```javascript
+config.sequelize = {
+	pool: {
+      max: 200, // 连接池最大连接数量
+      min: 5, // 连接池最小连接数量
+      idle: 10000, // 如果一个线程超过10秒钟没有被使用过就释放该线程
+    },
+}
+```
+
+II. 添加事务，和事务隔离级
+```javascript
+const transaction = await ctx.model.transaction({
+  isolationLevel: this.app.Sequelize.Transaction.ISOLATION_LEVELS.REPEATABLE_READ,
+});
+```
+
+#### 3.部署遇到的问题
+**I. 数据库ssl 问题**
+本地的数据库是开启数据库ssl的，在生成环境没有开启ssl
+开启ssl
+```javascript
+config.sequelize = {
+	dialectOptions: {
+	    multipleStatements: true,
+	    ssl: {
+			rejectUnauthorized: false,
+	    },
+	},
+}
+```
+
+**II. 安装包出错，权限不足**
+```javascript
+sudo npm install
+```
+**III. 端口被占用问题**
+
+**IV. nginx会去掉带有下划线的Header键值**
+
+nginx对header name的字符做了限制，默认 `underscores_in_headers` 为off，表示如果header name中包含下划线，则忽略掉，部署后就获取不到。
+
+解决办法一：在header里不要用 “_” 下划线，可以用驼峰命名或者其他的符号（如减号-）代替。nginx默认忽略掉下划线可能有些原因。
+
+解决办法二：在nginx里的 nginx.conf文件中配置http的部分添加 ： underscores_in_headers on;（默认值是off）
+
+**V. history模式下nginx404错误**
+在[vue-router](https://router.vuejs.org/zh/guide/essentials/history-mode.html)有解释，需要在nginx添加
+```javascript
+location / {
+	try_files $uri $uri/ /index.html;
+}
+```
+
+**VI. nginx反向代理获取真实ip**
+参考：
+[eggjs](https://eggjs.org/zh-cn/basics/controller.html#ctxhost)
+[issues1383](https://github.com/eggjs/egg/issues/1383)
+
+#### 4.微信的问题
+I. document.title = xxx，在ios微信下面失效。
+
+II. 微信下面reload()不行，需要加上随机参数?t=timestamp
+
+III. 微信拦截域名的规则？？待解决
+
+#### 5.geetest 国际化
+需要在geetest国际化只能是辅助文字国际化，大图国际化需要另外付费。如下
+![img11](https://myblog-images1.oss-cn-beijing.aliyuncs.com/candybox/11.png)
+![img12](https://myblog-images1.oss-cn-beijing.aliyuncs.com/candybox/12.png)
+
+#### 6.vue-router路由守卫
+设置语言和title
+```javascript
+router.beforeEach((to, from, next) => {
+    // set lang
+    let utils = Vue.prototype.utils;
+    let lang = to.query.lang || utils.getCookie('lang') || 'zh';
+    utils.setCookie('lang', lang);
+    i18n.locale = lang;
+    // set title
+    if (to.meta.title) {
+        document.title = i18n.t(to.meta.title)
+    }
+    next()
+})
+```
+
+#### 7.短链接算法
+功能：邀请别人注册可以拿红包，但是邀请链接过长（ont id比较长）
+网上有短链接生成算法，md5 或者 base64 缩短 ontId，hash算法，考虑hash碰撞可能性。
+
+#### 8.css超出省略，多行单行省略
+兼容性不是太好，可以考虑使用js替换
+```css
+.candy-brief {
+    position: relative;
+    line-height: 20px;
+    max-height: 40px;
+    max-width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+```
+
+#### 9. vue-cli3环境变量
+需要添加VUE_APP前缀
+
+#### 10.解构赋值
+取余下的全部
+```javascript
+var {a,b,...c}={a:1,b:2,cc:2,dd:4}
+```
+
+#### 11.图片合成
+
+功能：根据邀请链接生成二维码，再把二维码嵌入一张背景图。
+前端合成图片，canvas绘图
+```javascript
+import bgImg from '@/assets/bg.jpg'
+genImg(link) {
+    let canvas = document.createElement('canvas');
+    let width = 450;
+    let height = 800;
+    canvas.width = width;
+    canvas.height = height;
+    let context = canvas.getContext('2d');
+    let bg = new Image;
+    bg.src = bgImg;
+    bg.onload = () => {
+        context.drawImage(bg, 0, 0, width, height, 0,0, width, height);
+        let qr = new Image;
+        QRCode.toDataURL(link, { width: 150 }, (err, url) => {
+            qr.src = url;
+            qr.onload = () => {
+                context.drawImage(qr, 0, 0, 150, 150, 170, 640, 150, 150);
+                this.imgSrc = canvas.toDataURL('image/png');
+            }
+        });
+    }
+}
+```
+canvas [drawImage方法](https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/drawImage)
+
+
+#### 12.axios请求拦截
+
+axios拦截request和response，需要根据页面返回的401和一些错误码，清除cookie，跳转到登录
+
+#### 13.vue父类执行子类的methods
+
+```javascript
+this.$ref.childname.mymethods(params);
+```
+
+#### 14.分享的meta
+```html
+.分享meta头部
+<!-- General meta -->
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="image" content="">
+<!-- Twitter meta -->
+<meta name="twitter:card" content="">
+<meta name="twitter:site" content="">
+<meta name="twitter:title" content="">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="">
+<meta name="twitter:url" content="">
+<!-- Open Graph meta -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="">
+<meta property="og:title" content="">
+<meta property="og:description" content="">
+<meta property="og:image" content="">
+<meta property="og:url" content="">
+```
+
+#### 15.使用service work
+前端页面有更新，页面离线，做一些提示
+```javascript
+/* eslint-disable no-console */
+
+import { register } from 'register-service-worker';
+
+const consoleForSW = str => console.log('%c%s',
+  'color: red; background: yellow; font-size: 16px;',
+  `[Service worker] ${str}`);
+
+if (process.env.NODE_ENV === 'production') {
+  register(`${process.env.BASE_URL}service-worker.js`, {
+    ready() {
+      consoleForSW(
+        'App 正在使用 Service worker 缓存.\n'
+        + '更多关于 Service worker 的详情请访问： https://goo.gl/AFskqB',
+      );
+    },
+    registered() {
+      consoleForSW('注册成功');
+    },
+    cached() {
+      consoleForSW('已缓存网站前端');
+    },
+    updatefound() {
+      consoleForSW('发现更新，后台正在静默下载中。');
+    },
+    updated() {
+      consoleForSW('静默更新完毕，请关闭这个标签并在新的标签页打开以使用更新后的版本。');
+      window.updateNotify('新更新可用');
+    },
+    offline() {
+      consoleForSW('无网络链接。正在使用离线模式');
+    },
+    error(error) {
+      console.error('Service worker 注册时出错:', error);
+    },
+  });
+}
+```
+参考：[service-workers](https://developers.google.cn/web/fundamentals/primers/service-workers/?hl=zh)
+
+#### 16.mint-ui 下拉刷新和上拉加载
+手机端显示有问题
+
+#### 17.eggjs生产环境log打印
+```javascript
+config.logger = {
+	level: 'DEBUG',
+	allowDebugAtProd: true, // 是否允许在生产环境打印日志
+	dir: appInfo.root + '/logs/' + appInfo.name,
+};
+```
+
+#### 18.eggjs添加validate
+在app/validate.js，校验密码只能是字母和数字且长度8到15位。
+```javascript
+module.exports = app => {
+  app.validator.addRule('mypassword', (rule, value) => {
+    const pattern = /^[a-zA-Z\d]{8,15}$/;
+    if (!pattern.test(value)) {
+      return '密码只能是字母和数字并且为8-15位';
+    }
+  });
+}
+```
+
+
+#### 19.管理后台
+前端直接使用`vue-admin-template`模板，后端eggjs
+
+#### 10.egg-sequelize-auto
+sequelize-auto和egg-sequelize-auto和生成的model不同
+需要需要去掉update_at和crate_at
+```javascript
+const EggSequelizeAuto = require('egg-sequelize-auto')
+const auto = new EggSequelizeAuto('db', 'username', 'password', {
+    host: '',
+    dialect: 'mysql',
+    port: '3306',
+    dialectOptions: {
+        multipleStatements: true,
+    },
+    additional: {
+        timestamps: false,
+    },
+});
+auto.run(function (err) {
+    if (err) throw err;
+    console.log(auto.tables); // table list
+    console.log(auto.foreignKeys); // foreign key list
+});
+```
+
+
+## Conclusion
+
+#### 活动非常顺利和火爆，最近TOP也上了火币交易所
+![img1](https://myblog-images1.oss-cn-beijing.aliyuncs.com/candybox/1.jpg)
+![img2](https://myblog-images1.oss-cn-beijing.aliyuncs.com/candybox/2.jpg)
+![img3](https://myblog-images1.oss-cn-beijing.aliyuncs.com/candybox/3.jpg)
+
+
+#### 页面展示
+![img4](https://myblog-images1.oss-cn-beijing.aliyuncs.com/candybox/4.jpg)
+![img5](https://myblog-images1.oss-cn-beijing.aliyuncs.com/candybox/5.jpg)
+![img6](https://myblog-images1.oss-cn-beijing.aliyuncs.com/candybox/6.jpg)
+![img6](https://myblog-images1.oss-cn-beijing.aliyuncs.com/candybox/7.jpg)
+![img6](https://myblog-images1.oss-cn-beijing.aliyuncs.com/candybox/8.jpg)
+![img6](https://myblog-images1.oss-cn-beijing.aliyuncs.com/candybox/9.jpg)
+![img6](https://myblog-images1.oss-cn-beijing.aliyuncs.com/candybox/10.jpg)
