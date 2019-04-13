@@ -1,24 +1,22 @@
 ---
 layout: post
-title:  "领取糖果秒杀系统优化"
+title:  "糖果空投系统优化"
 date:   2019-04-13
 categories: bitcoin
 author: 张翔
 location: ShangHai, China
 cover: 
-description: 领取糖果秒杀系统
+description: 领取糖果
 ---
 ---
 ### 前言
 处理高并发，前人已经有了很多技术储备和实战经验，需要结合不同的系统，做不同的侧重点。就像在分布式系统设计中，有一个CAP原理。“一致性、可用性、分区容忍性”三个要素最多只能同时实现两点，不可能三者兼顾。
+<br>
 
 乐观锁介绍：乐观锁是一种并发控制的方法。它的对立面是悲观锁，可以自行了解。它假设多用户并发的事务在处理时不会彼此互相影响，各事务能够在不产生锁的情况下处理各自影响的那部分数据。在提交数据更新之前，每个事务会先检查在该事务读取数据后，有没有其他事务又修改了该数据。如果其他事务有更新的话，正在提交的事务会进行回滚。
+<br>
 
 Redis watch的使用：Redis 通过 `MULTI` 、 `DISCARD` 、 `EXEC` 和 `WATCH` 四个命令来实现事务功能。
-
-candybox抢购页面
-![抢购页面](https://myblog-images1.oss-cn-beijing.aliyuncs.com/candybox/mbl.jpg)
-
 
 ### 前端优化
 添加函数节流，添加函数防抖，添加geetest校验。
@@ -49,20 +47,34 @@ function debounce(fn,wait){
 ### 后端优化
 
 逻辑：参数校验，糖果项目校验（是否过期，是否发完等...），开始事务，验证体力，体力减少，验证糖果总量，插入领取成功数据，事务提交。
+<br>
 
 4月9号，[糖果盒子](https://candy.ont.io)空投[MBL](http://moviebloc.io/)，由于之前空投[TOP](https://www.topnetwork.org/)，市场已经预热，那时候用户就已经有上万，但是这一次的抢购的用户数量是之前的好几倍，糖果抢购还是用的之前的系统架构，只是加了几台nodejs服务器，当晚7点抢购开始，用户涌入，导致数据库压力过大，死锁。系统不响应，页面卡死，数据出不来，用户体验非常差。
+<br>
 
 加了nodejs服务器，但是没考虑到数据库的压力。数据库性能需要考虑的方面比较多，cpu，内存，磁盘，网络 都是其运行指标。
+<br>
 
 这种做法数据库压力过大，后续优化：redis去缓解数据压力。
+<br>
 
-优化：redis去缓解数据压力。因为我们这个抢购系统复杂度并不高，可能很长一段时间也只抢购这一种币，所以需要尽可能提高一致性和可用性。所以做法来说也并不复杂
+优化：redis去缓解数据压力。因为我们这个抢购系统复杂度并不高，可能很长一段时间也只抢购这一种币，所以需要尽可能提高一致性和可用性。所以做法来说也并不复杂。
+<br>
 
 具体做法：人工将添加库存添加redis请求队列(list)，用户抢购不直接操作数据库，而且去消耗redis里面的库存队列，再将用户插入排队hashtable里，以及在订单list插入一条数据，这些都是在redis里面完成的，如果redis库存消耗完，就直接返回错误信息给前端。然后我们这边再异步处理排队中的用户，同步到数据库。这样就能大大减轻数据库的压力。
 
 ### 参考
 [小米网抢购系统开发实践](https://mp.weixin.qq.com/s/ecU_CjTluQUX-420v3nWTQ)
+
 [京东618实践：一元抢宝系统的数据库架构优化](https://mp.weixin.qq.com/s/qheAd1oUcQaWaZa_nF4OFg)
+
 [秒杀系统架构分析与实战](https://mp.weixin.qq.com/s/DJSlFIyQmLucmWv86KWFsg)
+
 [eggjs安全威胁-csrf-的防范](https://eggjs.org/zh-cn/core/security.html#%E5%AE%89%E5%85%A8%E5%A8%81%E8%83%81-csrf-%E7%9A%84%E9%98%B2%E8%8C%83)
+
 [redis使用watch秒杀抢购实现思路](https://www.jb51.net/article/134665.htm)
+
+### 附录
+
+candybox抢购页面
+![抢购页面](https://myblog-images1.oss-cn-beijing.aliyuncs.com/candybox/mbl.jpg)
