@@ -78,3 +78,10 @@ function debounce(fn,wait){
 
 candybox抢购页面
 ![抢购页面](https://myblog-images1.oss-cn-beijing.aliyuncs.com/candybox/mbl.jpg)
+
+<br>
+😋这篇文章已经发到仙女座科技最新产品智能签名上了，欢迎赞赏😋
+<br>
+《糖果空投系统优化》by shellteo2345 
+[https://smartsignature.io/article/330?invite=shellteo2345](https://smartsignature.io/article/330?invite=shellteo2345)
+赞赏好文，分享有收益 ！
