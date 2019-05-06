@@ -1,0 +1,60 @@
+---
+layout: post
+title:  "今年对于区块链的期待"
+date:   2019-05-06
+categories: blockchain
+author: 张翔
+location: ShangHai, China
+cover: 
+description: These four events in 2019 should help determine what comes next for digital currencies
+---
+---
+### 1. cosmos
+
+互操作性和可扩展性就是Cosmos的项目的最大卖点。
+
+互操作性：当下区块链网络都是信息孤岛，各个网络之间不能交互。
+可扩展性：目前的区块链网络的可扩展性较差，性能瓶颈明显。
+
+
+构建COSMOS网路的两大基础为Tendermint共识引擎和IBC跨链通信。
+
+[白皮书](https://cosmos.network/resources/whitepaper/zh-CN)
+
+[官网](https://cosmos.network)
+
+
+| 项目 | ICO价格 | 总量 | 当前价格 | ICO时间 |
+| --- | --- | --- | --- | --- |
+| cosmos | $0.1 | 2.37亿 | $4.8 | 2017-04-06 |
+
+### 2. nervos
+
+Nervos采用了分层设计的思想，网络由两层构成：第一层（基础层）是公链Nervos CKB，负责安全和去中心化；第二层是应用层，注重于提高性能。Nervos团队已于2018年7月2日发布了Nervos网络的第二层Nervos AppChain。
+
+Nervos认为当前的区块链的发展方向出现了偏差，区块链的目标应该是成为未来的加密经济设计基础设施，Nervos网络旨在成为加密经济的基础设施，Nervos CKB为该网络提供信任引擎，设计上考虑从整体架构上实现突破，借鉴了分层架构思想，项目的定位独特。
+
+[官网](https://www.nervos.org/)
+[白皮书](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0002-ckb/0002-ckb.md)
+[项目评价](https://www.huoxing24.com/newsdetail/20181009135453635281.html)
+
+
+### 3. nuCypher
+
+通过结合代理重新加密和区块链技术来提供分布式密钥管理和加密访问控制服务的安全协议层。简单来说，nuCypher KMS是密钥管理服务,
+做的是数据保护的协议层。
+
+[官网](https://www.nucypher.com/)
+[白皮书](https://github.com/nucypher/whitepaper/blob/master/whitepaper.pdf)
+
+[项目评价1](https://zhuanlan.zhihu.com/p/35839046)
+[项目评价2](https://bihu.com/article/104833)
+
+### 4. polkaDot
+和cosmos一样，也是为了解决跨链问题，Polkadot跨链技术主导者是
+大名鼎鼎的[Gavin Wood](https://en.wikipedia.org/wiki/Gavin_Wood)，4月份[Gavin Wood还来过上海宣传polkaDot](https://mp.weixin.qq.com/s/kELToM8hrnDPjDtm71mBDA)
+
+Polkadot的论文开头提到，目前区块链系统无法伸缩的原因是：把共识系统中的一致性和有效性绑定的太死了，Polkadot是个异构的多链框架，可以从根本上解决这个问题。
+
+[官网](https://polkadot.network/)
+[白皮书](https://polkadot.network/PolkaDotPaper.pdf)
