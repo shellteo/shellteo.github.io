@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "区块链骗局解析，有人最多损失300ETH，近30多万"
+title:  "币圈骗术，有人最多损失300ETH，近30多万"
 date:   2019-05-06
 categories: blockchain
 author: 张翔
