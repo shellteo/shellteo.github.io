@@ -52,7 +52,7 @@ Nervos认为当前的区块链的发展方向出现了偏差，区块链的目�
 
 ### 4. polkaDot
 和cosmos一样，也是为了解决跨链问题，Polkadot跨链技术主导者是
-大名鼎鼎的[Gavin Wood](https://en.wikipedia.org/wiki/Gavin_Wood)，4月份[Gavin Wood还来过上海宣传polkaDot](https://mp.weixin.qq.com/s/kELToM8hrnDPjDtm71mBDA)
+大名鼎鼎的[Gavin Wood](https://en.wikipedia.org/wiki/Gavin_Wood)，4月份[Gavin Wood还来过上海宣传polkaDot](https://mp.weixin.qq.com/s/kELToM8hrnDPjDtm71mBDA)。
 
 Polkadot的论文开头提到，目前区块链系统无法伸缩的原因是：把共识系统中的一致性和有效性绑定的太死了，Polkadot是个异构的多链框架，可以从根本上解决这个问题。
 
