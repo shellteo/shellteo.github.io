@@ -32,7 +32,7 @@ description: 还有人不断被骗，望转发
 
 ![img](https://myblog-images1.oss-cn-beijing.aliyuncs.com/scam/5.png)
 
-其实以太坊发Token是很很简单，[几行代码](https://github.com/OpenZeppelin/openzeppelin-solidity/tree/master/contracts/token/ERC20)就搞定了，这也为很多骗子提供了便利。骗子为什么能得逞，一来是很多人对这个不了解，看到以为有获利的机会，就迷失了，而来是因为区块链太多暴利的机会，让很多信以为真。
+其实以太坊发Token是很很简单，[几行代码](https://github.com/OpenZeppelin/openzeppelin-solidity/tree/master/contracts/token/ERC20)就搞定了，这也为很多骗子提供了便利。骗子为什么能得逞，一来是很多人对这个不了解，看到以为有获利的机会，就迷失了，二来是因为区块链太多暴利的机会，让很多信以为真。
 
 
 
