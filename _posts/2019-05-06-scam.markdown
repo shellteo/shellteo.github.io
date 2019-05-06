@@ -6,7 +6,7 @@ categories: blockchain
 author: 张翔
 location: ShangHai, China
 cover: 
-description: 领取糖果
+description: 还有人不断被骗，望转发
 ---
 ---
 从昨天中午开始，截至到目前这个合约已经骗了531个ETH，按照目前ETH的价格1105，大概RMB 58万，最多被骗一个有300 ETH，大概33万，截图如下。
