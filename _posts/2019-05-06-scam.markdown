@@ -1,0 +1,40 @@
+---
+layout: post
+title:  "区块链骗局解析，有人最多损失300ETH，近30多万"
+date:   2019-05-06
+categories: blockchain
+author: 张翔
+location: ShangHai, China
+cover: 
+description: 领取糖果
+---
+---
+从昨天中午开始，截至到目前这个合约已经骗了531个ETH，按照目前ETH的价格1105，大概RMB 58万，最多被骗一个有300 ETH，大概33万，截图如下。
+
+![img](https://myblog-images1.oss-cn-beijing.aliyuncs.com/scam/1.png)
+
+
+这个事情是怎么开始的，我们来梳理一下。
+昨天下午Telegram不知道怎么就被拉到了一个HuoBi搬砖套利群，一看群头像也是火币官方头像。如下图。而且群人数也有40000多人。
+
+![img](https://myblog-images1.oss-cn-beijing.aliyuncs.com/scam/2.png)
+
+![img](https://myblog-images1.oss-cn-beijing.aliyuncs.com/scam/3.png)
+
+
+根据上面的问题说明，是你需要把ETH打到一个合约地址，你就能获得HT，比例兑换是1:77，看到上面有提供合约地址[0x28Dd8895006701fAFA50307080c1826ADFB4510B](https://etherscan.io/txs?a=0x28Dd8895006701fAFA50307080c1826ADFB4510B&f=3)，看一下合约地址。发现他发布一个自己的Token，也叫HT，但是我们可以看一下这个HT是什么，其实是骗子自己在以太坊上发的HT，并不是火币官方的HT。
+
+如下图可以看到，这里除了名称叫HuobiToken和symbol为HT之外，logo和其他都对不上。
+
+下图分别是[假的HT](https://etherscan.io/token/0xfdf4ab6da18691f3672057a76909fdcd0550832a)和[真的HT](https://etherscan.io/token/0x6f259637dcd74c767781e37bc6133cd6a68aa161)
+
+![img](https://myblog-images1.oss-cn-beijing.aliyuncs.com/scam/4.png)
+
+![img](https://myblog-images1.oss-cn-beijing.aliyuncs.com/scam/5.png)
+
+其实以太坊发Token是很很简单，[几行代码](https://github.com/OpenZeppelin/openzeppelin-solidity/tree/master/contracts/token/ERC20)就搞定了，这也为很多骗子提供了便利。骗子为什么能得逞，一来是很多人对这个不了解，看到以为有获利的机会，就迷失了，而来是因为区块链太多暴利的机会，让很多信以为真。
+
+
+
+
+
