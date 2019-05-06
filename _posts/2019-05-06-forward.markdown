@@ -35,7 +35,9 @@ Nervos采用了分层设计的思想，网络由两层构成：第一层（基�
 Nervos认为当前的区块链的发展方向出现了偏差，区块链的目标应该是成为未来的加密经济设计基础设施，Nervos网络旨在成为加密经济的基础设施，Nervos CKB为该网络提供信任引擎，设计上考虑从整体架构上实现突破，借鉴了分层架构思想，项目的定位独特。
 
 [官网](https://www.nervos.org/)
+
 [白皮书](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0002-ckb/0002-ckb.md)
+
 [项目评价](https://www.huoxing24.com/newsdetail/20181009135453635281.html)
 
 
@@ -45,16 +47,18 @@ Nervos认为当前的区块链的发展方向出现了偏差，区块链的目�
 做的是数据保护的协议层。
 
 [官网](https://www.nucypher.com/)
+
 [白皮书](https://github.com/nucypher/whitepaper/blob/master/whitepaper.pdf)
 
 [项目评价1](https://zhuanlan.zhihu.com/p/35839046)
+
 [项目评价2](https://bihu.com/article/104833)
 
 ### 4. polkaDot
-和cosmos一样，也是为了解决跨链问题，Polkadot跨链技术主导者是
-大名鼎鼎的[Gavin Wood](https://en.wikipedia.org/wiki/Gavin_Wood)，4月份[Gavin Wood还来过上海宣传polkaDot](https://mp.weixin.qq.com/s/kELToM8hrnDPjDtm71mBDA)。
+和cosmos一样，也是为了解决跨链问题，Polkadot跨链技术主导者是大名鼎鼎的[Gavin Wood](https://en.wikipedia.org/wiki/Gavin_Wood)，4月份[Gavin Wood还来过上海宣传polkaDot](https://mp.weixin.qq.com/s/kELToM8hrnDPjDtm71mBDA)。
 
 Polkadot的论文开头提到，目前区块链系统无法伸缩的原因是：把共识系统中的一致性和有效性绑定的太死了，Polkadot是个异构的多链框架，可以从根本上解决这个问题。
 
 [官网](https://polkadot.network/)
+
 [白皮书](https://polkadot.network/PolkaDotPaper.pdf)
