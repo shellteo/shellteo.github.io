@@ -34,7 +34,18 @@ description: 还有人不断被骗，望转发
 
 其实以太坊发Token是很很简单，[几行代码](https://github.com/OpenZeppelin/openzeppelin-solidity/tree/master/contracts/token/ERC20)就搞定了，这也为很多骗子提供了便利。骗子为什么能得逞，一来是很多人对这个不了解，看到以为有获利的机会，就迷失了，二来是因为区块链太多暴利的机会，让很多信以为真。
 
+***
 
+2019-05-07 更新
 
+昨天提醒了火币官方，晚上火币官方就发了声明[关于防范假冒“搬砖套利”等各类形式诈骗的风险提示](https://huobiglobal.zendesk.com/hc/zh-cn/articles/360000258222-%E5%85%B3%E4%BA%8E%E9%98%B2%E8%8C%83%E5%81%87%E5%86%92-%E6%90%AC%E7%A0%96%E5%A5%97%E5%88%A9-%E7%AD%89%E5%90%84%E7%B1%BB%E5%BD%A2%E5%BC%8F%E8%AF%88%E9%AA%97%E7%9A%84%E9%A3%8E%E9%99%A9%E6%8F%90%E7%A4%BA)，如下图。
+
+火星财经也有提醒用户[防范假冒“搬砖套利”等各类形式诈骗的风险](https://www.huoxing24.com/liveNewsDetail/20190506182058558609)，如下图。
+
+但是还有人不断被骗，到今天我看了一下，骗子账户大概有150万了。
+
+![img](https://myblog-images1.oss-cn-beijing.aliyuncs.com/scam/6.png)
+
+![img](https://myblog-images1.oss-cn-beijing.aliyuncs.com/scam/7.png)
 
 
