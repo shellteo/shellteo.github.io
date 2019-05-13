@@ -1,0 +1,27 @@
+---
+layout: post
+title:  "写在赛后-“面对行业寒冬，区块链仍然吸引你们的是什么？”"
+date:   2019-05-14
+categories: blockchain
+author: 张翔
+location: ShangHai, China
+cover: 
+description: 我觉得这不是区块链得寒冬，币圈大跌重创的是那些靠着这个概念圈钱的人，对于真正想做事情来的，恰恰能从这个所谓寒冬看到更多机会，比如DeFi，比如Dapp，各种东西层出不穷。
+---
+---
+
+黑客松比赛第三名，举办方组织了一个[获奖选手专访](https://blog.csdn.net/Blockchain_lemon/article/details/90169523)，有一个问题是“面对行业寒冬，区块链仍然吸引你们的是什么？”
+
+当时的回答
+>我觉得这不是区块链得寒冬，币圈大跌重创的是那些靠着这个概念圈钱的人，对于真正想做事情来的，恰恰能从这个所谓寒冬看到更多机会，比如DeFi，比如Dapp，各种东西层出不穷。这就像21世纪初互联网泡沫破灭之后，带来的正是革命的开始，所以区块链也是这样。这也是我能在这个行业深耕的原因。
+
+现在已经不是行业最冷的时候了，今年来说，[比特币涨幅超过110%。成为全球表现最好的资产](http://finance.caijing.com.cn/20190513/4587618.shtml)。比特币的趋势就代表了整个行业的趋势，这几天比特币从[5000多美元，涨到接近7500美元]((https://wallstreetcn.com/articles/3527046))，然后再回落稳定在7000美元左右。对于寒冬了一年的区块链行业来说，算是一个好消息。
+
+今年从[币安](https://www.binance.com/cn)第一个[IEO](https://launchpad.binance.com/) [BTT](https://launchpad.binance.com/en/project/b59f6326d9964e19bcc8e356d0becacb)开始，各种交易所开始在这里面角逐，异常精彩。ICO到IEO就像肿瘤，从野蛮生长到良性循环。
+
+再来就是[闪电网络（Lightning Network）](https://lightning.network/)，很早之前就听到过关于闪电网络的讨论。一直以来，关于解决比特币性能的方案就层出不穷，BTC[扩容之争](https://zhuanlan.zhihu.com/p/30930715)硬分叉出[BCH](https://www.bitcoincash.org/)，从闪电网络的提出到论证再到实现，花了很久，也期待了很久。国内现在也有不少钱包开始支持闪电网络，也开始出来了一些基于闪电网络的应用[lightning network apps（lapps）](https://medium.com/coinmonks/intro-to-lightning-network-apps-lapps-b548c96ec13f)。好久之前就买了lapp.space这个域名，一直想做一个关于[lapps的整合](https://kintu.co/lightning-apps/)，有兴趣可以联系我。关于闪电网络各方面更加详细的内容，可以去看一下[awesome-lightning-network](https://github.com/bcongdon/awesome-lightning-network)。
+
+DeFi去中心化金融的概念很早就有听到，慢慢的身边关注的DeFi的人多了起来，关于DeFi的文章更多了，之前看到一篇文章[未来二十年，数万亿美金将在没有代币的 DeFi 生态中流通](https://www.chainnews.com/articles/261368666878.htm)，智能合约现在服务最大的行业就是菠菜业，但是因为政策原因，一直游走在法律边缘，行业内也一直在寻找智能合约的正确使用场景，其实菠菜和抽奖dapp也算是金融边缘应用，也算是一种论证，菠菜类的火爆让我们确认了DeFi可能是区块链下一个最有可能落地的方向。[DappReview](https://dapp.review/)也开始上线[DeFi模块](https://defi.dapp.review/)，DappReview将DeFi分为借贷、储备库 DEX、订单簿 DEX、支付、稳定币、预测市场、金融衍生产品 7个模块，感兴趣的可以去体验一下。
+
+之前我也有写过一篇文章 [今年对于区块链的期待](https://shellteo.top/forward/)，有兴趣可以去看看。关于更多行业内容，我也会陆续分享。
+
