@@ -5,7 +5,7 @@ date:   2019-06-04
 categories: blockchain
 author: 张翔
 location: ShangHai, China
-cover: "http://myblog-images1.oss-cn-beijing.aliyuncs.com/KillerUseCase/f2.png"
+cover: "http://myblog-images1.oss-cn-beijing.aliyuncs.com/KillerUseCase/cover.png"
 description: 翻译自medium上Sebastian Wurst很棒的一篇文章Blockchain Needs a Killer Use Case
 ---
 ---
