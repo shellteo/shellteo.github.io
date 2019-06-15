@@ -6,11 +6,11 @@ categories: blockchain
 author: 张翔
 location: ShangHai, China
 cover: ""
-description: 币圈沉浮的故事，是看客也是参与者
+description: 三个月，熊市逐渐复苏，币圈沉浮的故事，是看客也是参与者
 ---
 ---
 
-本着更加了解区块链和熟悉市，开始了炒币，从HT到OKB，到EOS，IOST，BTM，TOP，BLOC。从平台币到IEO再到主流币。作为一个程序员，习惯从技术的角度去分析一个项目，去看项目实际落地场景和对于开发者友好程度，这在一定程度上来说是有效的。
+本着更加了解区块链和熟悉市场，开始了炒币，从HT、OKB，到EOS、IOST、BTM、TOP、BLOC。从平台币到IEO再到主流币。作为一个程序员，习惯从技术的角度去分析一个项目，去看项目实际落地场景和对于开发者友好程度，这在一定程度上来说是有效的。
 
 ## 平台币
 
