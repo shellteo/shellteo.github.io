@@ -10,7 +10,7 @@ description: 三个月，熊市逐渐复苏，币圈沉浮的故事，是看客�
 ---
 ---
 
-本着更加了解区块链和熟悉市场，开始了炒币，从HT、OKB，到EOS、IOST、BTM、TOP、BLOC。从平台币到IEO再到主流币。作为一个程序员，习惯从技术的角度去分析一个项目，去看项目实际落地场景和对于开发者友好程度，这在一定程度上来说是有效的。
+本着更加了解区块链和熟悉市场，开始了炒币，从HT、OKB到EOS、IOST、BTM、TOP、BLOC。从平台币到IEO再到主流币。作为一个程序员，习惯从技术的角度去分析一个项目，去看项目实际落地场景和对于开发者友好程度，这在一定程度上来说是有效的。
 
 ## 平台币
 
@@ -28,7 +28,11 @@ IEO(Initial Exchange Offering)，解释为通过交易所平台的ICO，相比�
 
 3月的时候听朋友同事谈论IEO，还没有一个具体的概念。最开始是由币安提出来的代币发行模式，第一个IEO BTT现在看来也是众多IEO中最成功的一个。
 
-IEO大部分都是通过平台币预售，要求一般是一段时间内持仓一定数量的平台币，所以对于用户承担就是平台币涨跌的风险。对于我来而言，这是一个恐惧和贪婪博弈的游戏。
+IEO大部分都是通过平台币预售，要求一般是一段时间内持仓一定数量的平台币，所以对于用户承担就是平台币涨跌的风险。对于我而言，这是一个恐惧和贪婪博弈的游戏。
+
+数字货币恐惧贪婪指数，来自[alternative.me](https://alternative.me/crypto/fear-and-greed-index/)
+<img src="https://alternative.me/crypto/fear-and-greed-index.png" alt="Latest Crypto Fear & Greed Index" />
+
 
 #### 1.贪婪>恐惧
 
