@@ -1,0 +1,131 @@
+---
+layout: post
+title:  "edgeware的Lockdrop到底效果如何？"
+date:   2019-06-22
+categories: blockchain
+author: 张翔
+location: ShangHai, China
+cover: ""
+description: 虽然最近edgeware热度被[algorand](https://www.algorand.com/)和[Libra](https://libra.org)盖过，但是ILO这种新的代币分发模式还是值得我们去分析的。
+---
+---
+
+虽然最近edgeware热度被[algorand](https://www.algorand.com/)和[Libra](https://libra.org)盖过，但是ILO这种新的代币分发模式还是值得我们去分析的。
+
+Edgeware的主网Token名为EDG，总量为50亿枚，其中90%将会“无偿”分发给社区，但是为了保证公开和公平，创造性的发明了Lockdrop分发方式。
+
+Lockdrop做为一种新的Token分发方式，Edgeware的Lockdrop
+锁仓分为3个月、6个月、12个月，以及不锁仓（signal）。自然，参与越早、锁仓越久，收益越高。可以参考下表
+![lockdrop](https://oss02.bihu.com/image/20190604/56d94f7378392ba6a435863e289a4eea_HEYTEKRVG44Q.jpg)
+
+那Lockdrop的效果如何呢？是否能改变Airdrop的代币分发容易被薅羊毛的情况？对于用户来说是更公平的分发机制呢？
+
+## 数据分析
+数据分析主要包括图例数据分析和表格数据分析。这些数据我已经发布了网站，详细最新的信息可以查看[144.202.70.138](http://144.202.70.138)，
+
+数据来自 [etherscan.io](https://etherscan.io/address/0x1b75B90e60070d37CfA9d87AFfD124bB345bf70a)，下面的数据分析截止到06-22 16:45，
+### 1. 数据概览
+
+总锁仓ETH量：**842933 Ether**
+
+锁仓3个月ETH量：**369147 Ether**
+
+锁仓6个月ETH量：**95772 Ether**
+
+锁仓12个月ETH量：**378014 Ether**
+
+总锁仓用户量：**2220**
+
+锁仓3个月用户量：**966**
+
+锁仓6个月用户量：**280**
+
+锁仓12个月用户量：**1191**
+
+可以看出三种锁仓用户数量是大于总锁仓用户数量的，说明有一些用户选择了其中两种或者三种锁仓方式。
+
+三种锁仓方式占比情况如下图，可以看到大部分用户选择了3个月和12个月，少部分选择了6个月，因为锁仓3个月对于用户来说风险更小，锁仓12个月获得的代币数量更多。
+![img](http://myblog-images1.oss-cn-beijing.aliyuncs.com/edgeware/2.png)
+
+
+锁仓数量/时间曲线，图中比较陡峭的部分都是大单锁仓的时间点。
+16号之后收益比率下降到了35%之后，用户锁仓热情不是很高了。
+![img](http://myblog-images1.oss-cn-beijing.aliyuncs.com/edgeware/3.png)
+
+
+### 2. 大单锁仓数据
+
+最大锁仓数量：**80000 Ether**
+
+\>=1000 Ether&&<10000 Ether的用户数量：**71**
+
+\>=10000 Ether的用户数量：**17**
+
+部分表格数据如下：
+![img](http://myblog-images1.oss-cn-beijing.aliyuncs.com/edgeware/1.png)
+
+查看了一下大单锁仓的地址的交易数据，**发现了一些有趣的东西**。首先是这个地址[0xf367ae3ec7941e5145eebe0a820da59a7df82012](
+https://etherscan.io/address/0xf367ae3ec7941e5145eebe0a820da59a7df82012)，如下图，可以看到地址里面的ETH来自交易所[bitfinex](https://www.bitfinex.com/)。
+
+然后是这个地址[0xa7c5942a8305e88a08ab34fb73ef9dd8b329da05](https://etherscan.io/address/0xa7c5942a8305e88a08ab34fb73ef9dd8b329da05)，里面锁仓的ETH来自[kraken](https://www.kraken.com/)交易所，国内称为K网。
+![img](http://myblog-images1.oss-cn-beijing.aliyuncs.com/edgeware/4.png)
+还有一些地址的ETH都是来自交易所，而且基本上都是大单锁仓，也许是交易所的投资行为，或者是交易所准备上这个币。这些我们还不知道。
+
+
+
+###  合约分析
+项目锁仓合约代码很短。且经过[Quantstamp](https://arena-attachments.s3.amazonaws.com/4282493/a155dc84aa1dfba4cfd3dc6be1e1ebdc.pdf?1557965252)评审。源码地址 [github](https://github.com/hicommonwealth/edgeware-lockdrop)。
+
+主要是lock函数和signal函数
+```javascript
+    function lock(Term term, bytes calldata edgewareAddr, bool isValidator)
+        external
+        payable
+        didStart
+        didNotEnd
+    {
+        uint256 eth = msg.value;
+        address owner = msg.sender;
+        uint256 unlockTime = unlockTimeForTerm(term);
+        // Create ETH lock contract
+        Lock lockAddr = (new Lock).value(eth)(owner, unlockTime);
+        // ensure lock contract has all ETH, or fail
+        assert(address(lockAddr).balance == msg.value);
+        emit Locked(owner, eth, lockAddr, term, edgewareAddr, isValidator, now);
+    }
+
+    function unlockTimeForTerm(Term term) internal view returns (uint256) {
+        if (term == Term.ThreeMo) return now + 92 days;
+        if (term == Term.SixMo) return now + 183 days;
+        if (term == Term.TwelveMo) return now + 365 days;
+        
+        revert();
+    }
+```
+
+```javascript
+    function signal(address contractAddr, uint32 nonce, bytes calldata edgewareAddr)
+        external
+        didStart
+        didNotEnd
+        didCreate(contractAddr, msg.sender, nonce)
+    {
+        emit Signaled(contractAddr, edgewareAddr, now);
+    }
+```
+
+合约查询[0x1b75B90e60070d37CfA9d87AFfD124bB345bf70a](https://etherscan.io/address/0x1b75b90e60070d37cfa9d87affd124bb345bf70a)
+可以看到合约余额为零，因为所有ETH都从主合约被分发到子合约。可以看到lock函数中的，每一笔锁仓都会创造一个子合约，并且所以锁仓的eth都被分发到对应的子合约。
+```javascript
+Lock lockAddr = (new Lock).value(eth)(owner, unlockTime);
+```
+lock函数第一个参数`term`，就是代表锁仓时间，时间可选值有三个，3个月，6个月，12个月。相应获得的Token会有不同。
+第二个参数`edgewareAddr`，就是最后你的获得代币的钱包地址。
+第三个参数`isValidator`，是否参与验证节点。
+
+
+如果不想锁仓的话，通过signal也可以获得代币。只不过量会少很多。
+signal暂定在`8月31日`统一进行，确保在那时钱包里有想要signal的ETH即可，不需要在申请Signal时拥有ETH （但具体时间以官方公告为准）。
+
+
+上面就是我的分析，希望对你有所帮助。
