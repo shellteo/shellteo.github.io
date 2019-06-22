@@ -5,7 +5,7 @@ date:   2019-06-22
 categories: blockchain
 author: 张翔
 location: ShangHai, China
-cover: ""
+cover: "http://myblog-images1.oss-cn-beijing.aliyuncs.com/edgeware/4.png"
 description: 虽然最近Edgeware热度被Algorand和Libra盖过，但是ILO这种新的代币分发模式还是值得我们去分析的。
 ---
 ---
