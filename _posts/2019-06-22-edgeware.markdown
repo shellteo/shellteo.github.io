@@ -1,12 +1,12 @@
 ---
 layout: post
-title:  "edgeware的Lockdrop到底效果如何？"
+title:  "Edgeware的Lockdrop到底效果如何？"
 date:   2019-06-22
 categories: blockchain
 author: 张翔
 location: ShangHai, China
 cover: ""
-description: 虽然最近edgeware热度被[algorand](https://www.algorand.com/)和[Libra](https://libra.org)盖过，但是ILO这种新的代币分发模式还是值得我们去分析的。
+description: 虽然最近Edgeware热度被Algorand和Libra盖过，但是ILO这种新的代币分发模式还是值得我们去分析的。
 ---
 ---
 

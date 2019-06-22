@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "币圈三月谈"
+title:  "币圈沉浮，是看客也是参与者"
 date:   2019-06-15
 categories: blockchain
 author: 张翔
