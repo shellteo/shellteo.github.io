@@ -10,7 +10,9 @@ description: Edgeware 被爆有致命漏洞，这个漏洞会对 ILO 和锁定�
 ---
 ---
 原文：[Gridlock (a smart contract bug)](https://medium.com/@nmcl/gridlock-a-smart-contract-bug-73b8310608a9)
+
 作者：[Neil M](https://medium.com/@nmcl)
+
 翻译：zx
 
 ---
@@ -32,13 +34,13 @@ Edgeware区块链平台发行了他们自己的Token，命名为EDG。不同于�
 
 ##  你必须问自己一个问题：“我感到有些不安吗？”好吧，你好吗，朋克？
 在Solidity智能合约中存储大量ETH并不总能很好地结束（[not](http://hackingdistributed.com/2016/06/18/analysis-of-the-dao-exploit/) [always](http://hackingdistributed.com/2017/07/22/deep-dive-parity-bug/) [ended](https://www.parity.io/a-postmortem-on-the-parity-multi-sig-library-self-destruct/) [well](https://medium.com/spankchain/we-got-spanked-what-we-know-so-far-d5ed3a0f38fe)）。这可能是为什么Edgeware决定而不是这种安排......
-![](https://miro.medium.com/max/700/1*ay5zeaNKX7gFcitij_E-Ag.jpeg)
+![img](http://myblog-images1.oss-cn-beijing.aliyuncs.com/gridlock/1.jpeg)
 ......他们会像这样隔离锁定的资金：
-![img](https://miro.medium.com/max/700/1*HgMHnQHMRnDkxnsXxLeLdQ.jpeg)
+![img](http://myblog-images1.oss-cn-beijing.aliyuncs.com/gridlock/2.jpeg)
 
 在智能合约中，每个希望锁定ETH的参与者都会将其发送给一个`Lockdrop`合约（步骤1,3,5）。每次发生这种情况时，`Lockdrop`都会创建一个时间锁定和参与者特定的`Lock`合约（步骤2,4,6），并将所有收到的ETH转发给该`Lock`合约。
 
-![img](https://miro.medium.com/max/677/1*dgB5rb8MGhFmqE5V5Fy-bw.png)
+![img](http://myblog-images1.oss-cn-beijing.aliyuncs.com/gridlock/3.png)
 
 `Lockdrop`合约和`Lock`合约的代码都是开源的，并且经过专业审计。这是否足以缓解对智能合约错误的资金损失的担忧？价值2.9亿美元的锁仓ETH（到目前为止）已经证明，**是的！**
 
@@ -73,12 +75,12 @@ function lock(Term term, bytes calldata edgewareAddr, bool isValidator)
 - 第**13**行检查所有钱是否安全抵达`Lock`合约。
 
 想一想这些检查，看看你是否能发现我称之为Gridlock²的错误。
-![](https://miro.medium.com/max/500/1*fmcsda2U-6M4eU6MzRbwrA.png)
+![](http://myblog-images1.oss-cn-beijing.aliyuncs.com/gridlock/4.png)
 
 如果你发现了这个bug，干得好。跳到下一部分。
 
 如果你没有发现，我前面的类比可能没有帮助。更合适的图像可能看起来像下面这样：
-![](https://miro.medium.com/max/425/1*opuaMiY0J6iduJxvxIJBUg.jpeg)
+![](http://myblog-images1.oss-cn-beijing.aliyuncs.com/gridlock/5.jpeg)
 
 和所有以太坊合约一样，`Lock`合约在顶部有一个隐藏的*插槽（slot）*。
 即使地址`x`的合约没有明确接收ETH的`payable`函数，任何人都可以强制增加其ETH余额：
@@ -145,7 +147,7 @@ assert(address(lockAddr).balance >= msg.value);
 
 **智能合约（几乎总是）会包含错误！**
 
-![](https://miro.medium.com/max/498/1*5ekTYAiUVkEe9mBCj7SCcA.gif)
+![gif](http://myblog-images1.oss-cn-beijing.aliyuncs.com/gridlock/6.gif)
 
 诚然，这不是很有见地。
 
