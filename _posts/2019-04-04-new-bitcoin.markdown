@@ -1,12 +1,12 @@
 ---
 layout: post
-title:  "完币归赵-新编"
+title:  "完币归赵--新编"
 date:   2019-04-04
 categories: bitcoin
 author: 张翔
 location: ShangHai, China
 cover: 
-description: 古文碰撞比特币
+description: 啦啦啦啦啦
 ---
 ---
 比特元年，赫尔辛基，天欲雨，聪得币五十，刻字于上“The Times 03/Jan/2009 Chancellor on brink of second bailout for banks”，后称创世。
