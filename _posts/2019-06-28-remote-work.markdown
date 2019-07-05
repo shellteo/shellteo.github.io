@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "远程工作的十年"
+title:  "总结《远程工作的十年》"
 date:   2019-06-28
 categories: blockchain
 author: 张翔
