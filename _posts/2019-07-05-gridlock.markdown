@@ -1,0 +1,167 @@
+---
+layout: post
+title:  "Gridlock（一个智能合约bug）"
+date:   2019-07-05
+categories: blockchain
+author: 张翔
+location: ShangHai, China
+cover: ""
+description: Edgeware 被爆有致命漏洞，这个漏洞会对 ILO 和锁定代币获得空投或者募资参与的项目的热度浇一浇，但 Lockdrop 等创新模式可能被更多项目采用或演化。
+---
+---
+原文：[Gridlock (a smart contract bug)](https://medium.com/@nmcl/gridlock-a-smart-contract-bug-73b8310608a9)
+作者：[Neil M](https://medium.com/@nmcl)
+翻译：zx
+
+---
+
+Edgeware的Lockdrop合约已经处理了超过9亿美元的ETH并锁定了超过2.9亿美元，同时隐藏了一个致命的错误。
+
+如果您参与了lockdrop ，您不必担心 - 您的资金永远不会有风险，在我报告之后它已经被修复了 - 但是这个bug是什么以及我们可以学到哪些经验？
+
+## Edgeware的锁仓空投(Lockdrop)
+
+Edgeware区块链平台发行了他们自己的Token，命名为EDG。不同于拍卖或者空投的模式，Edgeware HQ的慷慨之士选择将90％EDG送给以太（ETH）的持有人，通过一个他们称之为“lockdrop”的程式。
+
+如果你有ETH，在lockdrop中有两种方式获得一些EDG：
+
+1. signal, 是在不锁定任何资金的情况下，从持有ETH的任何以太坊账户或合约中提交。
+2. 在Edgeware设计的以太坊智能合约中锁定ETH 3到12个月。
+
+2更有趣，获得的EDG远远超过1，所以这是我们要研究的那个。
+
+##  你必须问自己一个问题：“我感到有些不安吗？”好吧，你好吗，朋克？
+在Solidity智能合约中存储大量ETH并不总能很好地结束（[not](http://hackingdistributed.com/2016/06/18/analysis-of-the-dao-exploit/) [always](http://hackingdistributed.com/2017/07/22/deep-dive-parity-bug/) [ended](https://www.parity.io/a-postmortem-on-the-parity-multi-sig-library-self-destruct/) [well](https://medium.com/spankchain/we-got-spanked-what-we-know-so-far-d5ed3a0f38fe)）。这可能是为什么Edgeware决定而不是这种安排......
+![](https://miro.medium.com/max/700/1*ay5zeaNKX7gFcitij_E-Ag.jpeg)
+......他们会像这样隔离锁定的资金：
+![img](https://miro.medium.com/max/700/1*HgMHnQHMRnDkxnsXxLeLdQ.jpeg)
+
+在智能合约中，每个希望锁定ETH的参与者都会将其发送给一个`Lockdrop`合约（步骤1,3,5）。每次发生这种情况时，`Lockdrop`都会创建一个时间锁定和参与者特定的`Lock`合约（步骤2,4,6），并将所有收到的ETH转发给该`Lock`合约。
+
+![img](https://miro.medium.com/max/677/1*dgB5rb8MGhFmqE5V5Fy-bw.png)
+
+`Lockdrop`合约和`Lock`合约的代码都是开源的，并且经过专业审计。这是否足以缓解对智能合约错误的资金损失的担忧？价值2.9亿美元的锁仓ETH（到目前为止）已经证明，**是的！**
+
+但请记住，所有`Lock`合约都运行相同的代码并以相同的方式创建，因此其代码或初始化逻辑中的错误仍可能影响所有参与者。
+
+
+`Lock`合约本身的代码由于某些原因而在可靠性汇编中编写，这无济于事，进一步减少了人们对其进行审查的难度。谈论`Lock`合约是如何工作的以及为什么在其他时间以这种方式编写它可能会很有趣，但今天我们将专注于创建`Locks`并向他们汇款的代码。
+
+### The Bug
+
+这是执行图1中步骤2,4和6的`Lockdrop`代码
+```javascript
+function lock(Term term, bytes calldata edgewareAddr, bool isValidator)
+    external
+    payable
+    didStart
+    didNotEnd
+{
+    uint256 eth = msg.value;
+    address owner = msg.sender;
+    uint256 unlockTime = unlockTimeForTerm(term);
+    // Create ETH lock contract
+    Lock lockAddr = (new Lock).value(eth)(owner, unlockTime);
+    // ensure lock contract has all ETH, or fail
+    assert(address(lockAddr).balance == msg.value);
+    emit Locked(owner, eth, lockAddr, term, edgewareAddr, isValidator, now);
+}
+```
+这里有一些检查以确保正在执行的工作按预期进行：
+- 第**4**行和第**5**行检查当前块事件是否在90天锁仓期内。
+- 第**9**行检查资金被锁定3个月，6个月或12个月（影响EDG分配）。
+- 第**13**行检查所有钱是否安全抵达`Lock`合约。
+
+想一想这些检查，看看你是否能发现我称之为Gridlock²的错误。
+![](https://miro.medium.com/max/500/1*fmcsda2U-6M4eU6MzRbwrA.png)
+
+如果你发现了这个bug，干得好。跳到下一部分。
+
+如果你没有发现，我前面的类比可能没有帮助。更合适的图像可能看起来像下面这样：
+![](https://miro.medium.com/max/425/1*opuaMiY0J6iduJxvxIJBUg.jpeg)
+
+和所有以太坊合约一样，`Lock`合约在顶部有一个隐藏的*插槽（slot）*。
+即使地址`x`的合约没有明确接收ETH的`payable`函数，任何人都可以强制增加其ETH余额：
+- `selfdestruct`任何其他合约并将其剩余的ETH发送到`x`
+- 在任何合约在该地址上实例化之前，将ETH发送到地址`x`
+
+所以我们看到第13行做出了一个危险的假设：
+```javascript
+assert(address(lockAddr).balance == msg.value);
+```
+任何人都可以通过在下一个`Lock`的地址发送之前发送一些备用更改来强制让此检查失败。
+
+但是，如何将ETH发送给没有地址的不存在的合约？读过以太坊[黄皮书](https://ethereum.github.io/yellowpaper/paper.pdf)（谁没有？！³）的人在第7章开始知道下一个Lock的地址是完全确定的。巧合的是，`Lockdrop`合约甚至可以帮助我们计算它。在truffle控制台中，代码看起来像：
+```javascript
+const addr = “0x1b75b90e60070d37cfa9d87affd124bb345bf70a”
+const ldrop = await Lockdrop.at(addr)
+const ldropNonce = await web3.eth.getTransactionCount(addr)
+const nextLockAddr = await ldrop.addressFrom(addr, ldropNonce)
+```
+如果我们在创建相应的`Lock`之前将1 wei发送到`nextLockAddr`，那么`Lockdrop.lock（）`函数将会阻塞且无法使用。并且它不会被卡住一次，而是**永远** - 因为下一个`Lock`的地址仅在成功创建时才会改变。任何人都可以使用大约四行代码无限期地打破整个锁定过程！
+
+### 修复了吗？
+Edgeware刚刚[重新部署](https://blog.edgewa.re/a-denial-of-service-bug-in-the-edgeware-lockdrop/)了一个新的`Lockdrop`合约来修复这个bug，将第13行改为：
+
+```javscript
+assert(address(lockAddr).balance >= msg.value);
+```
+
+如果你快点到[以前的地址](https://etherscan.io/address/0x1b75b90e60070d37cfa9d87affd124bb345bf70a)，你仍然可以成为打破它的人。你没有听到我的消息。
+
+
+## 我们能学到什么？
+### 不变量，显然
+如果合约的余额没有*非显而易见*的增加方式，那么就没有办法堵塞lockdrop。
+
+如果发送ETH没有促进非明显的再入攻击，那么The DAO~~绝对没问题~~会发现一些其他的拜占庭方式来搞砸自己。
+
+单独来看，违背合理的开发者期望的非显而易见的行为通常是合理的。但总的来说，我的感觉是我们 - 以太坊社区 - 应该在设计WASM和Serenity的细节时做得更好。（是否有一种UX测试的变体专注于程序员为给定平台编程的期望？）
+
+### 不变量，始终如一
+更好的语言设计和开发人员教育都可以帮助缓解非显而易见的行为问题。但是，如果我们不断改变规则，这些东西是不够的！即使以积极的方式改变行为的升级也可能导致不明显且因此有问题的行为。
+
+例如，EIP-1283的不变违反(invariant-violating)致使[重入攻击(Re-Entrancy)](https://medium.com/chainsecurity/constantinople-enables-new-reentrancy-attack-ace4088297d9)导致它在最后一刻从君士坦丁堡升级中撤下。但CREATE2的不变违反[“可变合约”副作用](https://twitter.com/mhswende/status/1093995835518537728)被认为是可以接受的;可以说只是因为直到重新安排的分叉前不久才被广泛理解。
+我们必须致力于在平台升级期间更好地保留现有行为并尊重现有开发人员/审计师/合约期望。我们应该从“以太坊1.X”变化开始，如状态租用/无状态客户。
+
+### 不要过分自信
+断言（包括solidity中的`assert`和`require`函数）是强大的野兽。它们可以大大有益于确保代码快速安全地失败，而不是缓慢而且（可能）危险。
+
+但是像Gridlock这样的过度热情的断言，以及在部署之前不久从lockdrop中删除的另一个断言，可能完全削弱了其他正在执行的合约。
+
+我们应该使用具有重大责任的断言来适应他们的强大权力，通过仔细检查是否可以因非显而易见的原因而违反这些原因 - 特别是当他们涉及另一个地址或合约的状态时
+
+我们必须在断言通过的Happy path上彻底测试我们的断言，但也要沿着失败的sad path进行测试。（我对lockdrop代码库的两小时“审计”也发现了一个重要的测试错误，这意味着`require`和`revert`的sad path根本没有真正被测试，即使看起来像测试过。）
+
+### Bugs gonna bug
+
+如果它将资金置于风险之中，那么在部署之前可能会发现这个Gridlock错误。我想我们永远不会知道。
+
+另一方面，也许这些合约中仍有未被发现的漏洞。也许在solidity编译器或EVM中存在会影响此合约的错误。
+
+最终，智能合约是软件。即使经过仔细审核，经过良好测试的软件也会（几乎总是）包含错误。
+
+因此，尽管我们付出了最大的努力......
+
+**智能合约（几乎总是）会包含错误！**
+
+![](https://miro.medium.com/max/498/1*5ekTYAiUVkEe9mBCj7SCcA.gif)
+
+诚然，这不是很有见地。
+
+自2015年以来，我们已多次学到此教训。但我不确定我们是否已经全部学到了这一点。
+
+通过这个有问题的lockdrop合约，大约50人各自发送了超过100万美元。
+
+在Maker CDP中锁定了近5亿美元的ETH！
+
+所有这一切并不是说智能合约是毫无希望的 - 相反 - 但如果你把大笔资金投入到合约的信任中，即使是经过审计的合约，也请确保你将风险与奖励分开计算。
+
+我确定不会锁定我的2.9亿美元的钱在一个智能合约中。😜
+
+---
+
+
+[1]或者不太好，就此而言。
+[2]如果您想到更好的双关语，请在评论中告诉我。我会对自己很生气，但我很乐意听到它。[3]我没有。
+[4] Josep提醒我“加密互联网是疯狂的”，并建议我说：我没有2.9亿美元。但即使在我确实拥有数百万美元的荒谬不公正的替代宇宙中，也不会锁仓在一个智能合约中。
