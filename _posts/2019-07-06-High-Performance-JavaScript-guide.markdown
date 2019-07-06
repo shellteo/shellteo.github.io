@@ -1,10 +1,10 @@
 ---
 layout: post
 title:  "《高性能Javascript》读书笔记"
-date:   2016-11-02
+date:   2019-07-06
 categories: js
 author: 张翔
-location: NanChang, China
+location: ShangHai, China
 cover: ""
 description: 之前有看过这本书，出版于2010年11月，全书多处讲到对于IE的优化，浏览器更迭很快，现在看来有点过时了，但是很多东西还是写得很好的。这里再细读一下，作笔记如下。
 ---
