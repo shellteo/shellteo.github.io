@@ -6,7 +6,7 @@ categories: js
 author: 张翔
 location: NanChang, China
 cover: ""
-description: 这本书出版于2010年11月，距离现在有10年了，全书多处讲到对于IE的优化，浏览器更迭很快，现在看来有点过时了，但是很多东西还是写得很好的。
+description: 这本书出版于2010年11月，全书多处讲到对于IE的优化，浏览器更迭很快，现在看来有点过时了，但是很多东西还是写得很好的。
 ---
 ---
 
