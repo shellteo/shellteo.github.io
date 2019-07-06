@@ -1,0 +1,57 @@
+---
+layout: post
+title:  "快捷键"
+date:   2015-01-11
+categories: js
+author: 张翔
+location: WuHan, China
+cover: ""
+description: 个人常用快捷键
+---
+---
+### Mac terminal快捷键
+- control+a //移到行首
+- control+e //移到行尾
+- control+w //删除光标前单词
+- control+u //删除光标前所有文字
+
+//查看端口占用
+- lsof -i tcp:3000
+- kill -9 23538
+
+- chmod -R 777
+
+### Mac OSX
+- Command+shift+G //跳转到任意目录
+- Command+shift+4 //选择区域截取
+- Command+control+Q //锁屏
+##### 在fiddler下面：
+- Command+I.  //显示简介
+- Command+shift+.   //切换隐藏文件夹显示隐藏
+
+
+### webstorm常用（加粗部分为经常使用的）
+- ctrl+shift+R         指定目录内代码批量替换   
+- ctrl+shift+F      指定目录内代码批量查找
+- **ctrl + j: 输出模板(修改模版 setting->搜索live template)**
+
+- ctrl + b: 跳到变量申明处
+
+- **ctrl + alt + T: 围绕包裹代码(包括zencoding的Wrap with Abbreviation)**
+- ctrl + F12: 可以显示当前文件的结构
+- **ctrl + x: 剪切(删除)行，不选中，直接剪切整个行，如果选中部分内容则剪切选中的内容**
+- alt + left→/right←:标签切换
+- **ctrl + shift + up: 行移动**
+
+- shift + alt + up: 块移动(if(){},while(){}语句块的移动)
+- ctrl + d: 行复制
+- ctrl + shift + ]/[: 选中块代码
+
+- ctrl + shift + i : 显示当前CSS选择器或者JS函数的详细信息
+
+- ctrl + '-/+': 可以折叠项目中的任何代码块，它不是选中折叠，而是自动识别折叠。
+
+- ctrl + '.': 折叠选中的代码的代码。
+- Ctrl + Alt + T:Surround with…（if, else, try, catch, for, etc）用 * 来围绕选中的代码- 行，（ * 包括 if 、 while 、 try catch 等）
+- **ctrl+alt+L 格式化代码**
+- 如果webstorm一直是searching for indexing，解决办法：项目右键->Mark Directory - as->Excluded

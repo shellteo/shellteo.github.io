@@ -1,0 +1,13 @@
+---
+layout: post
+title:  "提问题的学问"
+date:   2015-04-01
+categories: Other
+author: 张翔
+location: NanChang, China
+cover: ""
+description: 提问题的学问
+---
+---
+
+![img](http://myblog-images1.oss-cn-beijing.aliyuncs.com/csharp/5.jpg)

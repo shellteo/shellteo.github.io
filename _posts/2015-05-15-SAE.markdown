@@ -1,0 +1,53 @@
+---
+layout: post
+title:  "SAE建站记录"
+date:   2015-05-15
+categories: Other
+author: 张翔
+location: NanChang, China
+cover: ""
+description: SAE建站记录
+---
+---
+
+SinaAppEngine来自新浪，有新浪微博的人都可以开通，开通之后可以绑定自己的手机号
+
+![img](http://myblog-images1.oss-cn-beijing.aliyuncs.com/SAE/1.png)
+
+开通SinaAppEngine之后，点击创建新应用这里要注意的就是选择开发语言和框架，如果使用wordpress建站的话，选择wordpress for SAE，使用pythonde语言的话，就选择python。
+
+![img](http://myblog-images1.oss-cn-beijing.aliyuncs.com/SAE/2.png)
+![img](http://myblog-images1.oss-cn-beijing.aliyuncs.com/SAE/3.png)
+
+创建完之后点击管理应用，先创建一个版本，按要求填好表格，这里不再赘述
+
+![img](http://myblog-images1.oss-cn-beijing.aliyuncs.com/SAE/4.png)
+
+然后在管理应用里可以设置独立域名，可以上传代码。
+版本控制，代码完全可以通过SVN配置
+SAE配置SVN
+先下载SVN，安装好
+![img](http://myblog-images1.oss-cn-beijing.aliyuncs.com/SAE/5.png)
+
+这里的url后面的appname输入你自己的应用名称，点击ok之后会弹出输入账号名称和密码，这里的账号的名称和密码跟微博不是一样，账号是自己SinaAppEngine的账号（我的是13576274714@163.com），密码是安全密码，进去之后把自己的应用checkout出来，然后修改里面的文件直接SVN Commit，就提交了。
+
+SAE建立简单的wordpress网站
+1.SAE创建应用时选择wordpress for SAE
+2.然后就可以登陆网站了，这里需要填写表单，亲，要记住密码啊！这里需要先初始化mysql、storage、memcache
+如下图初始化就好，然后登录网站发现有了一个初始的模板，是不是很开心呢！
+![img](http://myblog-images1.oss-cn-beijing.aliyuncs.com/SAE/6.png)
+
+3.安装其他更好看、更炫酷的主题，先svn把应用checkout到本地，在目录wp-content\themes把主题文件添加进去
+![img](http://myblog-images1.oss-cn-beijing.aliyuncs.com/SAE/7.png)
+
+上图可以看出这里已经有了几个主题，其中Teahouse是我自己加的，然后登录wordpress，找到外观/主题，刷新就可以看到新添加进来的主题，启用即可，
+这里需要注意菜单一栏的作用
+![img](http://myblog-images1.oss-cn-beijing.aliyuncs.com/SAE/8.png)
+
+菜单栏包括Main Menu和Custom Menu，分别代表如下图1，2栏目，改的时候需要注意一下。
+![img](http://myblog-images1.oss-cn-beijing.aliyuncs.com/SAE/9.png)
+
+wordpress仪表盘的使用比较简单，自己摸索就好。
+
+
+

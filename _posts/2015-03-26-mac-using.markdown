@@ -1,0 +1,60 @@
+---
+layout: post
+title:  "初入Mac编程（use Xamarin Studio）"
+date:   2015-03-26
+categories: C#
+author: 张翔
+location: NanChang, China
+cover: ""
+description: 被叶启松叫去，在后街一家公司做着mac C#编程开发
+---
+---
+
+#### 1.跨平台的开发环境Xamarin Studio,支持iOS，Mac，Android，Windows开发
+
+- Xamarin是基于Mono的平台，目前主要有以下产品(更具体请见：http://xamarin.com/products)：
+- Xamarin Studio：IDE，是从原来的MonoDevelop改名而来。现在从MonoDevelop官方网站下载的其实也是Xamarin Studio：http://- monodevelop.com/。 (话说MonoDevelop也是SharpDevelop的一个分支发展而来)
+- Xamarin.iOS：原名MonoTouch，用于开发iOS应用程序，并且可以发布到app store上。
+- Xamarin.Mac：用于开发mac os x应用程序，类似于windows 桌面应用。
+- Xamarin.Android：原名MonoDroid/Mono for Android，用于开发Android应用程序。
+- Xamarin for Visual Studio：Visual Studio的插件，包括iOS和Android，不过目前只支持vs2010/vs2012。
+- Xamarin Test Cloud：测试云，可以把你的应用程序发布到Xamarin的云上面测试，它可以自动帮你在数百种设备上测试你的应用程序。
+- Component Store：组件商店，上面有各种收费/免费的控件提供下载。
+- 话说还有windows phone不知道跑哪去了，人家可是：I am 1%;
+
+#### 2.新建solution选择对应的工程，这里Mac  C#开发选择Unified API下的Xamarin.Mac Application;
+
+![img](http://myblog-images1.oss-cn-beijing.aliyuncs.com/csharp/3.png)
+
+一般会选择新建Unsupported下的MonoMc Project工程
+
+![img](http://myblog-images1.oss-cn-beijing.aliyuncs.com/csharp/4.png)
+
+#### 3.目录结构
+
+#### 4.UI层常见问题
+给按钮或者输入框添加颜色代码（非MonoMc Project工程）
+
+方法一：    
+```C# 
+buttonAdd.WantsLayer = true;//允许修改Layer
+buttonAdd.Bordered = false;//使边框失效
+buttonAdd.Layer.BackgroundColor = new CoreGraphics.CGColor (1,0.504f,0.155f);
+//括号可以写四个变量除了RGB之外，还有透明度Alpha可以调节
+```
+
+方法二：   
+```C#   
+buttonAdd.WantsLayer = true;
+buttonAdd.Bordered = false;
+buttonAdd.Layer.BackgroundColor = NSColor.Black.CGColor;//黑色背景
+// 注：如果是 Project工程的话，应该在前面加上MonoMac如下
+mybutton.Layer.BackgroundColor = new MonoMac.CoreGraphics.CGColor(1,0.504f,0.155f);
+```
+
+修改字体大小
+```C# 
+text.Font = NSFont.LabelFontOfSize (5);  //设置字体大小为5；
+```
+
+5.学会看object-C代码

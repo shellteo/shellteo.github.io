@@ -1,0 +1,53 @@
+---
+layout: post
+title:  "本机搭建服务器"
+date:   2014-10-20
+categories: other
+author: 张翔
+location: NanChang, China
+cover: ""
+description: 本机搭建服务器第一步，安装xampp，XAMPP配置
+---
+---
+
+
+
+### 本机作为服务器
+本机回环地址：127.0.0.1
+
+1.首先cmd>ipconfig记下IPv4地址
+![img](http://myblog-images1.oss-cn-beijing.aliyuncs.com/xampp/1.jpg)
+ 
+2.然后进入路由器设置
+
+DMZ主机启用DMZ状态，DMZ主机IP地址填第一步的地址
+
+![img](http://myblog-images1.oss-cn-beijing.aliyuncs.com/xampp/2.jpg)
+
+3.然后浏览器访问自己电脑的index.html页面直接可以通过本机ip就可以访问了，自己访问也可以通过ip访问，也可以通过回环地址127.0.0.1或者localhost可以访问
+
+### 安装xampp
+
+百度xampp，直接下载，安装就行了。
+
+如果要改变localhost的路径可以点击config（如下）再点击Apache（httpd.conf.）,搜索DocumentRoot，更改路径即可。
+
+![img](http://myblog-images1.oss-cn-beijing.aliyuncs.com/xampp/3.jpg)
+![img](http://myblog-images1.oss-cn-beijing.aliyuncs.com/xampp/4.jpg)
+
+### XAMPP配置
+
+要访问主页的话XAMPP首先要启动apache，后面的ports，80是指http端口，443是指https端口。
+然后可以是使用127.0.0.1来访问自己做的主页，127.0.0.1是回送地址，指本地机，一般用来测试使用。也可以在浏览器中输入`http://localhost`来访问主页。
+
+![img](http://myblog-images1.oss-cn-beijing.aliyuncs.com/xampp/5.jpg)
+
+然后再apache的config中打开httpd.conf( 如下)
+
+![img](http://myblog-images1.oss-cn-beijing.aliyuncs.com/xampp/6.jpg)
+
+通过更改DocumentRoot”url”<Directory ”url”>来修改主页文件存放位置（如下图）。
+
+![img](http://myblog-images1.oss-cn-beijing.aliyuncs.com/xampp/7.jpg)
+
+C:\Users\Administrator\AppData\Local\Temp系统的临时文件夹，可以删除的

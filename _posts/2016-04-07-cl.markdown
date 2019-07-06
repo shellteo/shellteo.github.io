@@ -1,0 +1,19 @@
+---
+layout: post
+title:  "无题"
+date:   2016-04-07
+categories: DB
+author: 张翔
+location: NanChang, China
+cover: ""
+description: 敞亮
+---
+---
+上个月3号给涛哥公司取名字，最后敲定敞亮科技。
+
+今天叫我设计logo，我想我也不是学这个的啊。
+
+一直在看《支付革命》这本书。雨里雾里。
+
+logo如下，第一次做设计，纪念一下。
+![cl-logo](http://myblog-images1.oss-cn-beijing.aliyuncs.com/cl-logo.png)

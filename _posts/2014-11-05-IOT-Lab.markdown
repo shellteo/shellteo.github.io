@@ -1,0 +1,40 @@
+---
+layout: post
+title:  "IOT主页-后台管理系统修改"
+date:   2014-10-20
+categories: other
+author: 张翔
+location: NanChang, China
+cover: ""
+description: 后台文章管理界面、去除bootstrap导航栏圆角效果、css画出三角形
+---
+---
+1. 主页修改，在IOT主页上加上合作单位与友情链接
+![img](http://myblog-images1.oss-cn-beijing.aliyuncs.com/IOT-LAB/1.png)
+
+2. 文章管理界面的修改
+
+![img](http://myblog-images1.oss-cn-beijing.aliyuncs.com/IOT-LAB/2.png)
+![img](http://myblog-images1.oss-cn-beijing.aliyuncs.com/IOT-LAB/3.png)
+
+3. 去除bootstrap导航栏圆角效果，在导航栏上加上如下类
+
+```css
+.b{ -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}/* 去除bootstrap导航栏圆角效果 */
+```
+
+4. 运用css画出三角形
+
+```css
+.trigon {border-top:8px solid #FFFFFF;border-left:8px solid #333;border-bottom:8px solid #FFFFFF; z-index:109;}
+<div class=”trigon”></div>
+```
+
+5. 左侧导航栏代码与实现，在页头link到hover.css,然后运用bubble-right使导航栏靠左，运用button使鼠标经过时产生小三角图标。
+
+![img](http://myblog-images1.oss-cn-beijing.aliyuncs.com/IOT-LAB/4.png)
+
+![img](http://myblog-images1.oss-cn-beijing.aliyuncs.com/IOT-LAB/5.png)

@@ -1,0 +1,72 @@
+---
+layout: post
+title:  "使用技巧"
+date:   2014-08-26
+categories: js
+author: 张翔
+location: WuHan, China
+cover: ""
+description: Windows使用技巧、鼠标使用技巧、浏览器操作技巧
+---
+---
+## Windows使用技巧
+
+下面列举一些其他我最常用的、但不是那么知名的快捷键，能让我脱离鼠标
+
+- F2 重命名 （可批量）
+
+- Shift+Ctrl+N 新建文件夹
+
+- Ctrl+L或者Alt+d定位到地址o栏（对资源管理器和任何浏览器都有效！），F4（只对资源管理器有效）
+
+- Win+R cmd 输入命令：calc 计算器；mspaint 画图板（截图的时候很方便）；osk 屏幕软键盘；msconfig 启动项等；shutdown -s -t XXX XXX秒内关机（详情请cmd，shutdown /?）
+
+- 神器TotalCommand，超强的资源管理器替代。学习连接（http://xbeta.info/studytc/index.htm）。神器AutoHotKey，神器Launchy， 以后会有教程。
+
+- Chrome浏览器的Vimium，用Vim的键位操作Chrome…无敌了，用键盘操作上网比鼠标快很多很多很多。Firefox也有类似的， Firefox 下的 Pentadactyl
+
+- window+d显示桌面
+
+- win+e打开资源管理器
+
+- ctrl+shift+esc打开任务管理器
+
+- SendTo 文件夹的位置：比如win7下面是 %APPDATA%\Microsoft\Windows\SendTo ,SendTo其实是Windows的一个特殊的系统文件夹。如果把【文件夹快捷方式】放在SendTo文件夹里，对某个文件、文件夹执行“发送到”命令的时候，会把文件复制到该文件夹；如果把【应用程序快捷方式】放在SendTo文件夹里，对某个文件执行“发送到”命令的时候，会以该应用程序打开这个文件。
+
+
+## 鼠标使用技巧
+- 搜索到的网页字太小，你可以按住 ctrl 然后滚动鼠标的滑轮，把字体调到满意的大小后关闭窗口，再打开时，网页中的字的大小就是你调的大小了。
+
+- 在选择网页中的大部分文字时，可以在开始处点击鼠标左键，然后在需要的地方点击shift键+鼠
+
+标左键就ok了，特别还适合word多页字段选择，试一下吧！
+
+- 在网页比较大，要翻页时特别麻烦，您可以点击鼠标中间的滚轮，出现向四面滚动的箭头时，您可以向您需要的方向移动鼠标，网页会迅速翻到您需要的地方，翻页的地方离起始的地方越远翻得越快，越近翻得越慢。
+
+- 上下翻页时可以按滚轮，然后滚动滚轮，既可以快速滚动页面。
+
+以上方法在word文档中同样适用。
+
+## 浏览器操作技巧
+浏览器中
+- Ctrl+N 打开新窗口
+- Ctrl+T 打开新标签页
+- Ctrl+Shift+T 重新打开上次关闭的标签页。
+- ctrl+w关闭当前窗口
+
+
+按住 Ctrl‎ 键，然后点击链接,在新标签页中打开链接
+- Ctrl+Tab,切换到下一个标签页
+- Ctrl+Shift+Tab,切换到上一个标签页
+- alt+d,快速定位到网址栏
+- Ctrl++放大文字
+- Ctrl+-缩小文字
+- Ctrl+0还原到正常文字大小
+
+- ctrl+U 查看源代码
+- Shift+Escape 查看任务管理器
+- Ctrl+Shift+V从剪贴板粘贴当前内容的纯文字部分
+
+谷歌浏览器可记住最近关闭的 10 个标签页。
+
+Win7快速查看文件属性的小技巧 只需按住键盘“Alt”键，然后“左键双击”需要查看属性的文件。
