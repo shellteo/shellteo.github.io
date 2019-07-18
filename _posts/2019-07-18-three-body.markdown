@@ -6,7 +6,7 @@ categories: js
 author: 张翔
 location: ShangHai, China
 cover: ""
-description: 大二的时候看过前两部，再翻出来。
+description: 大二的时候看过前两部，再翻出来一口气读完三部，太精彩了。
 ---
 ---
 
