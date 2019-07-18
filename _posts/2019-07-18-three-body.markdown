@@ -20,9 +20,7 @@ description: 大二的时候看过前两部，再翻出来一口气读完三部�
 
 <iframe src="//music.163.com/outchain/player?type=2&id=4405800&auto=0&height=66" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
-
-<iframe src="//player.bilibili.com/player.html?aid=592151&cid=874952&page=2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
+<iframe src="//music.163.com/outchain/player?type=2&id=4425889&auto=1&height=66" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 
 ###  智子、降维打击
