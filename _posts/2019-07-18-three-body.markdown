@@ -11,15 +11,18 @@ description: 大二的时候看过前两部，再翻出来一口气读完三部�
 ---
 
 
-<iframe src="//music.163.com/outchain/player?type=2&id=4405800&auto=0&height=66" frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86> </iframe>
-
-
-<iframe src="//music.163.com/outchain/player?type=2&id=4425889&auto=0&height=66" frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86> </iframe>
 
 ### We Choose To Go To The Moon、A Lovely Wedding
 这两首人声后摇和三体很搭。热血有，但孤独才是常态。
 
 “渐渐远去的黄金海岸完全消失在历史的烟波之中。现在，人类文明的航船已经孤独地驶到了茫茫的大洋中，举目四望，只有无边无际的险恶波涛，谁也不知道，彼岸是不是真的存在。”
+
+
+<iframe src="//music.163.com/outchain/player?type=2&id=4405800&auto=0&height=66" frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86> </iframe>
+
+
+<iframe src="//player.bilibili.com/player.html?aid=592151&cid=874952&page=2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
 
 
 ###  智子、降维打击
