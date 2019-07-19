@@ -1,16 +1,14 @@
 ---
 layout: post
 title:  "三体"
-date:   2019-07-06
-categories: js
+date:   2019-07-18
+categories: book
 author: 张翔
 location: ShangHai, China
-cover: ""
+cover: "http://myblog-images1.oss-cn-beijing.aliyuncs.com/carousel/heidong.jpg"
 description: 大二的时候看过前两部，再翻出来一口气读完三部，太精彩了。
 ---
 ---
-
-
 
 ### We Choose To Go To The Moon、A Lovely Wedding
 这两首人声后摇和三体很搭。热血有，但孤独才是常态。
