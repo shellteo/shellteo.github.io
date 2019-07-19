@@ -5,7 +5,7 @@ date:   2019-07-19
 categories: js
 author: 张翔
 location: ShangHai, China
-description: 
+description: "轮播组件"
 ---
 ---
 
