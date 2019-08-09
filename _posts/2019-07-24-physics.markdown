@@ -2,7 +2,7 @@
 layout: post
 title:  "我和物理学"
 date:   2019-07-24
-categories: js
+categories: 动如参与商
 author: 张翔
 location: ShangHai, China
 description: "最近在读《三体》和《上帝掷骰子吗？》这两本书，一本科幻小说，一本关于量子力学科普史话。感受真理和浪漫"
