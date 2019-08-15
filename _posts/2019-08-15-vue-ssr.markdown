@@ -15,11 +15,8 @@ description: "open day做了一个ssr的技术分享"
 
 ppt如下，线上地址：[智能签名SSR开发实践](https://docs.google.com/presentation/d/138R17qYCzrli2c7Y6gTIYOtzxHnJZOzg71hQWd-DvUs/edit?usp=sharing)
 
-<object data="http://myblog-images1.oss-cn-beijing.aliyuncs.com/ssr/ppt.pdf" type="application/pdf" width="95%" height="700px">
-    <embed src="http://myblog-images1.oss-cn-beijing.aliyuncs.com/ssr/ppt.pdf">
-        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="http://myblog-images1.oss-cn-beijing.aliyuncs.com/ssr/ppt.pdf">Download PDF</a>.</p>
-    </embed>
-</object>
+
+<iframe src="http://myblog-images1.oss-cn-beijing.aliyuncs.com/ssr/ppt.pdf" style="width:95%; height:700px;" frameborder="0"></iframe>
 
 ### Reference
 
