@@ -1,0 +1,44 @@
+---
+layout: post
+title:  "智能签名SSR实践"
+date:   2019-08-15
+categories: js
+author: 张翔
+location: ShangHai, China
+description: "open day做了一个ssr的技术分享"
+---
+---
+
+![ssr](http://myblog-images1.oss-cn-beijing.aliyuncs.com/ssr/1.jpg)
+
+### Silde
+
+ppt如下，线上地址：[智能签名SSR开发实践](https://docs.google.com/presentation/d/138R17qYCzrli2c7Y6gTIYOtzxHnJZOzg71hQWd-DvUs/edit?usp=sharing)
+
+<object data="http://myblog-images1.oss-cn-beijing.aliyuncs.com/ssr/ppt.pdf" type="application/pdf" width="95%" height="700px">
+    <embed src="http://myblog-images1.oss-cn-beijing.aliyuncs.com/ssr/ppt.pdf">
+        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="http://myblog-images1.oss-cn-beijing.aliyuncs.com/ssr/ppt.pdf">Download PDF</a>.</p>
+    </embed>
+</object>
+
+### Reference
+
+[通过vue-cli3构建一个SSR应用程序](https://juejin.im/post/5b98e5875188255c8320f88a#heading-19)
+
+[前端同构渲染的思考与实践](https://juejin.im/post/5c821dc45188257e1f2915b1)
+
+[Vue2 SSR 缓存 Api 数据](https://www.mmxiaowu.com/article/58666e94b31b4b0734dd01be)
+
+[vue ssr 性能问题分析 ,内存泄露](https://cnodejs.org/topic/59868b990f9d52591a887840)
+
+[Vue SSR 指南](https://ssr.vuejs.org/zh/guide)
+
+[Nuxt.js如何使用Vue组件中的 cache？](https://zh.nuxtjs.org/faq/cached-components/)
+
+[Nuxt专题 - 原理的探究](https://github.com/kangschampagne/blog/issues/32)
+
+[美团点评点餐 Nuxt.js 实战](https://juejin.im/post/598aabe96fb9a03c335a8dde)
+
+[Nuxt.js实战](https://segmentfault.com/a/1190000012802572)
+
+[Vue 服务端渲染（SSR）、Nuxt.js - 从入门到实践](https://juejin.im/post/5bd3fba951882526f11d5575#heading-14)
