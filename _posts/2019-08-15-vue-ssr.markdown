@@ -15,7 +15,7 @@ description: "open day做了一个ssr的技术分享"
 
 ppt如下，线上地址：[智能签名SSR开发实践](https://docs.google.com/presentation/d/138R17qYCzrli2c7Y6gTIYOtzxHnJZOzg71hQWd-DvUs/edit?usp=sharing)
 
-<iframe src="https://show.zohopublic.com/publish/g067t4b34b18bc3744830899f33b455e9cbb3?viewtype=1" name="智能签名SSR开发实践" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<iframe src="https://show.zohopublic.com/publish/g067t4b34b18bc3744830899f33b455e9cbb3?viewtype=1" height="218" width="324" name="智能签名SSR开发实践" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 
 ### Reference
