@@ -15,8 +15,8 @@ description: "✌️ & 🤟"
 
 ppt如下，线上地址：[智能签名SSR开发实践](https://docs.google.com/presentation/d/138R17qYCzrli2c7Y6gTIYOtzxHnJZOzg71hQWd-DvUs/edit?usp=sharing)
 
-<iframe src="https://show.zohopublic.com/publish/g067t4b34b18bc3744830899f33b455e9cbb3?viewtype=1" height="487" width="100%" name="智能签名SSR开发实践" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
+<iframe src="https://onedrive.live.com/embed?cid=6191ABD0633829EA&amp;resid=6191ABD0633829EA%21105&amp;authkey=AAterXUE5-NsYqo&amp;em=2&amp;wdAr=1.7777777777777777"  height="487" width="100%" name="智能签名SSR开发实践" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true">這是 <a target="_blank" href="https://office.com/webapps">Office</a> 提供的內嵌 <a target="_blank" href="https://office.com">Microsoft Office</a> 簡報。</iframe>
 
 ### Reference
 
