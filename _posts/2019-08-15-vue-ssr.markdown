@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  "智能签名SSR实践"
+title:  "Open Day分享《智能签名SSR实践》"
 date:   2019-08-15
 categories: js
 author: 张翔
 location: ShangHai, China
-description: "open day做了一个ssr的技术分享"
+description: "✌️ & 🤟"
 ---
 ---
 
