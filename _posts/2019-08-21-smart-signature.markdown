@@ -5,7 +5,7 @@ date:   2019-08-21
 categories: 动如参与商
 author: 张翔
 location: ShangHai, China
-cover: "http://zxblog.oss-cn-hangzhou.aliyuncs.com/20190821/3.png"
+cover: "http://zxblog.oss-cn-hangzhou.aliyuncs.com/20190821/4.png"
 description: "产品经过一段时间的打磨和发展，已经从一个去中心化应用，变成了单纯的Web应用。这段时间开发上不断的做产品功能迭代，虽然做了很多妥协和改变，但是并没有看到用户增长。其实原因上来说归结于两个，第一、Dapp生态用户少，这部分下面会讲到；第二、产品定位和模式的问题。"
 ---
 ---
