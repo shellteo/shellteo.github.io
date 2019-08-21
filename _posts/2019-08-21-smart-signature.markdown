@@ -115,14 +115,15 @@ description: "产品经过一段时间的打磨和发展，已经从一个去中
 > 
 > 程序员不能和别人很好的合作？
 
-## 参考：
-1.[How to Start a Startup](http://startupclass.samaltman.com/)
-2.[How to Make Wealth](http://www.paulgraham.com/wealth.html)
-3.[内容平台的入局与破局](http://www.woshipm.com/it/2144684.html)
-4.[什么是工程师文化？](https://coolshell.cn/articles/17497.html)
-5.[建一支强大的小团队](https://www.irhce.com/usr/uploads/uex/file/20170719/1500433069638254.pdf)
-6.[智能签名项目企划](https://shimo.im/docs/UOYT3DqklCYBbzny)
-7.[智能签名 2019 公开课](https://hackmd.io/Q3KNkxjgSwKRJ5cfBL2I4g)
-8.[从加密游戏到智能签名](https://zhuanlan.zhihu.com/p/34846709)
-9.[智能签名的一种 Use Case.](https://zhuanlan.zhihu.com/p/35015524)
-10.[软件项目管理中的10个误区](https://yq.aliyun.com/articles/130054)
+## 参考
+
+1. [How to Start a Startup](http://startupclass.samaltman.com/)
+2. [How to Make Wealth](http://www.paulgraham.com/wealth.html)
+3. [内容平台的入局与破局](http://www.woshipm.com/it/2144684.html)
+4. [什么是工程师文化？](https://coolshell.cn/articles/17497.html)
+5. [建一支强大的小团队](https://www.irhce.com/usr/uploads/uex/file/20170719/1500433069638254.pdf)
+6. [智能签名项目企划](https://shimo.im/docs/UOYT3DqklCYBbzny)
+7. [智能签名 2019 公开课](https://hackmd.io/Q3KNkxjgSwKRJ5cfBL2I4g)
+8. [从加密游戏到智能签名](https://zhuanlan.zhihu.com/p/34846709)
+9. [智能签名的一种 Use Case.](https://zhuanlan.zhihu.com/p/35015524)
+10. [软件项目管理中的10个误区](https://yq.aliyun.com/articles/130054)
