@@ -1,0 +1,109 @@
+---
+layout: post
+title:  "什么币值得买开发记录（WIP）"
+date:   2019-08-30
+categories: 动如参与商
+author: 张翔
+location: ShangHai, China
+cover: "https://zxblog.oss-cn-hangzhou.aliyuncs.com/20190830/1.png"
+description: "一个我构思了很久的项目，利用业余时间，🎉已经开发完毕。🚀上线地址：https://solidnetwork.co"
+---
+---
+## 🎉项目已经上线🎉，体验地址：[https://solidnetwork.co](https://solidnetwork.co)
+
+## idea构思产生
+17年1c0的火爆，然后18年初开始进入熊市，然后19年初币安 launchpad 首个IEO（BTT）诞生，市场这才开始复苏，可以看到不管是牛熊转换还是熊市到牛市的过程，新币/新项目上线都扮演着很重要的角色。并且这个行业百废待兴，老牌公链渐渐没落，我们需要更多渠道知道新项目，不管是cosmos还是Polkadot都是新项目中的明星项目。更多见[今年对于区块链的期待](https://shellteo.top/forward/)，除了带来了新的生机和机遇，新项目渐渐也有了更大话语权。
+
+而且由于信息不对称，行业内骗子众多，可以看我这篇文章[币圈骗术，有人最多损失300ETH，近30多万](https://shellteo.top/scam/)。可以看到很多人热情很高，但是没有好的渠道去了解到最新技术和项目，这就给了骗子可乘之机。
+
+这就是`什么币值得买`诞生的环境，我们希望提供一个平台，能够做到公开透明，每个项目由用户打分评论，成为行业一盏指明灯。
+
+## 项目分析
+#### 1. 和币圈行情信息平台的不同
+ 现在区块链综合信息平台有很多，[非小号](https://www.feixiaohao.com)、[MyToken](https://www.mytoken.io/)
+
+#### 2. 和代币销售平台的不同
+行业最知名的代币销售平台[coinlist](https://coinlist.co)。
+
+
+## 数据抓取
+1. superagent抓取html直出的页面
+2. cheerio加载jquery，取页面数据
+3. 复杂加密的页面需要nightmare（基于electron 的自动化库，相当于自带浏览器）爬去数据，虽然速度不如直接抓取网页快，但是可以加载js以及模拟按钮点击去抓取一写加密数据
+
+
+
+## 原型直出到UI设计
+
+
+## 前端开发对接
+
+
+#### 图片裁切压缩上传
+`cropperjs`
+#### vuelidate表单参数校验
+
+#### vue-material UI组件使用
+
+
+## 后端开发
+
+#### 图片上传
+写入oss，可以使用官方`ali-oss`，或者基于eggjs封装的`egg-oss`
+```js
+config.multipart = {
+    mode: 'file',
+};
+```
+
+#### 参数校验
+`egg-validate`基于parameter进行封装的，详情查看[egg-validate](https://github.com/eggjs/egg-validate)
+[example.js](https://github.com/node-modules/parameter/blob/master/example.js)
+```js
+ctx.validate(createLoginRule, ctx.request.body);
+```
+
+#### jwt的使用
+
+#### nodemailer发送邮箱验证码
+
+#### geetest校验封装成middleware
+
+#### sql语句，用户评论列表
+评论列表，如果用户登录，需要对每条评论进行查询用户是否点过赞。
+
+```SQL
+SELECT c.*, ur.u_email, ur.u_avatar, ur.u_name, (CASE uk.uid WHEN :uid THEN TRUE ELSE FALSE END) AS is_liked
+FROM t_comment AS c
+LEFT JOIN t_user_like AS uk
+ON uk.c_id=c.id
+LEFT JOIN t_user AS ur
+ON c.create_uid=ur.uid
+WHERE c.symbol=:symbol
+GROUP BY c.id HAVING is_liked>-1
+ORDER BY c.create_time DESC
+LIMIT :limit OFFSET :offset
+```
+
+
+
+## 服务器部署
+1. 使用[nvm](https://github.com/nvm-sh/nvm)安装nodejs，保证版本正确
+```shell
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+```
+```
+source ~/.bashrc
+```
+2. 安装git，配置ssh，拉取项目代码，注意不要把生成环境的配置文件提交到git上，生成配置文件添加到.gitignore文件。
+3. nginx安装与配置，参考[Nginx 基本配置详解](https://juejin.im/post/5aa7704c6fb9a028bb18a993#heading-6)，HTML5 History 模式需要[配置nginx](https://router.vuejs.org/zh/guide/essentials/history-mode.html#后端配置例子)。因为前端是https，nginx需要配置接口https，不然浏览器将认为这是不安全的资源，将会默认阻止。cdn需要为api配置二级域名。
+4. 安装 mysql，设置远程可连接，取消默认设置 `sql_mode=only_full_group_by`，同步数据库结构
+5. 安装 redis
+6. 部署前端和后端
+
+## 社交网络
+[微博](https://weibo.com/login.php)、
+[twitter](https://twitter.com/smbzdm)、
+[telegram](https://t.me/smbzdm_official)
+
