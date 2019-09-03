@@ -13,6 +13,8 @@ title: 读书笔记
 
 - [《硅谷钢铁侠-埃隆·马斯克的冒险人生》读书笔记](https://shellteo.top/Elon-Musk-biography/)
 
+- [《密码朋克：自由与互联网的未来》](https://shellteo.top/Cyberpunk/)
+
 - [《从0到1》读书笔记](https://shellteo.top/reading-zero-to-one/)
 
 - [《关键技术和挑战·区块链技术》总结 ](https://shellteo.top/the-blockchain-summay/)
@@ -20,4 +22,5 @@ title: 读书笔记
 - [九月书单](https://shellteo.top/September-book-list/)
 
 - [《Node.js实战》读书笔记](https://shellteo.top/nodejs-practice/)
+
 
