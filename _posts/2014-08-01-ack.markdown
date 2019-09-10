@@ -1,0 +1,193 @@
+---
+layout: post
+title:  "知识点总结"
+date:   2014-08-01
+categories: js
+author: 张翔
+location: NanChang, China
+cover: ""
+description: 知识点总结
+---
+---
+# 1. http缓存
+## 缓存的头部
+- cache-control
+- Expires
+- ETag
+
+[缓存机制](https://www.jianshu.com/p/54cc04190252)
+## 缓存获取先后顺序
+> 1. Service Worker
+> 2. Memory Cache
+> 3. Disk Cache
+> 4. Push Cache
+
+## 缓存过程
+### 1. 强缓存
+- Expires：缓存过期时间，HTTP/1的产物，受限于本地时间
+- Cache-Control：主要用于控制网页缓存，HTTP/1.1，可取值[ max-age 、no-store：不缓存、no-cache：需要和服务器协商决定、public：都可缓存、private：中间人可不缓存 ]
+注：两者同时存在的话，Cache-Control优先级高于Expires
+### 2. 协商缓存
+- Last-Modified：最近一次修改
+- ETag ：文件唯一标识
+
+# 2. http2的优势
+> - 多路复用
+> - server push
+> - 头部压缩
+
+# 3. https和http
+c -> s
+客户端请求https连接，会把协议版本号、支持的加密算法、随机数发送到服务器
+s -> c
+服务器接收，会把证书返回给客户端，证书中包含（生成的随机数、公钥、CA数字签名）
+c -> s
+客户端接收到服务器证书，会验证证书的有效性，如果有效，会用返回的公钥加密随机数发送给服务器
+s -> c
+告诉客户端会用之前协商的密钥来加密，连接完成
+
+# 4. v8垃圾回收 new space和old space算法
+
+新生代采用Scavenge垃圾回收算法，在算法实现时主要采用Cheney算法。
+处于使用状态的semispace称为From空间，处于闲置状态的semispace称为To空间。
+
+V8在老生代中主要采用了Mark-Sweep和Mark-Sweep相结合的方式进行垃圾回收。
+
+# 4. 函数防抖/节流
+
+# 5. 发布订阅js实现
+
+# 6. new js实现
+
+# 7. bind js实现
+
+# CSRF、XSS
+[CSRF（Cross-site request forgery）跨站请求伪造](https://tech.meituan.com/2018/10/11/fe-security-csrf.html)
+- CSRF自动防御策略：同源检测（Origin 和 Referer 验证）。
+- CSRF主动防御措施：Token验证 或者 双重Cookie验证 以及配合Samesite Cookie。
+- 保证页面的幂等性，后端接口不要在GET页面中做用户操作。
+
+[XSS 攻击是页面被注入了恶意的代码](https://tech.meituan.com/2018/09/27/fe-security.html)
+转义 HTML
+过滤
+Content Security Policy
+
+# 跨域的几种方式
+[链接🔗](https://juejin.im/post/5c23993de51d457b8c1f4ee1#heading-20)
+1. JSONP
+2. CORS
+3. PostMessage
+4. nginx反向代理
+
+# PWA、service workers
+
+
+# WebSocket
+- onopen、onmessage、onclose、onerror
+全双工（双向）通信
+
+# ssr的优缺点，为什么要使用
+
+# mvvm 和 mvc
+mvvm
+
+MVVM 是 Model-View-ViewModel 的缩写。mvvm 是一种设计思想。Model 层代表数据模型，也可以在 Model 中定义数据修改和操作的业务逻辑；View 代表 UI 组件，它负责将数据模型转化成 UI 展现出来，ViewModel 是一个同步 View 和 Model 的对象。
+
+在 MVVM 架构下，View 和 Model 之间并没有直接的联系，而是通过 ViewModel 进行交互，Model 和 ViewModel 之间的交互是双向的， 因此 View 数据的变化会同步到 Model 中，而 Model 数据的变化也会立即反应到 View 上。
+
+ViewModel 通过双向数据绑定把 View 层和 Model 层连接了起来，而 View 和 Model 之间的同步工作完全是自动的，无需人为干涉，因此开发者只需关注业务逻辑，不需要手动操作 DOM, 不需要关注数据状态的同步问题，复杂的数据状态维护完全由 MVVM 来统一管理。
+
+mvc：control -> model -> view
+
+#  webpack机制、loader实现和原理、如何加快打包速度、tree shaking
+[webpack原理](https://juejin.im/entry/5b0e3eba5188251534379615)
+
+## webpack机制和原理
+Webpack 是当下最热门的前端资源模块化管理和打包工具
+> - 确定配置文件（shell和config文件）
+> - 开始编译 （加载各个插件）
+> - 确定入口（entry入口构建AST语法树，找出文件依赖，递归执行）
+> - 编译模块（不同文件类型使用不同的loader进行模块的编译转换）
+> - 完成（根据配置生成代码块chunk）
+> - 输出（输出到文件系统）
+
+## loader实现和原理
+loader需要返回export一个函数，这个函数只需要关心输入和输出，输入是各种形式的资源source，输出是转化后的结构，（loader 用于对模块的源代码进行转换）
+loader在编译模块的时候调用、loader可以链式使用，文件可以经过多个loader编译输出
+
+## webpack代码压缩
+> - webpack-bundle-analyzer
+> - 可以从去除不必要的插件
+> - 提取第三方库(dll)
+> - 代码压缩
+> - 代码分割（import动态导入按需加载、router动态加载、externals cdn、[把css从js中分离出来](https://juejin.im/post/5c6fae50e51d45196636bf07#heading-3)）
+> - 设置缓存几个方面着手优化
+> - [连接](https://zhuanlan.zhihu.com/p/38996333)
+
+## 如何加快打包速度
+> - 升级到webpack4
+> - 开发环境和生产配置分开（开发环境不做无意义的操作，比如代码压缩、目录内容清理、计算文件hash、提取CSS文件）
+> - 配置include、exclude，我们可以使用 include 更精确地指定要处理的目录，这可以减少不必要的遍历，从而减少性能损失。同时使用 exclude 对于已经明确知道的，不需要处理的目录，予以排除，从而进一步提升性能。
+> - DllPlugin 预编译
+> - HappyPack（多进程打包构建）、
+> - babel配置transform-runtime来缓存通用的东西
+
+## tree shaking
+> - 利用ES6 module 的特点（依赖关系的确定性）进行静态分析（所谓静态分析就是不执行代码，从字面量上对代码进行分析）
+> - tree-shaking对函数效果较好、只处理函数和顶层的import/export变量
+> - 传统的dec（dead code elimination）是通过ast分析
+> - 对于无用代码，无用模块的消除，都是有限的，有条件的
+> - 在项目 package.json 文件中，添加一个 "sideEffects" 属性
+
+
+
+# vue原理（虚拟dom的实现，渲染机制的实现，双向数据监听，模板引擎的具体实现）
+
+## 双向数据绑定
+vue使用数据劫持 、发布订阅者模式进行双向数据绑定，通过Object.defineProperty()来劫持各个属性的setter，getter
+在数据变动时发布消息给订阅者，触发相应的监听回调。发布订阅者模式依赖收集，然后是派发更新
+[链接](https://segmentfault.com/a/1190000006599500)
+
+## 虚拟DOM实现
+> 虚拟DOM是js实现的DOM树结构
+> Virtual DOM 是用 VNode 这么一个 Class 去描述，位于src/core/vdom/vnode.js
+> 映射到真实DOM上需要经过create、 diff、 patch等过程
+> - 由于 Virtual DOM 是以 JavaScript 对象为基础而不依赖真实平台环境，所以使它具有了跨平台的能力
+> - 操作 DOM 慢，js运行效率高。我们可以将DOM对比操作放在JS层，提高效率。
+> - 提升渲染性能
+
+## 模板引擎
+> - 第一步是parse，将 模板字符串 转换成 element ASTs（解析器）
+> - 第二步是optimizer，对 AST 进行静态节点标记，主要用来做虚拟DOM的渲染优化（优化器）
+> - 第三步是code generator， 使用 element ASTs 生成 render 函数代码字符串（代码生成器）编译的最后一步就是把优化后的 AST 树转换成可执行的代码（比如vif 和 vfor）
+[链接](https://github.com/berwin/Blog/issues/18)
+
+# vuex原理
+> - vuex是状态管理工具
+> - vuex数据是单向流动的view -> Actions -> state -> view
+> - vuex store由state mutations 和actions组成
+> - 改变state只能通过mutations，
+> - mutations只能是同步的
+> - 如果想要在进行异步操作可以在actions中进行
+
+# react原理
+## diff
+传统 diff 算法的复杂度为 O(n^3)，显然这是无法满足性能要求的。React 通过制定大胆的策略，将 O(n^3) 复杂度的问题转换成 O(n) 复杂度的问题。
+> 1. Web UI 中 DOM 节点跨层级的移动操作特别少，可以忽略不计。
+> 2. 拥有相同类的两个组件将会生成相似的树形结构，拥有不同类的两个组件将会生成不同的树形结构。
+> 3. 对于同一层级的一组子节点，它们可以通过唯一 id 进行区分。
+基于以上三个前提策略，React 分别对 `tree diff`、`component diff` 以及 `element diff` 进行算法优化，事实也证明这三个前提策略是合理且准确的，它保证了整体界面构建的性能。
+> tree diff，对树进行分层比较，两棵树只会对同一层次的节点进行比较。
+> component diff，1.同一类型的组件 2.不是同一类型的组件，3.shouldComponentUpdate
+> element diff，通过设置唯一 key的策略，对 element diff 进行算法优化；
+
+## 合成事件
+
+# redux原理
+> 组件通过dispatch action去触发store里面的reducer，然后reducer返回一个新的state去改变store里面的值。
+> 发布-订阅模式
+> 三大原则：
+> - 单一数据源
+> - State 是只读的（唯一改变 state 的方法就是触发 action，action 是一个用于描述已发生事件的普通对象。）
+> - 使用纯函数来执行修改（为了描述 action 如何改变 state tree ，你需要编写 reducers。）
+
