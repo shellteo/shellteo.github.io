@@ -16,7 +16,7 @@ Edgeware的主网Token名为EDG，总量为50亿枚，其中90%将会“无偿�
 
 Lockdrop做为一种新的Token分发方式，Edgeware的Lockdrop
 锁仓分为3个月、6个月、12个月，以及不锁仓（signal）。自然，参与越早、锁仓越久，收益越高。可以参考下表
-![lockdrop](https://oss02.bihu.com/image/20190604/56d94f7378392ba6a435863e289a4eea_HEYTEKRVG44Q.jpg)
+![lockdrop](http://myblog-images1.oss-cn-beijing.aliyuncs.com/edgeware/0.jpg)
 
 那Lockdrop的效果如何呢？是否能改变Airdrop的代币分发容易被薅羊毛的情况？对于用户来说是更公平的分发机制呢？
 
