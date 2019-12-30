@@ -23,7 +23,7 @@ description: "【12 月活动】DWeb Shanghai x PPIO CodeTalks 聚会"
 1. [ppio](https://www.pp.io/)的区块链工程师Daniel分享了零知识证明
 
 
-2. Callpass的创始人李维分享了去《中心化通讯软件的技术和挑战
+2. Callpass的创始人李维分享了去中心化通讯软件的技术和挑战
 
 
 3. [NEARProtocol](https://nearprotocol.com/)的[一龙](https://twitter.com/ilblackdragon)分享了Scaling Blockchain，介绍了near在区块链的扩展性上做的努力
