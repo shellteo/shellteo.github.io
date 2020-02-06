@@ -45,3 +45,8 @@ description: 通过使用一个开源框架，发现了bug，在找bug的过程�
 ![Image5.png](https://meetsup.oss-cn-hangzhou.aliyuncs.com/blog-images/article23/Image5.png)
 
 最后，这篇文章投稿了**前端早读课**：[链接](https://mp.weixin.qq.com/s/fLGaVR-F8hFtZmHMFaNB4A)
+
+最后插一句，为了避免恶意链接网站篡改，a标签跳转写法
+```html
+<a href="https://xxx" target="_blank" rel="noopener noreferrer">xxx</a>
+```
