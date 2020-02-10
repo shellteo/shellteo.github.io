@@ -6,7 +6,7 @@ categories: 动如参与商
 author: 张翔
 location: ShangHai, China
 cover: "https://zxblog.oss-cn-hangzhou.aliyuncs.com/20200210/matataki_screenshot.jpg"
-description: "对产品的发展和形态的思考"
+description: "我们从何处来，又要去往哪里。对于产品的发展和形态的思考，内含彩蛋🥚"
 ---
 ---
 
