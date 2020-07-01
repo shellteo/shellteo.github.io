@@ -21,6 +21,13 @@
     }
     var searchSubmit = document.querySelector('.flexsearch--submit');
     searchSubmit.addEventListener('click', search)
+    var searchInput =  document.querySelector('.flexsearch--input');
+    searchInput.addEventListener('keydown', function (event) {
+      var key = event.which || event.keyCode || event.charCode;
+      if(key==13){
+        search(event);
+      }
+    })
   }
 </script>
 </body>
