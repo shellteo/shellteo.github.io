@@ -14,10 +14,13 @@
   document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1260641879'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1260641879' type='text/javascript'%3E%3C/script%3E"));
 
   window.onload = function () {
-    document.querySelector('.flexsearch--submit').addEventListener('click', function (event) {
+    function search(event) {
+      event.preventDefault();
       var searchValue = document.querySelector('.flexsearch--input').value;
       window.location.href=`https://www.google.com.hk/search?query=${searchValue}&as_sitesearch=shellteo.top` 
-    })
+    }
+    var searchSubmit = document.querySelector('.flexsearch--submit');
+    searchSubmit.addEventListener('click', search)
   }
 </script>
 </body>
