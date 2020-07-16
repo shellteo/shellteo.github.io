@@ -1,0 +1,221 @@
+---
+layout: post
+title:  "【开发】扫码关注公众号自动登录"
+date:   2020-06-16
+categories: 开发
+author: zx
+location: ShangHai, China
+cover: 
+description: "公众平台提供了生成带参数二维码的接口。使用该接口可以获得多个带不同场景值的二维码，用户扫描后，公众号可以接收到事件推送。"
+---
+---
+
+
+## 两种方式
+最近pc版网站要开发微信登录，调研了一下有两种方式可以做到
+1. 通过**微信开放平台**实现网页应用登录，具体参考[开放平台文档](https://developers.weixin.qq.com/doc/oplatform/Website_App/WeChat_Login/Wechat_Login.html)，这里不再赘述。
+2. 第二种也是我们正在用的，通过用户扫码关注微信服务号，实现自动登录，优势就是第一生成的二维码可以嵌入网站任何地方，第二就是比较利于推广，而且后续各种通知可以通过服务号推送给用户。
+
+## 流程原理
+第二种方式的原理就是通过[生成带参数的二维码](https://developers.weixin.qq.com/doc/offiaccount/Account_Management/Generating_a_Parametric_QR_Code.html)。
+流程如下：
+1. 后端生成带参（scene_id）二维码 + 参数（scene_id），传给前端
+2. 前端根据scene_id轮询用户登录状态
+3. 后端接收微信事件推送，用户扫描带scene_id二维码时，可能推送以下两种事件
+    - 如果用户还未关注公众号，则用户可以关注公众号，关注后微信会将带场景值关注事件推送给开发者。
+    - 如果用户已经关注公众号，在用户扫描后会自动进入会话，微信也会将带场景值扫描事件推送给开发者。
+4. 后端根据微信openid进入用户注册登录业务处理，其中微信用户登录状态（scene_id: user_id）可以存入redis。
+
+## 微信服务器认证
+注意，需要你的公众号是是服务号，如下图
+![1](https://zxblog.oss-cn-hangzhou.aliyuncs.com/20200715/1.png)
+侧边栏：开发->基本配置->服务器配置
+![2](https://zxblog.oss-cn-hangzhou.aliyuncs.com/20200715/2.png)
+
+使用微信开发库[TNWX](https://github.com/Javen205/TNWX)
+```javascript
+// router.js
+router.get('/api/wechat', controller.wechat.auth);
+```
+
+```javascript
+// controller/wechat.js
+async auth() {
+    const { ctx } = this;
+    const appId = this.config.wechat.appId;
+    const appSecret = this.config.wechat.appSecret;
+    const { signature, timestamp, nonce, echostr } = ctx.query;
+    const apiConfig = new ApiConfig(appId, appSecret);
+    ApiConfigKit.putApiConfig(apiConfig);
+    ApiConfigKit.devMode = true;
+    ApiConfigKit.setCurrentAppId(appId);
+    ctx.body = WeChat.checkSignature(signature, timestamp, nonce, echostr);
+  }
+```
+
+## 本地开发环境配置
+本地开发需要微信测试号和内网穿透
+测试号登录[https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login](https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=sandbox/login)
+![3](https://zxblog.oss-cn-hangzhou.aliyuncs.com/20200715/3.png)
+
+内网穿透的工具比较多，这里推荐[ngrok](https://ngrok.com/)，具体使用，现下载软件，然后在官网注册登录
+```shell
+# 登录认证
+./ngrok authtoken <YOUR_AUTHTOKEN>
+# 公开80端口
+./ngrok http 80
+```
+![4](https://zxblog.oss-cn-hangzhou.aliyuncs.com/20200715/4.png)
+
+
+## 生成带参数二维码
+```javascript
+async genQrCode() {
+    const ctx = this.ctx;
+    const appId = this.config.wechat.appId;
+    const appSecret = this.config.wechat.appSecret;
+    // 获取access_token
+    const token = await ctx.curl(
+      `https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=${appId}&secret=${appSecret}`,
+      {
+        dataType: 'json',
+      }
+    );
+    const access_token = token.data.access_token;
+    // 生成scene_id
+    const scene_id = this.generateSceneId()
+    // 获取ticket
+    const ticketRes = await ctx.curl(
+      `https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=${access_token}`,
+      {
+        method: 'POST',
+        contentType: 'json',
+        data: {
+          expire_seconds: 604800,
+          action_name: 'QR_SCENE',
+          action_info: {
+            scene: {
+              scene_id,
+            },
+          },
+        },
+        dataType: 'json',
+      }
+    );
+    // 返回qrcode_url + scene_id
+    return {
+      url: 'https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=' + ticketRes.data.ticket,
+      scene_id,
+    };
+  }
+```
+
+## 微信事件推送后端处理
+```javascript
+// router.js
+router.post('/api/wechat', controller.wechat.handleMsg);
+```
+
+```javascript
+// controller/wechat.js
+const { ApiConfig, ApiConfigKit, WeChat } = require('tnwx');
+const MsgController = require('../wx/MsgController');
+
+async handleMsg() {
+    const { ctx } = this;
+    const { msgSignature, timestamp, nonce } = ctx.query;
+    // 获取微信xml
+    const msgXml = this.ctx.request.rawBody;
+    const appId = this.config.wechat.appId;
+    const appSecret = this.config.wechat.appSecret;
+    const apiConfig = new ApiConfig(appId, appSecret, 'andoromeda');
+    ApiConfigKit.putApiConfig(apiConfig);
+    ApiConfigKit.devMode = true;
+    ApiConfigKit.setCurrentAppId(appId);
+    // MsgController为继承的
+    const msgAdapter = new MsgController();
+    // 返回数据xml格式设置
+    ctx.set('Content-Type', 'text/xml');
+    const msg = await WeChat.handleMsg(msgAdapter, msgXml, msgSignature, timestamp, nonce);
+    ctx.body = msg;
+  }
+```
+
+MsgController继承MsgAdapter实现对各种消息的交互和处理，具体可以参考[文档](https://javen205.gitee.io/tnwx/guide/wxmp/sendmsg.html)，扫码关注和未关注里面添加业务逻辑处理。
+```javascript
+// wx/MsgController.js
+const {
+  MsgAdapter,
+  InFollowEvent,
+  InQrCodeEvent,
+  OutTextMsg,
+  OutCustomMsg,
+} = require('tnwx');
+
+class MsgController extends MsgAdapter {
+  processInTextMsg(inTextMsg) {
+    const outMsg = new OutCustomMsg(inTextMsg);
+    return outMsg;
+  }
+  processInFollowEvent(inFollowEvent) {
+    if (InFollowEvent.EVENT_INFOLLOW_SUBSCRIBE === inFollowEvent.getEvent) {
+      return this.renderOutTextMsg(
+        inFollowEvent,
+        '感谢你的关注 么么哒 \n\n交流群：12312'
+      );
+    } else if (
+      InFollowEvent.EVENT_INFOLLOW_UNSUBSCRIBE === inFollowEvent.getEvent
+    ) {
+      console.error('取消关注：' + inFollowEvent.getFromUserName);
+      return this.renderOutTextMsg(inFollowEvent);
+    }
+    return this.renderOutTextMsg(inFollowEvent);
+  }
+
+  processInQrCodeEvent(inQrCodeEvent) {
+    if (InQrCodeEvent.EVENT_INQRCODE_SUBSCRIBE === inQrCodeEvent.getEvent) {
+      console.debug('扫码未关注：' + inQrCodeEvent.getFromUserName);
+      return this.renderOutTextMsg(
+        inQrCodeEvent,
+        '感谢您的关注，二维码内容：' + inQrCodeEvent.getEventKey
+      );
+    } else if (InQrCodeEvent.EVENT_INQRCODE_SCAN === inQrCodeEvent.getEvent) {
+      console.debug('扫码已关注：' + inQrCodeEvent.getFromUserName);
+      return this.renderOutTextMsg(inQrCodeEvent);
+    }
+    return this.renderOutTextMsg(inQrCodeEvent);
+  }
+  renderOutTextMsg(inMsg, content) {
+    const outMsg = new OutTextMsg(inMsg);
+    outMsg.setContent(content ? content : ' ');
+    return outMsg;
+  }
+}
+module.exports = MsgController;
+```
+
+bodyparser可以支持text，xml解析，配置如下
+```javascript
+// config.local.js
+  config.bodyParser = {
+    enable: true,
+    jsonLimit: '1mb',
+    formLimit: '1mb',
+    enableTypes: [ 'json', 'form', 'text' ],
+    extendTypes: {
+      text: [ 'text/xml', 'application/xml' ],
+    },
+    // 仅仅对/api/wechat路由生效
+    match: '/api/wechat',
+  };
+```
+
+
+
+## 参考文档
+1. [https://javen205.gitee.io/tnwx/](https://javen205.gitee.io/tnwx/)
+2. [https://developers.weixin.qq.com/doc/offiaccount/Account_Management/Generating_a_Parametric_QR_Code.html](https://developers.weixin.qq.com/doc/offiaccount/Account_Management/Generating_a_Parametric_QR_Code.html)
+3. [https://ngrok.com/docs](https://ngrok.com/docs)
+4. [https://www.jianshu.com/p/0d70a5861bc7](https://www.jianshu.com/p/0d70a5861bc7)
+5. [https://learnku.com/articles/26718](https://learnku.com/articles/26718)
+
