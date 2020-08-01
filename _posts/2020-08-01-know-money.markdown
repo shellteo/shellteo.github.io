@@ -5,7 +5,7 @@ date:   2020-08-01
 categories: 最近
 author: zx
 location: ShangHai, China
-cover: 
+cover: "https://zxblog.oss-cn-hangzhou.aliyuncs.com/20200801/1/cover.png"
 description: "网上流传的很广的一句话叫做“你只能赚到你认知内的钱”，那什么是认知，认知又怎么变现？"
 ---
 ---
