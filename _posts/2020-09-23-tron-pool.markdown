@@ -1,0 +1,65 @@
+---
+layout: post
+title:  "LP_token拿不到approve状态数据"
+date:   2020-09-23
+categories: tron
+author: zx
+location: ShangHai, China
+cover: ""
+description: "波场上很多东西都没有，大部分项目都没开源，问题很多"
+---
+---
+
+justswap LP token有很多问题，erc20的实现并不完整，
+
+我调用approve方法，通过allowance方法并不能拿到approve的状态
+
+```javascript
+// 构造合约实例
+let address = window.tronWeb.address.fromHex(LPContractAddress)
+let pool = window.tronWeb.contract(LPTokenABI, address)
+// 获取用户address
+const coinbase = window.tronWeb.defaultAddress.base58
+// 调用合约方法
+const res = await pool.methods.allowance(coinbase, poolContract).call()
+```
+
+上面调用会报错❌`Failed to execute`
+
+经过一系列调查的研究，发现了两种方法解决问题
+
+## 1. 部署合约代理
+
+通过研究[sun.io]()也做了LP的pool，他们部署了一个合约来代理这部分，[https://tronscan.io/#/contract/TDQ6peySpWnmArP4Je8XXBp54j4h4vtzym/code](https://tronscan.io/#/contract/TDQ6peySpWnmArP4Je8XXBp54j4h4vtzym/code)
+
+```javascript
+const address = window.tronWeb.address.fromHex(ValuesAggregatorAddress)
+const pool = window.tronWeb.contract(ValuesAggregatorABI, address)
+const coinbase = window.tronWeb.defaultAddress.base58
+// 获取balance
+const balance = await pool.methods.getBalance(coinbase, [LPTokenAddress]).call()
+// 获取余额和approve状态
+const balanceAndApprove = await pool.methods.getBalanceAndApprove2(coinbase, [LPTokenAddress], [PoolAddress]).call()
+```
+
+## 2. 通过triggerconstantcontract方法调用
+
+tronweb链接：[https://developers.tron.network/reference#triggerconstantcontract-1](https://developers.tron.network/reference#triggerconstantcontract-1)
+
+```javascript
+const contractAddress = window.tronWeb.address.fromHex(LPTokenAddress)
+const coinbase = window.tronWeb.defaultAddress.base58
+const issuerAddress = window.tronWeb.address.fromHex(coinbase)
+const func = 'allowance(address,address)'
+const parameter = [
+    { type: 'address', value: coinbase },
+    { type: 'address', value: PoolAddress }
+]
+const res = await window.tronWeb.transactionBuilder.triggerConstantContract(
+    contractAddress,
+    func,
+    {},
+    parameter,
+    issuerAddress
+)
+```
