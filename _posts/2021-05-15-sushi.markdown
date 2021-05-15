@@ -93,7 +93,7 @@ SUSHI被称为人民的DEX，因为他没有风险投资。但其实这种说法
 
 还有一项正在进行的国债多样化建议，将只持有SUSHI的国债多样化为一篮子蓝筹股#DeFi代币，降低风险并加强资产负债表。
 
-https://snapshot.org/#/sushi/proposal/QmUrmCsmi2dSZ8ytyDSSHnyUQAqYF33YDPeUbUaYuQReg8
+提案参考：[sushiHOUSE Treasury Management](https://snapshot.org/#/sushi/proposal/QmUrmCsmi2dSZ8ytyDSSHnyUQAqYF33YDPeUbUaYuQReg8)
 
 不影响核心业务的过剩会创造机会，以较低的市盈率收购不断增长的项目。用任何可观察的指标来衡量，SUSHI都是便宜的。
 
