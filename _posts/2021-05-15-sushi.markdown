@@ -1,0 +1,122 @@
+---
+layout: post
+title:  "为什么sushi被低估了"
+date:   2021-05-15
+categories: 最近 
+author: zx
+location: ShangHai, China
+cover: "https://zxblog.oss-cn-hangzhou.aliyuncs.com/20210515/cover.jpg"
+description: "我们认为SUSHI现在是数字资产中最被低估的代币。将从锁定6个月的sushi开始释放和PancakeSwap增长以及Uniswap V3炒作来分析"
+---
+---
+
+原文链接：[https://twitter.com/jdorman81/status/1393243213905887232](https://twitter.com/jdorman81/status/1393243213905887232)
+
+
+自今年年初以来，**SUSHI的表现一直逊于UNI和DEX大盘**。这在3月和4月的高峰到低谷下降了 **50%** 时最为明显(仍然比历史最高低了30%)。
+
+![](https://zxblog.oss-cn-hangzhou.aliyuncs.com/20210515/1.jpg)
+
+那为什么呢？
+
+1. **锁定6个月的sushi开始释放**
+2. **PancakeSwap增长**
+3. **Uniswap V3炒作**
+
+让我们逐一分析这些因素——它们会不会对SUSHI的估值及其核心业务产生实际影响？
+
+## 供应量的影响
+
+就像流动性挖矿可以在一夜之间为一个新项目创造吸引力一样，当一项资产失宠时，流动性挖矿的稀释也会带来同样的痛苦。我们从CRV的启动和UNI的短期流动性挖矿就看到了这一点。
+
+以当前价格(假设解锁是线性的)计算每月通胀:
+
+- 4月份通胀率为2.04亿美元
+- 5月份通胀率为1.75亿美元
+- 6月份的通胀率为1.5亿美元
+- ...
+
+![](https://zxblog.oss-cn-hangzhou.aliyuncs.com/20210515/2.jpg)
+
+供应过剩影响大吗?是的，很大 —— 看看4月份SUSHI的价格走势吧。SUSHI从2020年11月发行价为$0.60。用户在等待6个月的质押期结束后赚了一大笔钱，然后在他们获得巨额收益后抛售，市场难以承受抛压。
+
+但从价值投资的角度来看，风险创造了有趣的机会。即使考虑到通胀因素，**SUSHI现在的定价显然是错误的。**
+
+![](https://zxblog.oss-cn-hangzhou.aliyuncs.com/20210515/3.jpg)
+
+
+这种通胀可能会有所缓解。一项正在进行的提议将SUSHI锁定到**oSUSHI**，类似于veCRV模型，项目投票权是基于持有者锁定代币的时间。
+
+提案参考：[https://forum.sushi.com/t/sushinomics-introducing-osushi/4055](https://forum.sushi.com/t/sushinomics-introducing-osushi/4055)
+
+如果该提案通过，**SUSHI代币将被锁定至多3年**，以抵消一定程度的稀释。目前有**97%**的社区支持这项提议。
+
+## Uniswap V3的影响
+
+围绕UNI V3的炒作可能导致SUSHI表现不佳。但是，**SUSHI和Uni正朝着不同的方向发展**。
+
+a）Uni正在缩小现货交易的范围；**SUSHI正在与Kashi和其他未来的Bentobox产品垂直扩张**。
+
+b）SUSHI的CF直接流向xSushi持有者；UNI的手续费仍有待讨论。
+
+他们是竞争对手，但不是赢家通吃。都有各自的优势，在不同的方向上增长。同样，uniswap V3尚未对SushiSwap的交易量或CF对xSushi持有者有影响——这些指标在估值SUSHI时实际上很重要。
+
+![](https://zxblog.oss-cn-hangzhou.aliyuncs.com/20210515/4.png)
+
+## PancakeSwap增长的影响
+
+SUSHI被称为人民的DEX，因为他没有风险投资。但其实这种说法不对，SUSHI是DeFi高级用户、农民以及能够与多个dApps和多个链交互的用户的DEX。这可以从独特的交易员和成交量/独特的每周交易员中看出——很明显，**SUSHI用户是鲸鱼用户**。这类似于FTT vs BNB —— FTX迎合少数大客户，而BNB / CB迎合大量小客户。
+
+通过这种方式，FTT已经把它打败了。
+
+![](https://zxblog.oss-cn-hangzhou.aliyuncs.com/20210515/5.jpg)
+
+**SUSHI最大的竞争对手可能是CAKE，而不是UNI。**
+
+以太坊上高昂的gas将CAKE变成了一个更好用的DEX，这也是为什么我们在SushiSwap上看到了持平的TVL(代币价格上涨)，而在3月和4月销量却较低，因为用户无需支付gas费用，却能够在Pancake上获得更高的LM奖励。
+
+**但是从4月中旬到今天，TVL和交易量都再次上升，而BSC对于SUSHI的用户群体来说可能不是一个长期的解决方案，这一问题不太可能对CF产生长期影响。**
+
+结论:这三个因素都影响了SUSHI的价格，但对SUSHI的核心业务和增长影响甚微。
+
+自DEX上市以来，CF对xSushi的交易量**增长了22%**。
+
+![](https://zxblog.oss-cn-hangzhou.aliyuncs.com/20210515/6.jpg)
+
+与此同时，SUSHI继续扩张，如果xSushi持有者成功的话，他们可以选择更多的CF。他们已经推出了交叉链，并看到了吸引力。即`MATIC`: TVL中的4亿美元(大约一周平均每天4000万美元)
+
+(来源:[https://analytics-polygon.sushi.com](https://analytics-polygon.sushi.com))
+
+
+![](https://zxblog.oss-cn-hangzhou.aliyuncs.com/20210515/7.jpg)
+
+
+还有一项正在进行的国债多样化建议，将只持有SUSHI的国债多样化为一篮子蓝筹股#DeFi代币，降低风险并加强资产负债表。
+
+https://snapshot.org/#/sushi/proposal/QmUrmCsmi2dSZ8ytyDSSHnyUQAqYF33YDPeUbUaYuQReg8
+
+不影响核心业务的过剩会创造机会，以较低的市盈率收购不断增长的项目。用任何可观察的指标来衡量，SUSHI都是便宜的。
+
+这种可选性创造了进一步的上行空间:
+- 限制通过oSUSHI - TVL / Volume增长的稀释，通过Bentobox和Kashi增加CF 
+- 多样化的资金提案
+- [SUSHI IDO平台](https://instantmiso.com/)
+
+随着投资者转回DeFi(确实如此)，这是一个值得寻找的机会。
+
+我们在投资这类资产方面也犯了很多错误，但我们最近所有的公开帖子(参见过去关于`$UNI`， `$LEO`， `$WNXM`， `$EOS`的帖子)都非常盈利，因为它们有一个共同的主题: 识别价值，选择便宜的上行选择。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
