@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "为什么sushi被低估了"
+title:  "为什么SUSHI被低估了"
 date:   2021-05-15
 categories: 最近 
 author: zx
