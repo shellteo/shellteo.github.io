@@ -1,0 +1,79 @@
+---
+layout: post
+title:  "Arbitrum Rollup基础知识"
+date:   2021-07-11
+categories: 翻译 
+author: zx
+location: ShangHai, China
+cover: ""
+description: "Arbitrum翻译第一篇"
+---
+---
+
+原文链接：[https://developer.offchainlabs.com/docs/rollup_basics](https://developer.offchainlabs.com/docs/rollup_basics)
+
+这篇文档解释了 Arbitrum Rollup 背后的基本概念，Arbitrum Rollup 是一种为以太坊区块链设计的 Optimistic Rollup 协议，并提供了用于了解有关各种系统组件的更多信息的链接。
+
+# Rollups介绍
+
+Rollups是最近智能合约扩容最炙手可热的idea，并且已经存在了一段时间，但有几个团体，包括Offchain Labs，最近一直在推广它。在讨论Arbitrum Rollup及其独特的特点之前，让我们先了解一下什么是rollup，以及不同的rollup解决方案之间会有哪些共同点。
+
+Rollup 是扩展开放合约的通用方法，每个人都可以看到并交互的合约。在Rollup中，交易作为 calldata写在以太坊上，但合约的实际计算和存储是在链外完成的。有人（验证者）在链上发布关于合约将做什么的断言（也称为 Rollup 块）——合约采取的行动列表，例如支付的款项，以及合约后其状态的加密哈希已经执行了已经发布在链上的调用。我们可以将断言视为将所有调用及其结果“Rollup”到单个链上交易中。
+
+Rollup系统的不同之处在于它们如何确保断言是正确的。
+
+# Optimistic Rollup（乐观的Rollup）
+
+Optimistic Rollup 是指一种乐观的Rollup，因为当一个断言发布时，它并不包含保证其有效性的证明。相反，当断言被发布到链上时，做出该断言的验证者会质押保证金，并且有一个周期，在这个周期内任何人都可以在这个时间窗口内质押自己的保证金并质疑该断言。这也就是**欺诈证明（fraud proof）**。如果断言者错了，他们将失去质押的保证金。如果挑战期到了并且没有成功的挑战，则断言被接受并具有**最终性**。
+
+所有的Optimistic Rollup都是**交互式**的 —— 因为断言者首先发布一个断言，验证者可以通过挑战来触发争议的解决过程。但是，**我们可以通过解决争议需要多少轮交互来进一步对乐观Rollup进行分类**。在多轮交互式Rollup中，如 Arbitrum Rollup，有一个初始挑战窗口，在此期间挑战者可以发布保证金并声称断言是错误的。接下来是断言者和挑战者之间的来回互动协议，链上合约作为该协议的裁判员。最后，裁判员确定一方提出了错误的主张，并通过拿走他们的保证金来惩罚该方。这个想法是通过使用两个争议者之间的互动协议，在链上裁判员必须 "根据案情 "评估合同行为的证据之前，尽可能地减少链上解决争议的工作量。
+
+与其他 Rollup 方法相比，**Arbitrum Rollup 的设计亮点在于链上数据量非常低**，并且它可以支持任意 EVM 智能合约，并且可以与所有以太坊开发人员工具配合使用。在本页的其余部分，我们将较少关注 Arbitrum 如何实现其属性，而更多关注 Arbitrum Rollup 的开发人员和用户体验。
+
+# Arbitrum Rollup
+
+Arbitrum Rollup链是超级扩容的L2链。与所有 Rollup 一样，Arbitrum Rollup 链建立在以太坊区块链之上并受其保护，所有交易数据都记录在以太坊上。从用户和开发人员的角度来看，与 Arbitrum 交互感觉就像与以太坊交互。 Arbitrum 支持与以太坊相同的 RPC 接口，支持所有 EVM 语言，并且原生支持所有以太坊工具，无需任何特殊适配器。 Arbitrum Rollup 链与以太坊不同的唯一方式是成本：Arbitrum 上的交易成本只是它们在以太坊上的一小部分。
+
+将合约从以太坊移植到Arbitrum又快又简单；不需要改变任何代码或下载任何新软件。Arbitrum和以太坊一样完全支持EVM。这意味着所有与以太坊合作的智能合约语言（如所有版本的Solidity，Vyper Yul），也可以在Arbitrum中原生工作。详细的兼容性信息见[Solidity支持](https://developer.offchainlabs.com/docs/Solidity_Support)。同样，所有标准的以太坊前端工具（如Truffle, Hardhat, The Graph, ethers.js）也可与Arbitrum原生工作。更多细节请参见[前端集成](https://developer.offchainlabs.com/docs/Frontend_Integration)。并原生支持所有以太坊工具。
+
+虽然开发者和用户不需要下载任何自定义软件来部署合约和与 Arbitrum Rollup 链交互，但一些用户可能希望自己验证该链。使用 Arbitrum Rollup 时，任何诚实的用户都可以保证系统正确运行，从而保证了自己的安全。**验证 Arbitrum 链是完全无需许可的**；您需要做的就是下载 Arbitrum Validator 节点软件并将您的节点指向链。要发布或质疑一个断言，你只需要质押一笔保证金，在争议解决后你会得到回报（假设你的行为是诚实的）。
+
+简而言之，Arbitrum使你能够以使用以太坊原生的一小部分成本与智能合约进行互动和部署，并使用你今天用来与以太坊互动的所有工具，而不影响安全性或去中心化。使用该链不需要定制工具，但任何人都可以选择验证该链。
+
+# 执行和保障链的安全
+
+Arbitrum Rollup由2018年首次在Usenix安全会议上[发布](https://www.usenix.org/conference/usenixsecurity18/presentation/kalodner)的多轮交互式优化Rollup协议保障。任何用户都可以提交一个关于Rollup链执行的断言。在该断言提交给以太坊后，挑战期开始，在此期间，任何其他用户都可以挑战该断言的正确性。在挑战开始后，争议由以太坊解决，并保证诚实的用户将赢得挑战。为了激励诚实的操作，验验证者放置保证金，如果他们失去争议，他们将被没收。关于该协议的更多细节，请参见[协议设计](https://developer.offchainlabs.com/docs/Rollup_Protocol)页面。
+
+# 提交交易
+
+回顾一下，**Rollups的主要特点是将所有交易数据都记录在链上**。所有在Arbitrum Rollup链上执行的交易都提交给运行在以太坊上的**Inbox智能合约**。 Rollup链的执行完全基于Inbox提交的交易，因此任何监控Inbox的人只需执行该合约的交易就可以知道Arbitrum链的正确状态。尽管在 Arbitrum 上执行交易需要以太坊交易，但Arbitrum交易只使用了同等以太坊交易的一小部分gas，因为只有原始交易数据进入以太坊，但执行和合约存储发生在链外。Arbitrum Rollup进一步提供了一套压缩工具，可以进一步减少需要在以太坊区块链上记录的数据量。
+
+# 聚合交易
+
+虽然用户可以直接将他们的交易提交到Inbox合约，但他们可以选择通过聚合器，也就是收集交易并将它们批量提交给以太坊的节点。
+
+使用聚合器有两个主要好处。首先，以太坊交易的最低成本比Arbitrum交易高得多。单独提交Arbitrum交易会产生相当大的开销。通过将成批的 Arbitrum 交易作为单个以太坊交易提交，这个最低成本被摊派到该批次的所有交易中，大大降低了gas。其次，通过聚合器进行交易使用户可以使用 Rollup 链，而无需直接与Layer1以太坊进行交易或持有资产。
+
+要了解有关 Arbitrum 聚合器的更多信息，请单击[此处](https://developer.offchainlabs.com/docs/aggregator)。
+
+# 吞吐量
+
+由于所有Arbitrum的交易数据都被发布到以太坊，每笔交易的成本以及Arbitrum每秒钟可以支持的交易数量都受限于这段时间内可以发布到以太坊的数据量。出于这个原因，优化交易的压缩，以尽量减少需要在链上发布的内容，对于降低成本和提高吞吐量至关重要。
+
+所有的交易都有相关的元数据需要存储在链上，但有些交易本身会携带自定义的calldata有效载荷。由于这个原因，一个链的吞吐量与被测试的具体交易有很大关系。**对于不携带自己的calldata的简单转账交易，我们的基准测试显示Arbitrum允许每秒钟有4500个转账交易**。Arbitrum区块链浏览器给出了Arbitrum Rollup测试链上所有交易的详细成本基准，是对特定工作负载进行基准测试的一个非常有用的工具。
+
+# 跨合约通信
+
+部署在Arbitrum Rollup链上的合约可以像在Ethereum上一样相互进行同步调用。后续问题是Arbitrum Rollup链上的合约如何与Ethereum上的合约互动。跨链和跨分片的互操作性是一个难题，但由于Rollups植根于Ethereum，互操作性可以相对顺利，尽管是异步的。
+
+区分从Ethereum到Arbitrum的调用和从Arbitrum到Ethereum的调用很重要。以太坊合约可以向Arbitrum发送交易，这些交易会很快到达。然而，从Arbitrum到Ethereum的一般交易是比较慢的，因为需要等待挑战期过后才能被确认。幸运的是，有一些优雅的解决方案，允许用户快速从Arbitrum提取可替换的资产到Ethereum。更多相关信息请参见文档中关于[提款](https://developer.offchainlabs.com/docs/Withdrawals)的条目。
+
+Arbitrum Rollup包含一个Token Bridge SDK和一个Token Bridge用户界面，作为在Arbitrum和Ethereum之间无信任地转移资产的一种简单方法。除了支持将以太坊原生资产转移到Arbitrum之外，Arbitrum还包括能够创建Arbitrum原生代币的功能，这些代币是在Arbitrum Rollup链上铸造的，随后可以转移到以太坊区块链上。
+
+# Arbitrum虚拟机（AVM）
+
+尽管Arbitrum支持EVM，但在其内部运行的是Arbitrum虚拟机（AVM）。AVM从未向开发者或用户公开，所以如果你只是对如何使用Arbitrum感兴趣，你可以安全地忽略它。但是如果你对Arbitrum的内部运作以及它如何实现其可扩展性感到好奇，请继续阅读。AVM进行了优化，允许在乐观的情况下快速进展，同时保持有效解决争端的能力。要了解更多，你可以阅读[AVM设计原理](https://developer.offchainlabs.com/docs/AVM_Design)的详细概述，以及[AVM规范](https://developer.offchainlabs.com/docs/AVM_Specification)，这是AVM架构语义的较低层次描述。
+
+# ArbOS
+
+ArbOS 是 Arbitrum 操作系统，位于 AVM 之上，负责将不受信任的合约彼此隔离，使用[ArbGas](https://developer.offchainlabs.com/docs/ArbGas)跟踪和限制其资源使用，并管理经济模型，向用户收取费用以资助链上验证者的运作。ArbOS通过将原本在L1智能合约中完成的工作卸载到更便宜的L2代码中，使Arbitrum具有很大的灵活性。想了解更多，请看[ArbOS部分](https://developer.offchainlabs.com/docs/ArbOS)。
