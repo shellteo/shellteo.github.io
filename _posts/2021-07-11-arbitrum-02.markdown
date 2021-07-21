@@ -1,0 +1,218 @@
+---
+layout: post
+title:  "Arbitrum 深入理解(WIP)"
+date:   2021-07-20
+categories: 翻译 
+author: zx
+location: ShangHai, China
+cover: ""
+description: "Arbitrum翻译第二篇"
+---
+---
+
+原文链接：[https://developer.offchainlabs.com/docs/inside_arbitrum](https://developer.offchainlabs.com/docs/inside_arbitrum)
+
+这个文档是对 Arbitrum 设计及其基本原理的深入解释。这不是 API 文档，也不是代码的导览——在别处寻找这些。 “Inside Arbitrum”是为想要了解 Arbitrum 设计的人准备的。
+
+## 为什么使用Arbitrum?
+Arbitrum是以太坊的二级扩容解决方案，提供了一个独特的优势组合。
+- 无信任的安全：根植于以太坊的安全，任何一方都能确保第2层的结果是正确的
+- 与以太坊的兼容性：能够运行未经修改的 EVM 合约和未经修改的以太坊交易
+- 可扩展性：将合约的计算和存储移出以太坊主链，从而实现更高的吞吐量
+- 极低gas：在设计和工程上最大限度地减少系统的L1 gas（the L1 gas footprint），最大限度地减少每笔交易的成本。
+
+## 大图
+从最基础的层面看，Arbitrum 链的工作模式如下：
+
+![Arbitrum](https://lh4.googleusercontent.com/qwf_aYyB1AfX9s-_PQysOmPNtWB164_qA6isj3NhkDnmcro6J75f6MC2_AjlN60lpSkSw6DtZwNfrt13F3E_G8jdvjeWHX8EophDA2oUM0mEpPVeTlMbsjUCMmztEM0WvDpyWZ6R)
+
+用户和合约将消息放入Inbox。该链一次读取一条消息，并处理每一条消息。这会更新链的状态并产生一些输出。
+
+如果你想让Arbitrum链为你处理一笔交易，你需要把这笔交易放入链的Inbox。然后链会看到你的交易，执行它，并产生一些输出：交易收据，以及你的交易所做的任何提款。
+
+执行是确定性的——这意味着链的行为由Inbox的内容唯一确定。因此，一旦你的交易被放入Inbox，你的交易结果就可以知晓。任何 Arbitrum 节点都可以告诉你结果。（如果需要，你可以自己运行 Arbitrum 节点。）
+
+本文档中的所有技术细节都与此图表相关。为了从这张图中获得对 Arbitrum 的完整描述，我们需要回答以下问题：
+
+- 谁跟踪Inbox、链状态和输出？
+- Arbitrum 如何确保链状态和输出正确？
+- 以太坊用户和合约如何与 Arbitrum 交互？
+- Arbitrum 如何支持与以太坊兼容的合约和交易？
+- ETH 和代币如何转入和转出 Arbitrum 链，以及如何在链上进行管理？
+- 如何运行我自己的 Arbitrum 节点或验证器？
+
+## Optimistic Rollup
+Arbitrum是一种Optimistic Rollup。让我们来解读这个术语。
+
+### *Rollup*
+
+Arbitrum是一个Rollup，这意味着对链的输入--被放入Inbox的消息--都作为calldata记录在以太坊链上。正因为如此，每个人都有他们需要的信息来确定链的当前正确状态--他们有Inbox的全部历史，而且结果是由Inbox历史唯一决定的，所以如果需要的话，他们可以只根据公共信息来重建链的状态。
+
+这也允许任何人成为Arbitrum协议的完全参与者，运行一个Arbitrum节点或作为验证者参与。关于链的历史或状态没有任何东西是秘密的。
+
+### *Optimistic*
+
+Arbitrum 是乐观的（Optimistic），这意味着 Arbitrum 通过让任何一方（“验证者”）发布该方声称正确的汇总块来推进其链的状态，然后让其他人有机会挑战该主张。如果挑战期（大约一周）过去了并且没有人挑战声称的汇总块，Arbitrum 会确认汇总块是正确的。如果有人在质疑期间质疑索赔，那么 Arbitrum 会使用有效的争议解决协议（详见下文）来确定哪一方在撒谎。说谎者将没收押金，说真话的人将收取部分押金作为对他们努力的奖励（部分押金被烧毁，以保证即使存在一些勾结，骗子也会受到惩罚）。
+
+Arbitrum是乐观的，这意味着Arbitrum通过让任何一方（"验证者"）发布一个该方声称是正确的rollup区块来推进其链的状态，然后给其他人一个机会来挑战这个声称。如果挑战期（大约一个星期）过去了，没有人挑战这个的rollup区块，Arbitrum就会确认该rollup区块是正确的。如果有人在挑战期内对索赔提出质疑，那么Arbitrum将使用一个有效的争端解决协议（详见下文）来确定哪一方在说谎。撒谎者将放弃一笔押金，而说真话的人将获得部分押金作为他们努力的回报（部分押金被烧毁，保证撒谎者受到惩罚，即使有一些串通行为发生）。
+
+因为试图作弊的一方将失去押金，所以试图作弊的情况应该是非常罕见的，正常的情况是单方发布一个正确的rollup区块，没有人质疑它。
+
+## 交互式证明
+
+The idea of interactive proving is that Alice and Bob will engage in a back-and-forth protocol, refereed by an L1 contract, to resolve their dispute with minimal work required from any L1 contract.
+
+Arbitrum's approach is based on dissection of the dispute. If Alice's claim covers N steps of execution, she posts two claims of size N/2 which combine to yield her initial N-step claim, then Bob picks one of Alice's N/2-step claims to challenge. Now the size of the dispute has been cut in half. This process continues, cutting the dispute in half at each stage, until they are disagreeing about a single step of execution. Note that so far the L1 referee hasn't had to think about execution "on the merits". It is only once the dispute is narrowed down to a single step that the L1 referee needs to resolve the dispute by looking at what the instruction actually does and whether Alice's claim about it is correct.
+
+The key principle behind interactive proving is that if Alice and Bob are in a dispute, Alice and Bob should do as much off-chain work as possible needed to resolve their dispute, rather than putting that work onto an L1 contract.
+
+Re-executing transactions
+The alternative to interactive proving would be to have a rollup block contain a claimed machine state hash after every individual transaction. Then in case of a dispute, the L1 referee would emulate the execution of an entire transaction, to see whether the outcome matches Alice's claim.
+
+Why interactive proving is better
+We believe strongly that interactive proving is the superior approach, for the following reasons.
+
+More efficient in the optimistic case: Because interactive proving can resolve disputes that are larger than one transaction, it can allow a rollup block to contain only a single claim about the end state of the chain after all of the execution covered by the block. By contrast, reexecution requires posting a state claim for each transaction within the rollup block. With hundred or thousands of transactions per rollup block, this is a substantial difference in L1 footprint -- and L1 footprint is the main component of cost.
+
+More efficient in the pessimistic case: In case of a dispute, interactive proving requires the L1 referee contract only to check that Alice and Bob's actions "have the right shape", for example, that Alice has divided her N-step claim into two claims half as large. (The referee doesn't need to evaluate the correctness of Alice's claims--Bob does that, off-chain.) Only one instruction needs to be reexecuted. By contrast, reexecution requires the L1 referee to emulate the execution of an entire transaction.
+
+Much higher per-tx gas limit: Interactive proving can escape from Ethereum's tight per-transaction gas limit; a transaction that requries so much gas it couldn't even fit into an Ethereum block is possible on Arbitrum. The gas limit isn't infinite, for obvious reasons, but it can be much larger than on Ethereum. As far as Ethereum is concerned, the only downside of a gas-heavy Arbitrum transaction is that it may require an interacrtive fraud proof with slightly more steps (and only if indeed it is fraudulent). By contrast, reexecution must impose a lower gas limit than Ethereum, because it must be possible to emulate execution of the transaction (which is more expensive than executing it directly) within a single Ethereum transaction.
+
+No limit on contract size: Interactive proving does not need to create an Ethereum contract for each L2 contract, so it does not need contracts to fit within Ethereum's contract size limit. As far as Arbitrum's dispute contracts are concerned, deploying a contract on L2 is just another bit of computation like any other. By contrast, reexecution approaches must impose a lower contract size limit than Ethereum, because they need to be able to instrument a contract in order to emulate its execution, and the resulting instrumented code must fit into a single Ethereum contract.
+
+More implementation flexibility: Interactive proving allows more flexibility in implementation, for example the ability to add instructions that don't exist in EVM. All that is necessary is the ability to verify a one-step proof on Ethereum. By contrast, reexecution approaches are tethered to limitations of the EVM.
+
+Interactive proving drives the design of Arbitrum
+Much of the design of Arbitrum is driven by the opportunities opened up by interactive proving. If you're reading about some feature of Arbitrum, and you're wondering why it exists, two good questions to ask are: "How does this support interactive proving?" and "How does this take advantage of interactive proving?" The answers to most "why questions" about Arbitrum relate to interactive proving.
+
+## Arbitrum 架构
+下图显示了 Arbitrum 的基本架构。
+![Arbitrum-Architecture](https://lh5.googleusercontent.com/1qwGMCrLQjJMv9zhWIUYkQXoDR2IksU5IzcSUPNJ5pWkY81pCvr7WkTf4-sb41cVohcnL-i6y8M1LU8v-4RXT_fdOsaMuLXnjwerSuKTQdHE-Hrvf4qBhRQ2r7qjxuAi3mk3hgkh)
+
+在左边是用户和帮助他们连接到他们选择的链的**服务提供商**。在右边，是Arbitrum系统本身，在以太坊的基础上分层构建。
+
+我们将在右侧描述 Arbitrum 堆栈的工作原理，然后我们将讨论左侧发生的事情以将用户连接到它。
+
+右下角是古老的**以太坊**。 Arbitrum 建立在以太坊之上，并继承了以太坊的安全性。
+
+在以太坊之上是 **EthBridge**，这是一组管理 Arbitrum 链的以太坊合约。 EthBridge 负责仲裁 Arbitrum rollup协议，以确保其上的层正确运行。 （更多关于 Rollup 协议的信息在下面的 Rollup 协议部分。）EthBridge 还维护链的inbox和outbox，允许用户和合约向链发送交易消息，并观察和使用这些交易的输出。用户、L1以太坊合约和 Arbitrum 节点调用 EthBridge 合约以与 Arbitrum 链交互。
+
+EthBridge 上方的水平层被标记为 **AVM 架构**，因为 EthBridge 为其上方的层提供的是一个 Arbitrum 虚拟机，它可以执行读取输入并产生输出的计算机程序。这是Arbitrum中最重要的接口，因为它划分了第一层和第二层--它划分了提供inbox/执行/outbox抽象的第一层组件和使用该抽象的第二层组件。
+
+![chain-state](https://lh4.googleusercontent.com/qwf_aYyB1AfX9s-_PQysOmPNtWB164_qA6isj3NhkDnmcro6J75f6MC2_AjlN60lpSkSw6DtZwNfrt13F3E_G8jdvjeWHX8EophDA2oUM0mEpPVeTlMbsjUCMmztEM0WvDpyWZ6R)
+
+再往上一层是**ArbOS**。这是一个软件程序，由Offchain实验室编写，运行在Arbitrum虚拟机上，并作为Arbitrum链上智能合约执行的记录员、交通警察和执行者。它被称为ArbOS，因为它所扮演的角色就像笔记本电脑或手机上的操作系统（轻量级版本）--它是首先启动的程序，管理链上所有其他代码的执行。**重要的是，ArbOS完全运行在第二层，脱离以太坊链，所以它可以利用第二层计算的可扩展性和低成本。**
+
+ArbOS 之上的水平层称为 **EVM 兼容性**，因为 ArbOS 为智能合约提供了与以太坊虚拟机兼容的执行环境。也就是说，你可以向 ArbOS 发送合约的 EVM 代码，就像将合约发送到以太坊一样，ArbOS 将加载合约并使其能够为交易提供服务，就像在以太坊上一样。 ArbOS 负责兼容性的细节，因此智能合约程序员可以像在以太坊上一样编写他们的代码（或者通常只是采用现有的以太坊合约并重新部署它们）。
+
+在堆栈的顶部--即图中的右上部分--是**EVM合约**，这些合约已被开发者部署到Arbitrum链上，并执行提交到链上的交易。
+
+这是图表的右侧，它提供了Arbitrum链的功能。现在让我们转到左边，它更直接地支持用户。
+
+左下方是标准的**以太坊节点**，用于与以太坊链互动。正上方是**Arbitrum节点**。顾名思义，这些是用来与Arbitrum互动的。它们支持与以太坊节点相同的API，所以它们与现有的以太坊工具配合得很好--你可以将你的与以太坊兼容的钱包或工具指向Arbitrum节点，它们将能够相互对话。就像在以太坊上一样，任何人都可以运行Arbitrum节点，但是很多人都会选择依赖由其他人运行的节点。
+
+一些 Arbitrum 节点为用户请求提供服务，而另一些则选择仅充当验证器，以确保 Arbitrum 链的正确性。（有关详细信息，请参阅[验证器](https://developer.offchainlabs.com/docs/inside_arbitrum#validators)部分。）
+
+最后但同样重要的是，我们在左上角看到用户。用户使用钱包、dapp 前端和其他工具与 Arbitrum 进行交互。因为 Arbitrum 节点支持与以太坊相同的 API，所以用户不需要全新的工具，开发人员也不需要重写他们的 dapp。
+
+## 分界线的上还是下？
+我们经常说，Arbitrum架构中的关键分界线是AVM接口，它将第一层和第二层划分开来。思考某项活动是在分界线以下还是在分界线以上可能是很有用的。
+
+![](https://lh5.googleusercontent.com/1qwGMCrLQjJMv9zhWIUYkQXoDR2IksU5IzcSUPNJ5pWkY81pCvr7WkTf4-sb41cVohcnL-i6y8M1LU8v-4RXT_fdOsaMuLXnjwerSuKTQdHE-Hrvf4qBhRQ2r7qjxuAi3mk3hgkh)
+
+分界线下功能关注的是确保AVM以及链的正确执行。线上功能假定AVM将正确执行，并侧重于与运行在第二层的软件进行交互。
+
+举例来说，Arbitrum验证器在线下操作，因为它们参与了由EthBridge在线下管理的rollup协议，以确保AVM的正确执行得到确认。
+
+另一方面，Arbitrum全节点在线上运行，因为他们在本地运行AVM的副本，并假定线下机制将确保他们在本地计算的相同结果最终会被他们不监控的线下机制所确认。
+
+大多数用户，在大多数时候，都会从分界线上的角度考虑问题。他们会把Arbitrum链作为另一条链进行交互，而不担心线下的细节问题，以确保链不会出错。
+
+## EthBridge
+
+EthBridge是一组管理Arbitrum链的以太坊合约。EthBridge跟踪链上的收件箱内容、链上状态的哈希值以及有关输出的信息。EthBridge是关于Arbitrum链上发生的事情的最终权威来源。
+
+EthBridge是Arbitrum的安全基础。EthBridge在以太坊上运行，因此它是透明的并且可以无信任地执行。
+
+*Inbox*合约管理链的收件箱。Inbox跟踪收件箱中每条消息的（hash of）。
+调用Inbox的一个send*方法将一条消息插入Arbitrum链的收件箱。
+
+Inbox合约确保传入消息中的某些信息准确无误：正确记录了发送者，并且正确记录了消息中的以太坊块号和时间戳。
+
+不出所料，还有一个Outbox合约，管理链上的输出；即来自Arbitrum的消息，关于应该（最终）在以太坊上发生的事情（特别是提款）。当一个rollup区块被确认时，该rollup区块中产生的输出被放入outbox。输出如何最终反映在以太坊上，详见[桥接](https://developer.offchainlabs.com/docs/inside_arbitrum#bridging)部分。
+
+Rollup合约和它的朋友负责管理rollup协议。他们跟踪Arbitrum链的状态：已经被提议、接受和/或拒绝的rollup区块，以及谁在哪些rollup节点上做了赌注。挑战合约及其朋友负责跟踪和解决验证者之间关于哪些rollup区块是正确的任何争议。Rollup、Challenge和它们的朋友的功能将在下面的Rollup协议部分详细说明。
+
+## Arbitrum Rollup协议
+
+在深入研究rollup协议之前，我们需要了解两件事。
+
+首先，*如果你是Arbitrum的用户或开发者，你不需要了解rollup协议*。你永远不需要考虑它，除非你想这样做。你与它的关系就像火车乘客与火车引擎的关系：你知道它的存在，你依靠它来维持工作，但你不会花时间去监视它或研究它的内部结构。
+
+我们欢迎你研究、观察，甚至参与到rollup协议中来，但你不需要，而且大多数人也不会这样做。因此，如果你是一个典型的火车乘客，只想阅读或与邻居交谈，你可以直接跳到本文件的下一节。如果不是，请继续阅读!
+
+关于 rollup 协议要了解的第二件事是，该协议不决定交易的结果，它只确认结果。结果由链Inbox中的消息序列唯一确定。因此，一旦你的交易消息进入链的收件箱，其结果就是可知的——Arbitrum 节点将报告你的交易要完成。 Rollup 协议的作用是确认对 Arbitrum 用户而言已经发生的交易结果。 （这就是 Arbitrum 用户可以有效地忽略rollup协议的原因。）
+
+你可能想知道为什么我们需要rollup协议。如果每个人都已经知道了交易的结果，为什么还要去确认它们呢？该协议的存在有两个原因。首先，有人可能会对一个结果撒谎，我们需要一个明确的、无需信任的方式来判断谁在撒谎。第二，以太坊不知道结果。第二层扩展系统的全部意义在于运行交易而不需要Ethereum做所有的工作--事实上Arbitrum的速度足够快，Ethereum不可能希望监控每一笔Arbitrum交易。但是一旦一个结果被确认，Ethereum就会知道它并可以依赖它。
+
+有了这些预备知识，让我们进入rollup协议的细节。
+
+参与协议的各方被称为*验证者*。任何人都可以成为验证者。一些验证者会选择成为盯盘者--他们会交纳ETH押金，如果他们没有被发现作弊，他们就可以收回押金。这些角色是无权限的：任何人都可以成为验证者或储存者。
+
+Rollup协议的关键安全属性是*AnyTrust Guarantee*，即任何一个诚实的验证者都可以强制确认链的正确执行。这意味着Arbitrum链的执行和Ethereum一样是无需信任的。你，而且只有你自己（或你雇佣的人）可以强迫你的交易被正确处理。而且，无论有多少恶意的人试图阻止你，都是如此。
+
+## Rollup链
+rollup协议跟踪一个rollup区块。这些与以太坊区块是分开的。你可以将rollup块视为形成一个单独的链，由Arbitrum rollup协议管理和监督。
+
+验证者可以提出rollup块。新的rollup块将首先处于未确认状态。最终，每个rollup块都将被确认或拒绝。确认的区块构成了链的确认历史。
+
+每个rollup块包含：
+- rollup块编号
+- 前驱区块号：在此区块之前（声称是）正确的最后一个区块的rollup区块号
+- 链在其历史上完成的计算量（以 ArbGas 衡量）
+- 在链的历史记录中已使用的inbox消息数
+- 在链的历史上产生的输出的hash
+- 链状态的hash
+
+除了 rollup 区块号外，区块的内容都是区块提议者声明的。 Arbitrum 一开始并不知道这些字段是否正确。如果所有这些字段都正确，则协议最终应确认该块。如果这些字段中的一个或多个不正确，协议最终应拒绝该块。
+
+除了rollup区块编号，区块的内容都只是区块提议者提交的。Arbitrum一开始并不知道这些字段正确与否。如果所有这些字段都是正确的，协议应该最终确认该区块。如果其中一个或多个字段不正确，协议应该最终拒绝该区块。
+
+一个块隐含地声明其前驱块是正确的。这意味着，一个块隐含地声明了链的完整历史的正确性：一个祖先块的序列，一直追溯到链的诞生。
+
+该区块被分配了一个截止日期，它表示其他验证者必须对其做出响应的时间。如果你是一个验证者，并且你同意一个滚动块是正确的，你不需要做任何事情。如果你不同意一个滚动区块，你可以发布另一个有不同结果的区块，并且你可能最终会与第一个块的抵押者进行挑战。(下面有更多关于挑战的内容。)
+
+在正常情况下，rollup 链将如下所示：
+
+![rollup](https://lh3.googleusercontent.com/vv118kJMXj76PG6J-Jv4BC9KTpe72mdfD1uWoqhKXvKKfPWHW6wMMCvJ9KKQx_VXIw34XfzT4yfyNVtQVstYRczLk6kLKvBv8Pbl-0MjSzGxz1Z_8T5Y_6UcDMWpy7_D9PxQYKdT)
+
+在左边，代表链的历史早期部分，我们已经确认了rollup块。这些已经被EthBridge完全接受和记录。最新的确认区块，94号区块，被称为 "最新确认区块"。在右边，我们看到一组较新的rollup区块。EthBridge还不能确认或拒绝它们，因为他们的截止日期还没有结束。命运尚未确定的最旧区块，即第 95 个区块，被称为“第一个未解决区块”。
+
+请注意，提议的区块可以建立在先前提议的区块上。这允许验证者继续提议区块，而无需等待 EthBridge 确认前一个区块。通常，所有提议的区块都是有效的，因此它们最终都会被接受。
+
+这是链状态可能是什么样子的另一个示例，如果多个验证器是恶意的。这是一个人为的例子，旨在说明协议中可能出现的各种情况，所有情况都被粉碎成一个场景。
+
+![](https://lh3.googleusercontent.com/IKBNeX9IVAD5Vom8vqYER4CEZhTecJJrp51ddlEGYiZrdV6y9zaG0Ip8HuKgfJ-eS9_TN_C2I0EPl-7H5ITRgSQqJONnSE7X0P62sRbGoiv_shmijBxsVDJL9RhWbyDjs2lKxU-M)
+
+这里发生了很多事情，让我们来解读一下。
+
+- 区块 100 已被确认。
+- 块 101 声称是块 100 的正确后继，但 101 被拒绝（因此在其中绘制了 X）。
+- 区块 102 最终被确认为 100 的正确继任者。
+- 区块 103 已被确认，现在是最新确认的区块。
+- 区块 104 被提议作为区块 103 的后继，而 105 被提议作为 104 的后继。104 被拒绝为不正确，结果 105 被拒绝，因为其前任被拒绝。
+- 块 106 未解决。它声称是区块 103 的正确继任者，但协议尚未决定是确认还是拒绝它。这是第一个未解决的块。
+- 块 107 和 108 声称与 106 链接。它们也未解决。如果 106 被拒绝，它们也会被自动拒绝。
+- 块 109 与块 106 不同，因为它们都声称具有相同的前驱。其中至少有一个最终会被拒绝，但协议尚未解决它们。
+- 块110声称跟随109。它是未解决的。如果 109 被拒绝，110 也会被自动拒绝。
+- 111块声称跟随105。111不可避免地会被拒绝，因为它的前身已经被拒绝了。但是还没有被拒绝，因为协议是按照块号顺序解析块的，所以协议必须依次解析106到110，然后才能解析111。 110解析后，111可以立即被拒绝.
+
+再次强调：这种事情在现实中是非常不可能发生的。在这张图中，至少有四方在错误的节点上下注，而当尘埃落定时，至少有四方会失去他们的赌注。当然，协议会正确处理这些情况，但它们是罕见的情况。这张图是为了说明可能出现的各种情况，以及协议将如何处理这些情况。
+
+## 质押
+
+在任何时候，一些验证者都会成为抵押者，而一些则不是。质押者存入的资金由EthBridge持有，如果质押者在挑战中失败，将被没收。目前所有的链都接受ETH的赌注。
+
+一个赌注可以覆盖一连串的rollup区块。每个质押者都质押在最新确认的区块上；如果你押注在一个区块上，你还可以押注该区块的一个后继者。因此，你可能会被押在一系列区块上，这些区块代表了对链上正确历史的一个连贯的主张。一个赌注就足以让你对该区块序列做出承诺。
+
+这些规则的后果是，一旦第一个未解决的区块的最后期限过了（并且假设至少有一个盯住最新确认的区块以外的东西的人），该区块无法解决的唯一方法是，至少有一个盯住它的人和至少有一个盯住具有相同前身的另一个区块的人。如果发生这种情况，那么这两个钉子户对哪个区块是正确的就会产生分歧。现在是挑战的时候了，要解决这个分歧。
