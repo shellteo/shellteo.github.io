@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "分享-Layer2扩容探索"
-date:   2021-07-22
-categories: 翻译 
+date:   2021-09-22
+categories: 分享 
 author: zx
 location: ShangHai, China
 cover: "https://zxblog.oss-cn-hangzhou.aliyuncs.com/20210722/cover.png"
