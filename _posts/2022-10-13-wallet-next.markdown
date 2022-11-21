@@ -116,5 +116,5 @@ Gitcoin 是一个开源软件开发激励平台，旨在通过区块链支持各
 - [在DeSoc语境下针对DID的价值发现与精神分析](https://www.theblockbeats.info/news/31590?search=1)
 - [一文速览首次Gitcoin Web3社交生态轮](https://www.panewslab.com/zh/articledetails/64bs55b3.html)
 - [谈Web3重塑数据价值](https://www.panewslab.com/zh/articledetails/1640692713457476.html)
-- [万向区块链蜂巢研习社 | 构建更好的Web3：DID、数据主权、隐私](https://mp.weixin.qq.com/s/obErYjJ8AKZjRiGV-5A8UQ)
+- [万向区块链蜂巢研习社-构建更好的Web3：DID、数据主权、隐私](https://mp.weixin.qq.com/s/obErYjJ8AKZjRiGV-5A8UQ)
 - [从Unipass和Keystone展开聊聊Web3 Login的安全、交互体验与发展时机](https://www.xiaoyuzhoufm.com/episode/62f752884723ce2f9c75eae8)
