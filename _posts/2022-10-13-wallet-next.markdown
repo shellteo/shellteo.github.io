@@ -6,7 +6,7 @@ categories: project
 author: zx
 location: ShangHai, China
 cover: ""
-description: ""
+description: "一个关于钱包和did结合的一个设想，从defi summber开启的牛市到目前为止cex中止的熊市，我们追求去中心化的理想不变，获取did是开启下一个牛市的钥匙🔑"
 ---
 ---
 
