@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "the next step of wallet —— did"
+title:  "The future of wallets —— DIDs"
 date:   2022-11-20
 categories: project
 author: zx
