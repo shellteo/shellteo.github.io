@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "张翔-区块链-前端开发工程师"
-date:   2022-11-21
-categories: js
+title:  "张翔-区块链全栈"
+date:   2023-01-29
+categories: me
 author: 张翔
 location: ShangHai, China
 cover: ""
