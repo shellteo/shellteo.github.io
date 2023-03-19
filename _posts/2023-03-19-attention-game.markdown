@@ -18,7 +18,7 @@ Attention game是一个链上的NFT社交游戏实验。并且赋予了NFT一些
 
 2. 所以我们就在想如果将这些内容转变为一个链上的游戏实验，不管是去年，[《去中心化社会：寻找 Web3 的灵魂》](https://web3caff.com/zh/archives/10440)v神这篇文章，都在寻找Web3到底往何处发展，并且提出了Soul Bound Token这个概念，想建立一个更丰饶、多元化的生态系统称为 “去中心化社会”（DeSoc）——  一种共决共定的社交关系。
 
-3. 除了社交网络的本质之外，2022年NFT的发展非常快，一些新的NFT发行方式也吸引了我们的注意，不管是Nouns的每日拍卖模式，还是Art Gobblers设计的VRGDA（Variable Rate Gradual Dutch Auctions）的NFT发行模型，都更加从供求关系去思考NFT的供应模型，并且将token和NFT的发行做了结合。
+3. 除了社交网络的本质之外，2022年NFT的发展非常快，一些新的NFT发行方式也吸引了我们的注意，不管是Nouns的每日拍卖模式，还是Art Gobblers设计的[VRGDA（Variable Rate Gradual Dutch Auctions）](https://www.paradigm.xyz/2022/08/vrgda)的NFT发行模型，都更加从供求关系去思考NFT的供应模型，并且将token和NFT的发行做了结合。
 
 4. 我们设计还参考了[六度分隔理论](https://en.wikipedia.org/wiki/Six_degrees_of_separation)，这个理论概括就是认为世界上任何互不相识的两人，只需要很少的中间人就能够建立起联系。
 
