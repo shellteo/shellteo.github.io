@@ -33,7 +33,7 @@ Attention game是一个链上的NFT社交游戏实验。并且赋予了NFT一些
 
 * HexNFT的总量为10,000个
 
-![hexbin3d](https://zxblog.oss-cn-hangzhou.aliyuncs.com/20230319/hexbin3d.jpeg)
+![hexbin3d](https://zxblog.oss-cn-hangzhou.aliyuncs.com/20230319/hexbin3d.png)
 
 * HexNFT本身都是空白的，可以质押NFT（Ads As a Service），Hex-NFT就可以展示这些质押的NFT
 
