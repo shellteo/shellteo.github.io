@@ -51,3 +51,5 @@ Attention game是一个链上的NFT社交游戏实验。并且赋予了NFT一些
 1. 为每个HexNFT添加链接到twitter等web2社交的功能，也可以添加链接到link3/Lens的功能，以增强社交属性，类似于一种社交图谱。
 
 2. 质押的NFT使用户的头像，每个HexNFT都是他们的账户空间，可以发布自己liked NFT list。
+
+3. more...
