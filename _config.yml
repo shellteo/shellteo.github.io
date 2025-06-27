@@ -1,5 +1,5 @@
 # Site configuration
-domain: "http://shellteo.top"
+domain: "http://shellteo.github.io/"
 baseurl: ""
 url: "http://shellteo.github.io/"
 permalink: /:title/
